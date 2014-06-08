@@ -17,7 +17,7 @@ public class Transportable extends Property {
 	private boolean isRegisteredForPickup = false;
 
 	public Transportable(GameObject gameObject) {
-		super(PropertyType.TRANSPORTABLE, gameObject);
+		super(PropertyType.TRANSPORTABLE.toString(), gameObject);
 	}
 
 	@Override

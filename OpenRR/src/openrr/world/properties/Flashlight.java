@@ -13,7 +13,7 @@ public class Flashlight extends Property {
 	public final Light light;
 
 	public Flashlight(GameObject gameObject) {
-		super(PropertyType.LIGHT, gameObject);
+		super(PropertyType.LIGHT.toString(), gameObject);
 		this.light = new Light();
 		this.service = this.gameObject.world.services.inputService;
 	}

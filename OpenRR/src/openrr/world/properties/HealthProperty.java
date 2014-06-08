@@ -9,7 +9,7 @@ import orre.gameWorld.core.PropertyDataType;
 public class HealthProperty extends Property {
 
 	public HealthProperty(GameObject object) {
-		super(PropertyType.HEALTH, object);
+		super(PropertyType.HEALTH.toString(), object);
 	}
 
 	public void handleMessage(Message<?> message) {

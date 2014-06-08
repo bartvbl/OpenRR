@@ -11,7 +11,7 @@ import orre.geom.mesh.Mesh3D;
 public class GravityProperty extends Property {
 
 	public GravityProperty(GameObject gameObject) {
-		super(PropertyType.GRAVITY, gameObject);
+		super(PropertyType.GRAVITY.toString(), gameObject);
 	}
 
 	@Override

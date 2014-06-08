@@ -7,7 +7,7 @@ import orre.gameWorld.properties.Appearance;
 
 public class OreAppearance extends Appearance {
 	public OreAppearance(GameObject gameObject) {
-		super(PropertyType.ORE_APPEARANCE, "ore", gameObject);
+		super(PropertyType.ORE_APPEARANCE.toString(), "ore", gameObject);
 	}
 
 	@Override
