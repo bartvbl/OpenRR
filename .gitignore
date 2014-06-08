@@ -1,0 +1,8 @@
+/bin
+*.class
+*.lif
+/tools
+*.sddoc
+*.trace
+*.pkc
+*.idx
