@@ -1,6 +1,7 @@
 package openrr.world.properties;
 
 import openrr.ai.tasks.CollectOreTask;
+import openrr.world.core.ORRPropertyType;
 import orre.ai.tasks.Task;
 import orre.ai.tasks.TaskType;
 import orre.gameWorld.core.GameObject;
@@ -17,7 +18,7 @@ public class Transportable extends Property {
 	private boolean isRegisteredForPickup = false;
 
 	public Transportable(GameObject gameObject) {
-		super(PropertyType.TRANSPORTABLE.toString(), gameObject);
+		super(ORRPropertyType.TRANSPORTABLE.toString(), gameObject);
 	}
 
 	@Override

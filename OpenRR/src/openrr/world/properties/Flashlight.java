@@ -1,5 +1,6 @@
 package openrr.world.properties;
 
+import openrr.world.core.ORRPropertyType;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.core.Property;
@@ -13,7 +14,7 @@ public class Flashlight extends Property {
 	public final Light light;
 
 	public Flashlight(GameObject gameObject) {
-		super(PropertyType.LIGHT.toString(), gameObject);
+		super(ORRPropertyType.LIGHT.toString(), gameObject);
 		this.light = new Light();
 		this.service = this.gameObject.world.services.inputService;
 	}

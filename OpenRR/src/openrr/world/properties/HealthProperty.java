@@ -1,5 +1,6 @@
 package openrr.world.properties;
 
+import openrr.world.core.ORRPropertyType;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.core.Property;
@@ -9,7 +10,7 @@ import orre.gameWorld.core.PropertyDataType;
 public class HealthProperty extends Property {
 
 	public HealthProperty(GameObject object) {
-		super(PropertyType.HEALTH.toString(), object);
+		super(ORRPropertyType.HEALTH.toString(), object);
 	}
 
 	public void handleMessage(Message<?> message) {

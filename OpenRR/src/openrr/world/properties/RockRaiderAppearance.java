@@ -1,5 +1,6 @@
 package openrr.world.properties;
 
+import openrr.world.core.ORRPropertyType;
 import orre.animation.AnimationType;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
@@ -9,7 +10,7 @@ import orre.gameWorld.properties.Appearance;
 public class RockRaiderAppearance extends Appearance {
 
 	public RockRaiderAppearance(GameObject gameObject) {
-		super(PropertyType.ROCK_RAIDER_APPEARANCE.toString(), "rockRaider", gameObject);
+		super(ORRPropertyType.ROCK_RAIDER_APPEARANCE.toString(), "rockRaider", gameObject);
 	}
 
 	@Override

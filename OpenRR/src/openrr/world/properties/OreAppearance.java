@@ -1,5 +1,6 @@
 package openrr.world.properties;
 
+import openrr.world.core.ORRPropertyType;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.core.PropertyType;
@@ -7,7 +8,7 @@ import orre.gameWorld.properties.Appearance;
 
 public class OreAppearance extends Appearance {
 	public OreAppearance(GameObject gameObject) {
-		super(PropertyType.ORE_APPEARANCE.toString(), "ore", gameObject);
+		super(ORRPropertyType.ORE_APPEARANCE.toString(), "ore", gameObject);
 	}
 
 	@Override
