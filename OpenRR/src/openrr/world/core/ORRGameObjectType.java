@@ -6,16 +6,17 @@ import static orre.gameWorld.core.PropertyType.*;
 public enum ORRGameObjectType {
 	//interface
 	FLASHLIGHT			(new Enum<?>[]{ORRPropertyType.LIGHT}),
+	BUILDING_PLACEMENT	(new Enum<?>[]{}),
 	
 	//map
-	MAP					(new Enum<?>[]{}),
+	MAP					(new Enum<?>[]{MAP_MODEL, MAP_APPEARANCE}),
 	
 	//characters
 	ROCK_RAIDER			(new Enum<?>[]{HEALTH, GRAVITY, ROCK_RAIDER_APPEARANCE, TASK_EXECUTOR}), 
-	MONSTER				(new Enum<?>[]{}), 
-	SLIMY_SLUG			(new Enum<?>[]{}),
+	MONSTER				(new Enum<?>[]{HEALTH, GRAVITY, TASK_EXECUTOR}), 
+	SLIMY_SLUG			(new Enum<?>[]{HEALTH, GRAVITY, TASK_EXECUTOR}),
 	BATS				(new Enum<?>[]{}),
-	SPIDER				(new Enum<?>[]{}),
+	SPIDER				(new Enum<?>[]{GRAVITY}),
 	
 	//vehicles
 	HOVER_SCOUT			(new Enum<?>[]{}),
@@ -30,30 +31,34 @@ public enum ORRGameObjectType {
 	LARGE_LASER_CUTTER	(new Enum<?>[]{}),
 	CHROME_CRUSHER		(new Enum<?>[]{}),
 	TUNNEL_TRANSPORT	(new Enum<?>[]{}),
+	LMS_EXPLORER		(new Enum<?>[]{}),
 	
 	//transportables
 	CHRYSTAL			(new Enum<?>[]{TRANSPORTABLE, GRAVITY, CHRYSTAL_APPEARANCE}),
 	ORE					(new Enum<?>[]{TRANSPORTABLE, GRAVITY, ORE_APPEARANCE}),
-	DYNAMITE			(new Enum<?>[]{}),
-	BUILDING_STUD		(new Enum<?>[]{}),
-	CONSTRUCTION_BARRIER(new Enum<?>[]{}),
-	ELECTRIC_FENCE		(new Enum<?>[]{}),		
+	DYNAMITE			(new Enum<?>[]{TRANSPORTABLE, GRAVITY}),
+	BUILDING_STUD		(new Enum<?>[]{TRANSPORTABLE, GRAVITY}),
+	CONSTRUCTION_BARRIER(new Enum<?>[]{TRANSPORTABLE, GRAVITY}),
+	ELECTRIC_FENCE		(new Enum<?>[]{TRANSPORTABLE, GRAVITY}),		
 	
 	//buildings
-	TOOL_STORE			(new Enum<?>[]{}),
-	TELEPORT_PAD		(new Enum<?>[]{}),
-	DOCKS				(new Enum<?>[]{}),
+	TOOL_STORE			(new Enum<?>[]{TASK_EXECUTOR}),
+	TELEPORT_PAD		(new Enum<?>[]{TASK_EXECUTOR}),
+	DOCKS				(new Enum<?>[]{TASK_EXECUTOR}),
 	POWER_STATION		(new Enum<?>[]{}),
 	SUPPORT_STATION		(new Enum<?>[]{}),
 	ORE_REFINERY		(new Enum<?>[]{}),
 	UPGRADE_STATION		(new Enum<?>[]{}),
 	GEOLOGICAL_CENTER	(new Enum<?>[]{}),
 	MINING_LASER		(new Enum<?>[]{}),
-	SUPER_TELEPORT		(new Enum<?>[]{}),
+	SUPER_TELEPORT		(new Enum<?>[]{TASK_EXECUTOR}),
 	
 	//effects
 	LANDSLIDE			(new Enum<?>[]{}),
 	BLASTER_BULLET		(new Enum<?>[]{}),
+	
+	//objectives
+	BUILDING_SITE		(new Enum<?>[]{}), 
 	;
 	
 	public final Enum<?>[] properties;

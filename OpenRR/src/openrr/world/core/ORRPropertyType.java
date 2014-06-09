@@ -1,5 +1,7 @@
 package openrr.world.core;
 
+import openrr.map.world.MapAppearance;
+import openrr.map.world.MapModel;
 import openrr.world.properties.ChrystalAppearance;
 import openrr.world.properties.Flashlight;
 import openrr.world.properties.GravityProperty;
@@ -16,7 +18,10 @@ public enum ORRPropertyType {
 	ROCK_RAIDER_APPEARANCE(RockRaiderAppearance.class), 
 	TRANSPORTABLE(Transportable.class), 
 	ORE_APPEARANCE(OreAppearance.class), 
-	CHRYSTAL_APPEARANCE(ChrystalAppearance.class);
+	CHRYSTAL_APPEARANCE(ChrystalAppearance.class),
+	MAP_MODEL(MapModel.class),
+	MAP_APPEARANCE(MapAppearance.class)
+	;
 	
 	public final Class<? extends Property> propertyClass;
 

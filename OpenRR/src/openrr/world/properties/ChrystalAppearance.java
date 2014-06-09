@@ -9,7 +9,7 @@ import orre.gameWorld.properties.Appearance;
 public class ChrystalAppearance extends Appearance {
 
 	public ChrystalAppearance(GameObject gameObject) {
-		super(ORRPropertyType.CHRYSTAL_APPEARANCE.toString(), "chrystal", gameObject);
+		super(ORRPropertyType.CHRYSTAL_APPEARANCE, "chrystal", gameObject);
 	}
 
 	@Override

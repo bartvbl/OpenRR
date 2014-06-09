@@ -10,7 +10,7 @@ import orre.gameWorld.core.PropertyDataType;
 public class HealthProperty extends Property {
 
 	public HealthProperty(GameObject object) {
-		super(ORRPropertyType.HEALTH.toString(), object);
+		super(ORRPropertyType.HEALTH, object);
 	}
 
 	public void handleMessage(Message<?> message) {
@@ -23,10 +23,6 @@ public class HealthProperty extends Property {
 
 	public void destroy() {
 		
-	}
-
-	public Object handlePropertyDataRequest(PropertyDataType type) {
-		return null;
 	}
 
 	@Override

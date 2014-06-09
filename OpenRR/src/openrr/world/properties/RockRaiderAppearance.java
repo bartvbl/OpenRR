@@ -10,7 +10,7 @@ import orre.gameWorld.properties.Appearance;
 public class RockRaiderAppearance extends Appearance {
 
 	public RockRaiderAppearance(GameObject gameObject) {
-		super(ORRPropertyType.ROCK_RAIDER_APPEARANCE.toString(), "rockRaider", gameObject);
+		super(ORRPropertyType.ROCK_RAIDER_APPEARANCE, "rockRaider", gameObject);
 	}
 
 	@Override

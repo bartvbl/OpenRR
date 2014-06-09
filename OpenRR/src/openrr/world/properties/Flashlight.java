@@ -14,7 +14,7 @@ public class Flashlight extends Property {
 	public final Light light;
 
 	public Flashlight(GameObject gameObject) {
-		super(ORRPropertyType.LIGHT.toString(), gameObject);
+		super(ORRPropertyType.LIGHT, gameObject);
 		this.light = new Light();
 		this.service = this.gameObject.world.services.inputService;
 	}
