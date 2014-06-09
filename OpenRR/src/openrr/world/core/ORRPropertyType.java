@@ -18,7 +18,7 @@ public enum ORRPropertyType {
 	ORE_APPEARANCE(OreAppearance.class), 
 	CHRYSTAL_APPEARANCE(ChrystalAppearance.class);
 	
-	public final Class<?> propertyClass;
+	public final Class<? extends Property> propertyClass;
 
 	private ORRPropertyType(Class<? extends Property> propertyClass) {
 		this.propertyClass = propertyClass;
