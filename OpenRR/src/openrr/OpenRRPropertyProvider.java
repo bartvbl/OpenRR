@@ -4,31 +4,33 @@ import openrr.world.core.ORRGameObjectType;
 import openrr.world.core.ORRPropertyDataType;
 import openrr.world.core.ORRPropertyType;
 import orre.api.PropertyTypeProvider;
+import orre.gameWorld.core.Property;
 
 
-public class OpenRRPropertyProvider implements PropertyTypeProvider<ORRGameObjectType, ORRPropertyType, ORRPropertyDataType> {
+public class OpenRRPropertyProvider implements PropertyTypeProvider {
 
 	@Override
-	public ORRGameObjectType[] getGameObjectTypes() {
+	public Enum<?>[] getGameObjectTypes() {
 		return ORRGameObjectType.values();
 	}
 
 	@Override
-	public ORRPropertyType[] getProperties(ORRGameObjectType gameObjectType) {
-		return null;
+	public Enum<?>[] getPropertyTypes() {
+		return ORRPropertyType.values();
 	}
 
 	@Override
-	public Class<?> getPropertyClass(ORRPropertyType type) {
-		// TODO Auto-generated method stub
-		return null;
+	public Enum<?>[] getProperties(Enum<?> gameSpecificObjectType) {
+		return ((ORRGameObjectType)gameSpecificObjectType).properties;
 	}
 
 	@Override
-	public Class<?> getRequiredDataType(ORRPropertyDataType dataType) {
-		// TODO Auto-generated method stub
-		return null;
+	public Class<? extends Property> getPropertyClass(Enum<?> type) {
+		return ((ORRPropertyType)type).propertyClass;
 	}
 
-
+	@Override
+	public Class<?> getRequiredDataType(Enum<?> dataType) {
+		return ((ORRPropertyDataType)dataType).expectedReturnDataType;
+	}
 }
