@@ -35,12 +35,7 @@ public class MapModel extends Property {
 
 	@Override
 	public void init() {
-		Resource mapResource = this.gameObject.world.resourceCache.getResource(ORRResourceType.map, "MAP");
-		Map map = (Map) mapResource.content;
-		SceneNode mapNode = map.createSceneNode();
-		this.gameObject.setPropertyData(ORRPropertyDataType.MAP_TILES, map.getMapTileReader());
-		this.gameObject.takeControl(new GraphicsObject(mapNode));
-		this.gameObject.setPropertyData(PropertyDataType.APPEARANCE, mapNode);
+		
 	}
 
 }

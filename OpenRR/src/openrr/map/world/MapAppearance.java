@@ -1,10 +1,17 @@
 package openrr.map.world;
 
+import openrr.map.Map;
+import openrr.world.core.ORRPropertyDataType;
 import openrr.world.core.ORRPropertyType;
+import openrr.world.core.ORRResourceType;
 import orre.gameWorld.core.GameObject;
+import orre.gameWorld.core.GraphicsObject;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.core.Property;
+import orre.gameWorld.core.PropertyDataType;
 import orre.gameWorld.properties.Appearance;
+import orre.resources.Resource;
+import orre.sceneGraph.SceneNode;
 
 public class MapAppearance extends Property {
 
@@ -29,7 +36,13 @@ public class MapAppearance extends Property {
 
 	@Override
 	public void init() {
-
+		Resource mapResource = this.gameObject.world.resourceCache.getResource(ORRResourceType.map, "MAP");
+		Map map = (Map) mapResource.content;
+		SceneNode mapNode = map.createSceneNode();
+		this.gameObject.setPropertyData(ORRPropertyDataType.MAP_TILES, map.getMapTileReader());
+		this.gameObject.takeControl(new GraphicsObject(mapNode));
+		this.gameObject.setPropertyData(PropertyDataType.APPEARANCE, mapNode);
+		this.gameObject.world.rootNode.addChild(mapNode);
 	}
 
 }
