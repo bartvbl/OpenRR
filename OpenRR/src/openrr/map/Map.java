@@ -1,6 +1,7 @@
 package openrr.map;
 
 import openrr.map.loader.MapTexturePack;
+import openrr.map.world.MapTileReader;
 import orre.sceneGraph.SceneNode;
 import orre.util.MathUtil;
 
@@ -25,6 +26,10 @@ public class Map {
 
 	public void buildAll() {
 		this.cache.buildAll();
+	}
+
+	public MapTileReader getMapTileReader() {
+		return new MapTileReader(tileMap);
 	}
 
 
