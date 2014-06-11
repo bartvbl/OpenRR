@@ -28,7 +28,7 @@ public class MapModel extends Property {
 
 	@Override
 	public void init() {
-		// TODO Auto-generated method stub
+		this.gameObject.world.resourceCache.getResource(ORRResourceType., name)
 	}
 
 }

@@ -2,6 +2,7 @@ package openrr.map.loader;
 
 import openrr.map.Map;
 import openrr.map.MapTile;
+import openrr.world.core.ORRResourceType;
 import orre.resources.Finalizable;
 import orre.resources.Resource;
 import orre.resources.ResourceCache;
@@ -24,7 +25,7 @@ public class PartiallyLoadableMap implements Finalizable {
 		Map map = new Map(tileMap, texturePack);
 		map.buildAll();
 		this.map = map;
-		return new Resource(ResourceType.map, "MAP", Map.class, map);
+		return new Resource(ORRResourceType.map, "MAP", Map.class, map);
 	}
 
 	public SceneNode createSceneNode() {

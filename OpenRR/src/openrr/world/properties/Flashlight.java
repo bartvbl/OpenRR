@@ -1,5 +1,8 @@
 package openrr.world.properties;
 
+import openrr.map.world.MapTileReader;
+import openrr.world.core.ORRGameObjectType;
+import openrr.world.core.ORRPropertyDataType;
 import openrr.world.core.ORRPropertyType;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
@@ -27,7 +30,9 @@ public class Flashlight extends Property {
 	@Override
 	public void tick() {
 		float[] mapCoordinates = this.service.getMouseTargetLocation();
-		double height = this.gameObject.world.map.getTileHeightAt(mapCoordinates[0], mapCoordinates[1]);
+		int mapID = gameObject.world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];
+		MapTileReader reader = (MapTileReader) gameObject.world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
+		double height = reader.getTileHeightAt(mapCoordinates[0], mapCoordinates[1]);
 		this.light.setPosition(mapCoordinates[0], mapCoordinates[1], height);
 	}
 

@@ -1,6 +1,9 @@
 package openrr.ai.tasks;
 
 import openrr.ai.MapTileNode;
+import openrr.map.world.MapTileReader;
+import openrr.world.core.ORRGameObjectType;
+import openrr.world.core.ORRPropertyDataType;
 import orre.ai.pathFinding.AStar;
 import orre.ai.pathFinding.Path;
 import orre.ai.tasks.Task;
@@ -38,8 +41,10 @@ public class CollectOreTask extends Task {
 
 	@Override
 	public void plan(Point2D locationOnMap) {
-		MapTileNode unitLocation = new MapTileNode(world.map, locationOnMap.x, locationOnMap.y);
-		MapTileNode taskLocation = new MapTileNode(world.map, location.x, location.y);
+		int mapID = world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];
+		MapTileReader reader = (MapTileReader) world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
+		MapTileNode unitLocation = new MapTileNode(reader, locationOnMap.x, locationOnMap.y);
+		MapTileNode taskLocation = new MapTileNode(reader, location.x, location.y);
 		this.pathToTask = astar.findPath(unitLocation, taskLocation);
 	}
 

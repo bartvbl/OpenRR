@@ -8,6 +8,7 @@ import java.util.zip.ZipFile;
 
 import openrr.map.Map;
 import openrr.map.MapTile;
+import openrr.world.core.ORRResourceType;
 import nu.xom.Builder;
 import nu.xom.Document;
 import nu.xom.Element;
@@ -28,8 +29,8 @@ public class MapLoader implements ResourceTypeLoader {
 	}
 	
 	@Override
-	public ResourceType getResourceType() {
-		return ResourceType.map;
+	public Enum<?> getResourceType() {
+		return ORRResourceType.map;
 	}
 
 	public static PartiallyLoadableMap loadMap(UnloadedResource resource) throws Exception {

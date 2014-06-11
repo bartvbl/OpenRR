@@ -1,5 +1,8 @@
 package openrr.world.properties;
 
+import openrr.map.world.MapTileReader;
+import openrr.world.core.ORRGameObjectType;
+import openrr.world.core.ORRPropertyDataType;
 import openrr.world.core.ORRPropertyType;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
@@ -23,8 +26,10 @@ public class GravityProperty extends Property {
 	@Override
 	public void tick() {
 		Mesh3D appearance = (Mesh3D) gameObject.requestPropertyData(PropertyDataType.APPEARANCE, Mesh3D.class);
+		int mapID = gameObject.world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];
+		MapTileReader reader = (MapTileReader) gameObject.world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
 		Point3D location = appearance.root.getLocation();
-		double tileHeight = this.gameObject.world.map.getTileHeightAt(location.x, location.y);
+		double tileHeight = reader.getTileHeightAt(location.x, location.y);
 		appearance.root.setZ(tileHeight);
 	}
 

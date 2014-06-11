@@ -5,14 +5,15 @@ import java.util.ArrayList;
 import openrr.map.Map;
 import openrr.map.MapTile;
 import openrr.map.soil.SoilType;
+import openrr.map.world.MapTileReader;
 import orre.ai.pathFinding.State;
 
 public class MapTileNode implements State<MapTileNode> {
 	public final int x;
 	public final int y;
-	public final Map map;
+	public final MapTileReader map;
 	
-	public MapTileNode(Map map, int x, int y) {
+	public MapTileNode(MapTileReader map, int x, int y) {
 		this.x = x;
 		this.y = y;
 		this.map = map;
