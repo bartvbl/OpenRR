@@ -91,6 +91,10 @@
 		<animation name="raiderWalking" src="raiderWalking.anim"/>
 	</animations>
 	
+	<scripts pathPrefix="res/scripts/">
+		<script name="main" src="main.py" />
+	</scripts>
+	
 	<!-- The shader loader adds .vert and .frag extensions to the source path -->
 	<shaders pathPrefix="res/shaders/">
 		<shader name="phong" src="phong"/>
