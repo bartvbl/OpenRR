@@ -7,6 +7,7 @@ public enum ORRGameObjectType {
 	//interface
 	FLASHLIGHT			(new Enum<?>[]{ORRPropertyType.LIGHT}),
 	BUILDING_PLACEMENT	(new Enum<?>[]{}),
+	MAP_CONTROLLER		(new Enum<?>[]{KEYBOARD_MAP_CONTROLLER}),
 	
 	//map
 	MAP					(new Enum<?>[]{MAP_MODEL, MAP_APPEARANCE}),

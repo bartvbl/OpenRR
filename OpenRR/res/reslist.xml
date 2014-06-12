@@ -95,6 +95,10 @@
 		<script name="main" src="main.py" />
 	</scripts>
 	
+	<maps pathPrefix="res/maps/">
+		<map name="MAP" src="sampleMap.rrm" />
+	</maps>
+	
 	<!-- The shader loader adds .vert and .frag extensions to the source path -->
 	<shaders pathPrefix="res/shaders/">
 		<shader name="phong" src="phong"/>

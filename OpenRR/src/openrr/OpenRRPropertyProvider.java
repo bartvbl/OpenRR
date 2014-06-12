@@ -5,6 +5,7 @@ import openrr.world.core.ORRPropertyDataType;
 import openrr.world.core.ORRPropertyType;
 import orre.api.PropertyTypeProvider;
 import orre.gameWorld.core.Property;
+import orre.gameWorld.core.PropertyDataType;
 
 
 public class OpenRRPropertyProvider implements PropertyTypeProvider {
@@ -31,6 +32,14 @@ public class OpenRRPropertyProvider implements PropertyTypeProvider {
 
 	@Override
 	public Class<?> getRequiredDataType(Enum<?> dataType) {
+		if(dataType instanceof PropertyDataType) {
+			return ((PropertyDataType)dataType).expectedReturnDataType;
+		}
 		return ((ORRPropertyDataType)dataType).expectedReturnDataType;
+	}
+
+	@Override
+	public Enum<?> getGameObjectTypeFromString(String gameObjectType) {
+		return ORRGameObjectType.valueOf(gameObjectType);
 	}
 }

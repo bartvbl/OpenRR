@@ -9,6 +9,7 @@ import openrr.world.properties.HealthProperty;
 import openrr.world.properties.OreAppearance;
 import openrr.world.properties.RockRaiderAppearance;
 import openrr.world.properties.Transportable;
+import openrr.world.properties.input.KeyboardMapController;
 import orre.gameWorld.core.Property;
 
 public enum ORRPropertyType {
@@ -20,7 +21,8 @@ public enum ORRPropertyType {
 	ORE_APPEARANCE(OreAppearance.class), 
 	CHRYSTAL_APPEARANCE(ChrystalAppearance.class),
 	MAP_MODEL(MapModel.class),
-	MAP_APPEARANCE(MapAppearance.class)
+	MAP_APPEARANCE(MapAppearance.class), 
+	KEYBOARD_MAP_CONTROLLER(KeyboardMapController.class),
 	;
 	
 	public final Class<? extends Property> propertyClass;
