@@ -1,0 +1,21 @@
+animation [name]
+
+keyframe [name] of duration [time/inifinity] s
+keyframe frame1 of duration infinity
+keyframe frame2 of duration 2.5 s
+
+rotate [part] [degrees] degrees around [x/y/z]-axis 
+rotate arm 90 degrees around x-axis 
+
+spin [part] around [x/y/z]-axis at [rotation] degrees per s
+spin arm around z-axis at 90 degrees per s
+
+translate [part] along [x/y/z]-axis for [units] units
+move [part] along [x/y/z]-axis at [units] per second
+scale [part] along [x/y/z]-axis to [size] percent
+repeat from [keyframe name]
+# comment
+set [part] [x/y/z]-axis [rotation/position/scale] to [value] [units/degrees] 
+set arm y-axis scale to 1.0 units
+
+end animation
