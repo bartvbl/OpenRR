@@ -12,6 +12,11 @@
 		- The resource type is used to determine how the resource should be loaded. The loader associated with that name will be used to load the resource.
 	-->
 	
+	<configFiles pathPrefix="res/config/">
+		<config name="config" src="config.cfg" />
+		<config name="keyBindings" src="keyBindings.cfg" />
+	</configFiles>
+	
 	<sounds pathPrefix="res/sounds/">
 		<sound name="teleport" src="teleport.wav"/>
 	</sounds>

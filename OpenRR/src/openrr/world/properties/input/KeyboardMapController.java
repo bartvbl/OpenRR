@@ -1,6 +1,7 @@
 package openrr.world.properties.input;
 
 import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.Display;
 
 import openrr.world.core.ORRGameObjectType;
 import openrr.world.core.ORRPropertyDataType;
@@ -26,10 +27,9 @@ public class KeyboardMapController extends Property {
 
 	@Override
 	public void tick() {
-		this.target.setX((Mouse.getX() - 250)*0.1);
-		this.target.setZ((Mouse.getY() - 250)*0.1);
-		this.target.setRotationY(180);
-		System.out.println(this.target.getX() + ", " + this.target.getY() + ", " + this.target.getZ());
+		this.target.setX((Mouse.getX() - Display.getWidth()/2)*0.2);
+		this.target.setY(-30);
+		this.target.setZ((-Mouse.getY())*0.2);
 	}
 
 	@Override
