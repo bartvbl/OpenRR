@@ -31,4 +31,9 @@ public class OreAppearance extends Appearance {
 		this.appearance.root.setLocation(48.5, 50.5, 0);
 	}
 
+	@Override
+	protected void placeAppearanceInScene() {
+		
+	}
+
 }

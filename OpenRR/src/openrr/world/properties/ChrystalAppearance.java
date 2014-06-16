@@ -32,4 +32,9 @@ public class ChrystalAppearance extends Appearance {
 		
 	}
 
+	@Override
+	protected void placeAppearanceInScene() {
+		
+	}
+
 }
