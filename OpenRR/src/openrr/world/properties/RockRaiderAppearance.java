@@ -1,11 +1,13 @@
 package openrr.world.properties;
 
+import openrr.map.world.MapWorldUtils;
 import openrr.world.core.ORRPropertyType;
 import orre.animation.AnimationType;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.core.PropertyType;
 import orre.gameWorld.properties.Appearance;
+import orre.sceneGraph.SceneNode;
 
 public class RockRaiderAppearance extends Appearance {
 
@@ -36,6 +38,7 @@ public class RockRaiderAppearance extends Appearance {
 
 	@Override
 	protected void placeAppearanceInScene() {
-		
+		SceneNode mapRoot = MapWorldUtils.getMapRoot(gameObject.world);
+		mapRoot.addChild(this.appearance.root);
 	}
 }

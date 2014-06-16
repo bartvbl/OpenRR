@@ -1,10 +1,9 @@
 package openrr.world.buildings;
 
-import openrr.world.core.ORRGameObjectType;
+import openrr.map.world.MapWorldUtils;
 import openrr.world.core.ORRPropertyType;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
-import orre.gameWorld.core.PropertyDataType;
 import orre.gameWorld.properties.Appearance;
 import orre.sceneGraph.SceneNode;
 
@@ -30,18 +29,13 @@ public class ToolStoreAppearance extends Appearance {
 	}
 
 	@Override
-	public void init() {
-		
-	}
-
-	@Override
 	protected void initAppearance() {
+		appearance.root.setLocation(3.5, 3.5, 0);
 	}
 
 	@Override
 	protected void placeAppearanceInScene() {
-		int mapID = this.gameObject.world.getOnlyGameObject(ORRGameObjectType.MAP);
-		SceneNode mapRoot = (SceneNode) this.gameObject.world.requestPropertyData(mapID, PropertyDataType.APPEARANCE, null, SceneNode.class);
+		SceneNode mapRoot = MapWorldUtils.getMapRoot(gameObject.world);
 		mapRoot.addChild(this.appearance.root);
 	}
 
