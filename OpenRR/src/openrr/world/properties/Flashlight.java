@@ -29,11 +29,11 @@ public class Flashlight extends Property {
 
 	@Override
 	public void tick() {
-		float[] mapCoordinates = this.service.getMouseTargetLocation();
+		/*float[] mapCoordinates = this.service.getMouseTargetLocation();
 		int mapID = gameObject.world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];
 		MapTileReader reader = (MapTileReader) gameObject.world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
 		double height = reader.getTileHeightAt(mapCoordinates[0], mapCoordinates[1]);
-		this.light.setPosition(mapCoordinates[0], mapCoordinates[1], height);
+		this.light.setPosition(mapCoordinates[0], mapCoordinates[1], height);*/
 	}
 
 	@Override

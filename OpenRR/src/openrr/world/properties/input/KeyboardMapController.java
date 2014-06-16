@@ -1,8 +1,7 @@
 package openrr.world.properties.input;
 
-import org.lwjgl.input.Mouse;
-import org.lwjgl.opengl.Display;
-
+import openrr.camera.MapCamera;
+import openrr.map.world.MapTileReader;
 import openrr.world.core.ORRGameObjectType;
 import openrr.world.core.ORRPropertyDataType;
 import openrr.world.core.ORRPropertyType;
@@ -10,11 +9,23 @@ import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.core.Property;
 import orre.gameWorld.core.PropertyDataType;
+import orre.input.InputEvent;
 import orre.sceneGraph.CoordinateNode;
 
 public class KeyboardMapController extends Property {
 
-	private CoordinateNode target;
+	private MapCamera camera;
+	private double mapDX;
+	private double mapDY;
+	
+	private double mouseDX;
+	private double mouseDY;
+	
+	private double zoomDelta;
+	private boolean enableMapRotation;
+	private MapTileReader map;
+	
+	private static final double mapMoveSpeed = 0.3d;
 
 	public KeyboardMapController(GameObject gameObject) {
 		super(ORRPropertyType.KEYBOARD_MAP_CONTROLLER, gameObject);
@@ -22,14 +33,51 @@ public class KeyboardMapController extends Property {
 
 	@Override
 	public void handleMessage(Message<?> message) {
-
+		InputEvent event = (InputEvent) message.getPayload();
+		if(event.command.equals("moveMapRight")) {
+			mapDX += 1;
+		} else if(event.command.equals("moveMapLeft")) {
+			mapDX -= 1;
+		} else if(event.command.equals("moveMapUp")) {
+			mapDY += 1;
+		} else if(event.command.equals("moveMapDown")) {
+			mapDY -= 1;
+		} else if(event.command.equals("zoomMap")) {
+			zoomDelta += event.delta;
+		} else if(event.command.equals("enableMapRotation")) {
+			enableMapRotation = true;
+		} else if(event.command.equals("rotateMap")) {
+			mouseDX += event.delta;
+		} else if(event.command.equals("tiltMap")) {
+			mouseDY += event.delta;
+		}
 	}
 
 	@Override
 	public void tick() {
-		this.target.setX((Mouse.getX() - Display.getWidth()/2)*0.2);
-		this.target.setY(-30);
-		this.target.setZ((-Mouse.getY())*0.2);
+		if(enableMapRotation) {
+			camera.rotate(-mouseDY / 4d, 0, mouseDX / 4d);
+		}
+
+		if((mapDX != 0) || (mapDY != 0)) {
+			double moveDirection = Math.atan2(mapDX, mapDY);
+			moveDirection -= Math.toRadians(camera.getRotationZ());
+			camera.translate(Math.sin(moveDirection) * mapMoveSpeed, Math.cos(moveDirection) * mapMoveSpeed,  0);
+		}
+		
+		camera.translate(0, 0, zoomDelta / 35d);
+		
+		double mapX = camera.getX();
+		double mapY = camera.getY();
+		
+		camera.setMapHeight(map.getTileHeightAt(mapX, mapY));
+		
+		mapDX = 0;
+		mapDY = 0;
+		mouseDX = 0;
+		mouseDY = 0;
+		zoomDelta = 0;
+		enableMapRotation = false;
 	}
 
 	@Override
@@ -40,7 +88,18 @@ public class KeyboardMapController extends Property {
 	@Override
 	public void init() {
 		int mapID = this.gameObject.world.getOnlyGameObject(ORRGameObjectType.MAP);
-		this.target = (CoordinateNode)this.gameObject.world.requestPropertyData(mapID, PropertyDataType.APPEARANCE, null, CoordinateNode.class);
+		this.map = (MapTileReader)this.gameObject.world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "moveMapLeft");
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "moveMapRight");
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "moveMapUp");
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "moveMapDown");
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "zoomMap");
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "enableMapRotation");
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "rotateMap");
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "tiltMap");
+		camera = new MapCamera();
+		camera.translate(0, 0, 30);
+		gameObject.world.services.cameraService.activateCamera(camera);
 	}
 
 }

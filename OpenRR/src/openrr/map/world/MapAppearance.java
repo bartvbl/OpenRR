@@ -45,7 +45,7 @@ public class MapAppearance extends Property {
 		this.gameObject.setPropertyData(ORRPropertyDataType.MAP_TILES, map.getMapTileReader());
 		this.gameObject.takeControl(new GraphicsObject(mapNode));
 		this.gameObject.setPropertyData(PropertyDataType.APPEARANCE, mapNode);
-		this.gameObject.world.rootNode.addChild(mapNode);
+		this.gameObject.world.scene3DRoot.addChild(mapNode);
 	}
 
 }
