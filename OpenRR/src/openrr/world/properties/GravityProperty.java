@@ -14,6 +14,9 @@ import orre.geom.mesh.Mesh3D;
 
 public class GravityProperty extends Property {
 
+	private Mesh3D appearance;
+	private MapTileReader reader;
+
 	public GravityProperty(GameObject gameObject) {
 		super(ORRPropertyType.GRAVITY, gameObject);
 	}
@@ -25,9 +28,6 @@ public class GravityProperty extends Property {
 
 	@Override
 	public void tick() {
-		Mesh3D appearance = (Mesh3D) gameObject.requestPropertyData(PropertyDataType.APPEARANCE, Mesh3D.class);
-		int mapID = gameObject.world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];
-		MapTileReader reader = (MapTileReader) gameObject.world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
 		Point3D location = appearance.root.getLocation();
 		double tileHeight = reader.getTileHeightAt(location.x, location.y);
 		appearance.root.setZ(tileHeight);
@@ -40,7 +40,9 @@ public class GravityProperty extends Property {
 
 	@Override
 	public void init() {
-		
+		this.appearance = (Mesh3D) gameObject.requestPropertyData(PropertyDataType.APPEARANCE, Mesh3D.class);
+		int mapID = gameObject.world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];
+		this.reader = (MapTileReader) gameObject.world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
 	}
 
 }
