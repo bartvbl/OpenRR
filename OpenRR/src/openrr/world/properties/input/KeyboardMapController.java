@@ -35,13 +35,13 @@ public class KeyboardMapController extends Property {
 	public void handleMessage(Message<?> message) {
 		InputEvent event = (InputEvent) message.getPayload();
 		if(event.command.equals("moveMapRight")) {
-			mapDX += 1;
+			mapDX += event.value;
 		} else if(event.command.equals("moveMapLeft")) {
-			mapDX -= 1;
+			mapDX -= event.value;
 		} else if(event.command.equals("moveMapUp")) {
-			mapDY += 1;
+			mapDY += event.value;
 		} else if(event.command.equals("moveMapDown")) {
-			mapDY -= 1;
+			mapDY -= event.value;
 		} else if(event.command.equals("zoomMap")) {
 			zoomDelta += event.delta;
 		} else if(event.command.equals("enableMapRotation")) {
