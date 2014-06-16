@@ -2,6 +2,7 @@ package openrr.world.core;
 
 import openrr.map.world.MapAppearance;
 import openrr.map.world.MapModel;
+import openrr.world.buildings.ToolStoreAppearance;
 import openrr.world.properties.ChrystalAppearance;
 import openrr.world.properties.Flashlight;
 import openrr.world.properties.GravityProperty;
@@ -22,7 +23,8 @@ public enum ORRPropertyType {
 	CHRYSTAL_APPEARANCE(ChrystalAppearance.class),
 	MAP_MODEL(MapModel.class),
 	MAP_APPEARANCE(MapAppearance.class), 
-	KEYBOARD_MAP_CONTROLLER(KeyboardMapController.class),
+	KEYBOARD_MAP_CONTROLLER(KeyboardMapController.class), 
+	TOOL_STORE_APPEARANCE(ToolStoreAppearance.class),
 	;
 	
 	public final Class<? extends Property> propertyClass;

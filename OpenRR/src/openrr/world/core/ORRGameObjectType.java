@@ -43,7 +43,7 @@ public enum ORRGameObjectType {
 	ELECTRIC_FENCE		(new Enum<?>[]{TRANSPORTABLE, GRAVITY}),		
 	
 	//buildings
-	TOOL_STORE			(new Enum<?>[]{TASK_EXECUTOR}),
+	TOOL_STORE			(new Enum<?>[]{TOOL_STORE_APPEARANCE}),//TASK_EXECUTOR
 	TELEPORT_PAD		(new Enum<?>[]{TASK_EXECUTOR}),
 	DOCKS				(new Enum<?>[]{TASK_EXECUTOR}),
 	POWER_STATION		(new Enum<?>[]{}),
