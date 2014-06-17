@@ -3,6 +3,7 @@ package openrr.world.properties;
 import org.lwjgl.util.vector.Vector3f;
 
 import openrr.map.world.MapTileReader;
+import openrr.map.world.MapWorldUtils;
 import openrr.world.core.ORRGameObjectType;
 import openrr.world.core.ORRPropertyDataType;
 import openrr.world.core.ORRPropertyType;
@@ -45,6 +46,7 @@ public class Flashlight extends Property {
 		this.light = new Light();
 		this.mouseProbeID = gameObject.world.getOnlyGameObject(ORRGameObjectType.MOUSE_TRACKER);
 		int mapID = gameObject.world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];
+		gameObject.world.scene3DRoot.addChild(light);
 		this.reader = (MapTileReader) gameObject.world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
 	}
 }
