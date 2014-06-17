@@ -1,10 +1,12 @@
 package openrr.world.properties;
 
+import openrr.map.world.MapWorldUtils;
 import openrr.world.core.ORRPropertyType;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.core.PropertyType;
 import orre.gameWorld.properties.Appearance;
+import orre.sceneGraph.SceneNode;
 
 public class OreAppearance extends Appearance {
 	public OreAppearance(GameObject gameObject) {
@@ -33,7 +35,8 @@ public class OreAppearance extends Appearance {
 
 	@Override
 	protected void placeAppearanceInScene() {
-		
+		SceneNode mapRoot = MapWorldUtils.getMapRoot(gameObject.world);
+		mapRoot.addChild(this.appearance.root);
 	}
 
 }

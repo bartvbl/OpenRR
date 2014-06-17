@@ -8,6 +8,7 @@ public enum ORRGameObjectType {
 	FLASHLIGHT			(new Enum<?>[]{ORRPropertyType.LIGHT}),
 	BUILDING_PLACEMENT	(new Enum<?>[]{}),
 	MAP_CONTROLLER		(new Enum<?>[]{KEYBOARD_MAP_CONTROLLER}),
+	MOUSE_TRACKER		(new Enum<?>[]{MOUSE_PROBE_TRACKER}),
 	
 	//map
 	MAP					(new Enum<?>[]{MAP_MODEL, MAP_APPEARANCE}),
@@ -35,7 +36,7 @@ public enum ORRGameObjectType {
 	LMS_EXPLORER		(new Enum<?>[]{}),
 	
 	//transportables
-	CHRYSTAL			(new Enum<?>[]{TRANSPORTABLE, GRAVITY, CHRYSTAL_APPEARANCE}),
+	CHRYSTAL			(new Enum<?>[]{CHRYSTAL_APPEARANCE, TRANSPORTABLE, GRAVITY}),
 	ORE					(new Enum<?>[]{TRANSPORTABLE, GRAVITY, ORE_APPEARANCE}),
 	DYNAMITE			(new Enum<?>[]{TRANSPORTABLE, GRAVITY}),
 	BUILDING_STUD		(new Enum<?>[]{TRANSPORTABLE, GRAVITY}),

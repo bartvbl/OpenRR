@@ -11,6 +11,7 @@ import openrr.world.properties.OreAppearance;
 import openrr.world.properties.RockRaiderAppearance;
 import openrr.world.properties.Transportable;
 import openrr.world.properties.input.KeyboardMapController;
+import openrr.world.properties.input.MouseProbeTracker;
 import orre.gameWorld.core.Property;
 
 public enum ORRPropertyType {
@@ -25,6 +26,7 @@ public enum ORRPropertyType {
 	MAP_APPEARANCE(MapAppearance.class), 
 	KEYBOARD_MAP_CONTROLLER(KeyboardMapController.class), 
 	TOOL_STORE_APPEARANCE(ToolStoreAppearance.class),
+	MOUSE_PROBE_TRACKER(MouseProbeTracker.class)
 	;
 	
 	public final Class<? extends Property> propertyClass;
