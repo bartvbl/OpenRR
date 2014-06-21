@@ -61,10 +61,10 @@
 		<texture name="largeVehicleMenu_Disabled" src="menus/main/nlvehicle.bmp"/>
 		
 		<texture name="ingameMenu_General_MenuBackground_4" src="menus/slot4wo.png"/>
-		<texture name="ingameMainMenu_Hover" src="menus/main/hover.png"/>
 		
 		<!-- building menu textures -->
 		<!--<texture name="buildingMenu_Dock_Up" src="menus/building/dock.bmp"/>
+		<texture name="ingameMainMenu_Hover" src="menus/main/hover.png"/>
 		<texture name="buildingMenu_Dock_Down" src="menus/building/pdock.bmp"/>
 		<texture name="buildingMenu_Dock_Disabled" src="menus/building/ndock.bmp"/>
 		<texture name="buildingMenu_Geo_Up" src="menus/building/geo.bmp"/>

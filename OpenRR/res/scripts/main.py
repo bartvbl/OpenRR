@@ -1,3 +1,4 @@
+@on('gameStateChanged')
 def buildMainScene(eventParam):
 	if eventParam == 'GAME_RUNNING':
 		spawn('MAP')
@@ -6,4 +7,3 @@ def buildMainScene(eventParam):
 		spawn('MOUSE_TRACKER')
 		spawn('FLASHLIGHT')
 	
-on('gameStateChanged', buildMainScene)

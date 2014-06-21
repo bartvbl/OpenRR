@@ -22,6 +22,7 @@ public class RockRaiderAppearance extends Appearance {
 
 	@Override
 	public void tick() {
+		
 	}
 
 	@Override

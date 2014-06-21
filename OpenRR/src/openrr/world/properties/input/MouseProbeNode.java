@@ -23,4 +23,8 @@ public class MouseProbeNode extends LeafNode implements SceneNode {
 	public void preRender() {
 		mapCoordinates = CoordConverter.getMapCoords((int)mouseX, (int)mouseY);
 	}
+	
+	public String toString() {
+		return "Map mouse position probe node";
+	}
 }
