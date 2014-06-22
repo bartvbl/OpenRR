@@ -1,5 +1,5 @@
 <menu>
-	<container x="100% - 60px" y="100% - 184px" width="60px" height="184px" name="menuRoot">
+	<container x="100% - 60px" y="100% - 200px" width="60px" height="184px" name="menuRoot">
 		<image
 			name="menuBackground"
 			x="0px"
@@ -10,8 +10,8 @@
 		/>
 		<imageButton
 			name="teleportRaiderButton"
-			x="10px"
-			y="160px"
+			x="6px"
+			y="68px"
 			width="40px"
 			height="40px"
 			upImage="teleportNewRockRaiderButton_Up" 
@@ -22,8 +22,8 @@
 		/>
 		<imageButton
 			name="buildingMenuButton"
-			x="10px"
-			y="120px"
+			x="6px"
+			y="48px"
 			width="40px"
 			height="40px"
 			upImage="buildingMenu_Up" 
@@ -34,8 +34,8 @@
 		/>
 		<imageButton
 			name="smallVehiclesButton"
-			x="10px"
-			y="80px"
+			x="6px"
+			y="28px"
 			width="40px"
 			height="40px"
 			upImage="smallVehicleMenu_Up" 
@@ -46,8 +46,8 @@
 		/>
 		<imageButton
 			name="largeVehiclesButton"
-			x="10px"
-			y="40px"
+			x="6px"
+			y="8px"
 			width="40px"
 			height="40px"
 			upImage="largeVehicleMenu_Up" 

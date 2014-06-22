@@ -41,7 +41,7 @@
 	
 		<!-- Sidebar textures -->
 		<texture name="teleportNewRockRaiderButton_Up" src="menus/main/raider.bmp" />
-		<texture mame="teleportNewRockRaiderButton_Over" src="menus/main/hraider.bmp" />
+		<texture name="teleportNewRockRaiderButton_Over" src="menus/main/hraider.bmp" />
 		<texture name="teleportNewRockRaiderButton_Down" src="menus/main/praider.bmp" />
 		<texture name="teleportNewRockRaiderButton_Disabled" src="menus/main/nraider.bmp" />
 		
