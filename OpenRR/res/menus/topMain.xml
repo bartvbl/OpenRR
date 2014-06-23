@@ -8,7 +8,7 @@
 			height="42px"
 			image="topPanelBase"
 		/>
-		<imageButton
+		<imageToggleButton
 			name="alertButton"
 			x="32px"
 			y="17px"
@@ -28,7 +28,7 @@
 			downImage="help_Down"
 			onClick="showHelpWindow" 
 		/>
-		<imageButton
+		<imageToggleButton
 			name="prioritiesButton"
 			x="107px"
 			y="17px"

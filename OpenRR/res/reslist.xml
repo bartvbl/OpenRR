@@ -161,6 +161,7 @@
 	
 	<animations pathPrefix="res/anims/">
 		<animation name="raiderWalking" src="raiderWalking.anim"/>
+		<animation name="hideSidebar" src="guiTransitions/hideSidebar.anim" />
 	</animations>
 	
 	<scripts pathPrefix="res/scripts/">

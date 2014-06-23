@@ -32,7 +32,7 @@
 			height="20px"
 			overImage="notificationGoto_Over" 
 			downImage="notificationGoto_Down"
-			onClick="togglePrioritiesPanel" 
+			onClick="gotoNotification" 
 		/>
 		<imageButton
 			name="notificationCloseButton"
@@ -42,7 +42,7 @@
 			height="20px"
 			overImage="notificationClose_Over" 
 			downImage="notificationClose_Down"
-			onClick="togglePrioritiesPanel" 
+			onClick="closeNotification" 
 		/>
 	</container>
 </menu>

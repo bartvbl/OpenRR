@@ -2,6 +2,7 @@ package openrr.world.properties;
 
 import openrr.map.world.MapWorldUtils;
 import openrr.world.core.ORRPropertyType;
+import orre.animation.Animatable;
 import orre.animation.AnimationType;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
@@ -30,7 +31,7 @@ public class RockRaiderAppearance extends Appearance {
 		
 	}
 	
-	@Override
+	@Override    
 	protected void initAppearance() {
 		appearance.root.setLocation(2.5, 2.5, 0);
 		appearance.root.rotate(0, 0, 180);
