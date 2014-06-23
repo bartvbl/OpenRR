@@ -10,8 +10,8 @@
 		/>
 		<imageButton
 			name="teleportRaiderButton"
-			x="6px"
-			y="68px"
+			x="11px"
+			y="135px"
 			width="40px"
 			height="40px"
 			upImage="teleportNewRockRaiderButton_Up" 
@@ -22,8 +22,8 @@
 		/>
 		<imageButton
 			name="buildingMenuButton"
-			x="6px"
-			y="48px"
+			x="11px"
+			y="95px"
 			width="40px"
 			height="40px"
 			upImage="buildingMenu_Up" 
@@ -34,8 +34,8 @@
 		/>
 		<imageButton
 			name="smallVehiclesButton"
-			x="6px"
-			y="28px"
+			x="11px"
+			y="55px"
 			width="40px"
 			height="40px"
 			upImage="smallVehicleMenu_Up" 
@@ -46,8 +46,8 @@
 		/>
 		<imageButton
 			name="largeVehiclesButton"
-			x="6px"
-			y="8px"
+			x="11px"
+			y="15px"
 			width="40px"
 			height="40px"
 			upImage="largeVehicleMenu_Up" 
