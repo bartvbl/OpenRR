@@ -8,3 +8,4 @@ def buildMainScene(eventParam):
 		spawn('FLASHLIGHT')
 		gui.show('topMainMenu')
 		gui.show('sideMainMenu')
+		gui.show('radarPanel')

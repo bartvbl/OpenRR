@@ -74,6 +74,26 @@
 		<texture name="priorities_Over" src="menus/topPanel/priorities_over.bmp"/>
 		<texture name="priorities_Down" src="menus/topPanel/priorities_down.bmp"/>
 		
+		<!-- Radar panel textures -->
+		<texture name="radarPanelBase" src="menus/radarPanel/radar.png"/>
+		<texture name="radarPanelFill" src="menus/radarPanel/radarFill.png"/>
+		
+		<texture name="radar_Over" src="menus/radarPanel/radar_over.png"/>
+		<texture name="radar_Down" src="menus/radarPanel/radar_down.png"/>
+		
+		<texture name="map_Over" src="menus/radarPanel/map_over.png"/>
+		<texture name="map_Down" src="menus/radarPanel/map_down.png"/>
+		
+		<texture name="radarCamera_Over" src="menus/radarPanel/camera_over.bmp"/>
+		<texture name="radarCamera_Down" src="menus/radarPanel/camera_down.bmp"/>
+		
+		<texture name="radarZoomIn_Up" src="menus/radarPanel/zoom_in_up.bmp"/>
+		<texture name="radarZoomIn_Over" src="menus/radarPanel/zoom_in_over.bmp"/>
+		<texture name="radarZoomIn_Down" src="menus/radarPanel/zoom_in_down.bmp"/>
+		
+		<texture name="radarZoomOut_Up" src="menus/radarPanel/zoom_out_up.png"/>
+		<texture name="radarZoomOut_Over" src="menus/radarPanel/zoom_out_over.png"/>
+		<texture name="radarZoomOut_Down" src="menus/radarPanel/zoom_out_down.png"/>
 		
 		<!-- building menu textures -->
 		<!--<texture name="buildingMenu_Dock_Up" src="menus/building/dock.bmp"/>
@@ -118,6 +138,7 @@
 	<menus pathPrefix="res/menus/">
 		<menu name="sideMainMenu" src="sideMain.xml" />
 		<menu name="topMainMenu" src="topMain.xml" />
+		<menu name="radarPanel" src="radarPanel.xml" />
 	</menus>
 	
 	<animations pathPrefix="res/anims/">
