@@ -6,6 +6,10 @@ def buildMainScene(eventParam):
 		spawn('ROCK_RAIDER')
 		spawn('MOUSE_TRACKER')
 		spawn('FLASHLIGHT')
-		gui.show('topMainMenu')
-		gui.show('sideMainMenu')
+		
+		#set up UI
+		gui.show('notificationPanel')
 		gui.show('radarPanel')
+		gui.show('topMainMenu')
+		gui.show('resourceSidebar')
+		gui.show('sideMainMenu')

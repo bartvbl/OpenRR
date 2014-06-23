@@ -95,6 +95,22 @@
 		<texture name="radarZoomOut_Over" src="menus/radarPanel/zoom_out_over.png"/>
 		<texture name="radarZoomOut_Down" src="menus/radarPanel/zoom_out_down.png"/>
 		
+		<!-- Resource sidebar -->
+		<texture name="resourceSidebarBackground" src="menus/resourcePanel/resourceSidebar.png"/>
+		
+		<!-- Notification panel -->
+		<texture name="notificationMessagePanel" src="menus/messagePanel/messagePanel.png"/>
+		<texture name="notificationBackground" src="menus/messagePanel/notificationBackground.png"/>
+		<texture name="notificationPanelSide" src="menus/messagePanel/notificationPanelSide.png"/>
+		
+		<texture name="notificationClose_Over" src="menus/messagePanel/notificationClose_over.bmp"/>
+		<texture name="notificationClose_Down" src="menus/messagePanel/notificationClose_down.bmp"/>
+		
+		<texture name="notificationGoto_Over" src="menus/messagePanel/notificationGoto_over.bmp"/>
+		<texture name="notificationGoto_Down" src="menus/messagePanel/notificationGoto_down.bmp"/>
+		
+		
+		
 		<!-- building menu textures -->
 		<!--<texture name="buildingMenu_Dock_Up" src="menus/building/dock.bmp"/>
 		<texture name="buildingMenu_Dock_Down" src="menus/building/pdock.bmp"/>
@@ -139,6 +155,8 @@
 		<menu name="sideMainMenu" src="sideMain.xml" />
 		<menu name="topMainMenu" src="topMain.xml" />
 		<menu name="radarPanel" src="radarPanel.xml" />
+		<menu name="resourceSidebar" src="resourceSidebar.xml" />
+		<menu name="notificationPanel" src="notificationPanel.xml" />
 	</menus>
 	
 	<animations pathPrefix="res/anims/">

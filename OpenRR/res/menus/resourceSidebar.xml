@@ -1,0 +1,12 @@
+<menu>
+	<container x="100% - 56px" y="0" width="56px" height="480px" name="menuRoot">
+		<image
+			name="menuBackground"
+			x="0px"
+			y="0px"
+			width="56px"
+			height="480px"
+			image="resourceSidebarBackground"
+		/>
+	</container>
+</menu>
