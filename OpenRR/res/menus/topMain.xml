@@ -1,0 +1,42 @@
+<menu>
+	<container x="100% - 270px" y="100% - 42px" width="270px" height="42px" name="menuRoot">
+		<image
+			name="menuBackground"
+			x="0px"
+			y="0px"
+			width="270px"
+			height="42px"
+			image="topPanelBase"
+		/>
+		<imageButton
+			name="alertButton"
+			x="32px"
+			y="17px"
+			width="39px"
+			height="25px"
+			overImage="alert_Over" 
+			downImage="alert_Down"
+			onClick="toggleAlertMode" 
+		/>
+		<imageButton
+			name="infoButton"
+			x="70px"
+			y="17px"
+			width="36px"
+			height="25px"
+			overImage="help_Over" 
+			downImage="help_Down"
+			onClick="showHelpWindow" 
+		/>
+		<imageButton
+			name="prioritiesButton"
+			x="107px"
+			y="17px"
+			width="36px"
+			height="25px"
+			overImage="priorities_Over" 
+			downImage="priorities_Down"
+			onClick="togglePrioritiesPanel" 
+		/>
+	</container>
+</menu>

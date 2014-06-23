@@ -40,31 +40,43 @@
 		<texture name="mainMenu_skybox" src="mainMenu/skybox.jpg" />
 	
 		<!-- Sidebar textures -->
-		<texture name="teleportNewRockRaiderButton_Up" src="menus/main/raider.bmp" />
-		<texture name="teleportNewRockRaiderButton_Over" src="menus/main/hraider.bmp" />
-		<texture name="teleportNewRockRaiderButton_Down" src="menus/main/praider.bmp" />
-		<texture name="teleportNewRockRaiderButton_Disabled" src="menus/main/nraider.bmp" />
-		
-		<texture name="buildingMenu_Up" src="menus/main/building.bmp" />
-		<texture name="buildingMenu_Over" src="menus/main/hbuilding.bmp" />
-		<texture name="buildingMenu_Down" src="menus/main/pbuilding.bmp" />
-		<texture name="buildingMenu_Disabled" src="menus/main/nbuilding.bmp" />
-		
-		<texture name="smallVehicleMenu_Up" src="menus/main/svehicle.bmp"/>
-		<texture name="smallVehicleMenu_Over" src="menus/main/hsvehicle.bmp"/>
-		<texture name="smallVehicleMenu_Down" src="menus/main/psvehicle.bmp"/>
-		<texture name="smallVehicleMenu_Disabled" src="menus/main/nsvehicle.bmp"/>
-		
-		<texture name="largeVehicleMenu_Up" src="menus/main/lvehicle.bmp"/>
-		<texture name="largeVehicleMenu_Over" src="menus/main/hlvehicle.bmp"/>
-		<texture name="largeVehicleMenu_Down" src="menus/main/plvehicle.bmp"/>
-		<texture name="largeVehicleMenu_Disabled" src="menus/main/nlvehicle.bmp"/>
-		
 		<texture name="ingameMenu_General_MenuBackground_4" src="menus/slot4wo.png"/>
+		
+		<texture name="teleportNewRockRaiderButton_Up" src="menus/sidePanel/raider.bmp" />
+		<texture name="teleportNewRockRaiderButton_Over" src="menus/sidePanel/hraider.bmp" />
+		<texture name="teleportNewRockRaiderButton_Down" src="menus/sidePanel/praider.bmp" />
+		<texture name="teleportNewRockRaiderButton_Disabled" src="menus/sidePanel/nraider.bmp" />
+		
+		<texture name="buildingMenu_Up" src="menus/sidePanel/building.bmp" />
+		<texture name="buildingMenu_Over" src="menus/sidePanel/hbuilding.bmp" />
+		<texture name="buildingMenu_Down" src="menus/sidePanel/pbuilding.bmp" />
+		<texture name="buildingMenu_Disabled" src="menus/sidePanel/nbuilding.bmp" />
+		
+		<texture name="smallVehicleMenu_Up" src="menus/sidePanel/svehicle.bmp"/>
+		<texture name="smallVehicleMenu_Over" src="menus/sidePanel/hsvehicle.bmp"/>
+		<texture name="smallVehicleMenu_Down" src="menus/sidePanel/psvehicle.bmp"/>
+		<texture name="smallVehicleMenu_Disabled" src="menus/sidePanel/nsvehicle.bmp"/>
+		
+		<texture name="largeVehicleMenu_Up" src="menus/sidePanel/lvehicle.bmp"/>
+		<texture name="largeVehicleMenu_Over" src="menus/sidePanel/hlvehicle.bmp"/>
+		<texture name="largeVehicleMenu_Down" src="menus/sidePanel/plvehicle.bmp"/>
+		<texture name="largeVehicleMenu_Disabled" src="menus/sidePanel/nlvehicle.bmp"/>
+		
+		<!-- Top bar textures -->
+		<texture name="topPanelBase" src="menus/topPanel/topPanel.png"/>
+		
+		<texture name="alert_Over" src="menus/topPanel/alert_over.bmp"/>
+		<texture name="alert_Down" src="menus/topPanel/alert_down.bmp"/>
+		
+		<texture name="help_Over" src="menus/topPanel/help_over.bmp"/>
+		<texture name="help_Down" src="menus/topPanel/help_down.bmp"/>
+		
+		<texture name="priorities_Over" src="menus/topPanel/priorities_over.bmp"/>
+		<texture name="priorities_Down" src="menus/topPanel/priorities_down.bmp"/>
+		
 		
 		<!-- building menu textures -->
 		<!--<texture name="buildingMenu_Dock_Up" src="menus/building/dock.bmp"/>
-		<texture name="ingameMainMenu_Hover" src="menus/main/hover.png"/>
 		<texture name="buildingMenu_Dock_Down" src="menus/building/pdock.bmp"/>
 		<texture name="buildingMenu_Dock_Disabled" src="menus/building/ndock.bmp"/>
 		<texture name="buildingMenu_Geo_Up" src="menus/building/geo.bmp"/>
@@ -105,6 +117,7 @@
 	
 	<menus pathPrefix="res/menus/">
 		<menu name="sideMainMenu" src="sideMain.xml" />
+		<menu name="topMainMenu" src="topMain.xml" />
 	</menus>
 	
 	<animations pathPrefix="res/anims/">
