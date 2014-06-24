@@ -1,0 +1,10 @@
+animation showSidebar
+
+keyframe frame0 of duration 0.00001 s
+translate menuRoot along x-axis for 100 units
+set menuRoot x-axis visibility to 1.0 units
+
+keyframe frame1 of duration 1 s
+translate menuRoot along x-axis for -100 units
+
+end animation
