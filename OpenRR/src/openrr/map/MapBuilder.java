@@ -157,8 +157,9 @@ public class MapBuilder {
 
 	private static void compileGeometryBuffer(MapTexturePack texturePack, SceneNode rootNode, DoubleBuffer geometryDataBuffer) {
 		Material currentMaterial = texturePack.generateBoundTextureMaterial();
-		IntBuffer indices = generateIndexBuffer(geometryDataBuffer.position());
-		GeometryNode buffer = GeometryBufferGenerator.generateGeometryBuffer(BufferDataFormatType.VERTICES_TEXTURES_NORMALS, geometryDataBuffer, indices);
+		int vertexCount = geometryDataBuffer.position() / 8;
+		IntBuffer indices = generateIndexBuffer(vertexCount);
+		GeometryNode buffer = GeometryBufferGenerator.generateGeometryBuffer(BufferDataFormatType.VERTICES_TEXTURES_NORMALS, geometryDataBuffer, indices, vertexCount, vertexCount);
 		//GeometryNode normals = GeometryBufferGenerator.generateNormalsGeometryBuffer(BufferDataFormatType.VERTICES_TEXTURES_NORMALS, geometryDataBuffer, indices);
 		currentMaterial.addChild(buffer);
 		//currentMaterial.addChild(normals);
