@@ -159,11 +159,33 @@
 		<texture name="buildingMenu_Snackbar_Down" src="menus/building/snackbar_down.bmp"/>
 		<texture name="buildingMenu_Snackbar_Disabled" src="menus/building/snackbar_disabled.bmp"/>
 		
-		<!--<texture name="ingameMenu_General_BackButton_Up" src="menus/back.bmp"/>
-		<texture name="ingameMenu_General_BackButton_Hover" src="menus/hback.bmp"/>
-		<texture name="ingameMenu_General_BackButton_Down" src="menus/pback.bmp"/>
-		<texture name="ingameMenu_General_MenuBackground_10" src="menus/slot10.png"/>
-		<texture name="ingameMenu_General_MenuBackground_4" src="menus/slot4wo.png"/>-->
+		<!-- Small vehicle menu -->
+		<texture name="smallVehicles_Background" src="menus/smallVehicles/menuBackground.png"/>
+		
+		<texture name="smallVehicles_HoverScout_Up" src="menus/smallVehicles/hoverboard.bmp"/>
+		<texture name="smallVehicles_HoverScout_Down" src="menus/smallVehicles/hoverboard_down.bmp"/>
+		<texture name="smallVehicles_HoverScout_Disabled" src="menus/smallVehicles/hoverboard_disabled.bmp"/>
+		
+		<texture name="smallVehicles_SmallDigger_Up" src="menus/smallVehicles/smallDigger.bmp"/>
+		<texture name="smallVehicles_SmallDigger_Down" src="menus/smallVehicles/smallDigger_down.bmp"/>
+		<texture name="smallVehicles_SmallDigger_Disabled" src="menus/smallVehicles/hoverboard_disabled.bmp"/>
+		
+		<texture name="smallVehicles_SmallTransportTruck_Up" src="menus/smallVehicles/smallTruck.bmp"/>
+		<texture name="smallVehicles_SmallTransportTruck_Down" src="menus/smallVehicles/smallTruck_down.bmp"/>
+		<texture name="smallVehicles_SmallTransportTruck_Disabled" src="menus/smallVehicles/smallTruck_disabled.bmp"/>
+		
+		<texture name="smallVehicles_SmallMobileLaserCutter_Up" src="menus/smallVehicles/smallMWP.bmp"/>
+		<texture name="smallVehicles_SmallMobileLaserCutter_Down" src="menus/smallVehicles/smallMWP_down.bmp"/>
+		<texture name="smallVehicles_SmallMobileLaserCutter_Disabled" src="menus/smallVehicles/smallMWP_disabled.bmp"/>
+		
+		<texture name="smallVehicles_RapidRider_Up" src="menus/smallVehicles/smallCat.bmp"/>
+		<texture name="smallVehicles_RapidRider_Down" src="menus/smallVehicles/smallCat_down.bmp"/>
+		<texture name="smallVehicles_RapidRider_Disabled" src="menus/smallVehicles/smallCat_disabled.bmp"/>
+		
+		<texture name="smallVehicles_TunnelScout_Up" src="menus/smallVehicles/smallHeli.bmp"/>
+		<texture name="smallVehicles_TunnelScout_Down" src="menus/smallVehicles/smallHeli_down.bmp"/>
+		<texture name="smallVehicles_TunnelScout_Disabled" src="menus/smallVehicles/smallHeli_disabled.bmp"/>
+		
 	</textures>
 	
 	<menus pathPrefix="res/menus/">
@@ -173,11 +195,14 @@
 		<menu name="resourceSidebar" src="resourceSidebar.xml" />
 		<menu name="notificationPanel" src="notificationPanel.xml" />
 		<menu name="buildMenu" src="buildMenu.xml" />
+		<menu name="buildSmallVehicles" src="smallVehicles.xml" />
 	</menus>
 	
 	<animations pathPrefix="res/anims/">
 		<animation name="raiderWalking" src="raiderWalking.anim"/>
+		
 		<animation name="hideSidebar" src="guiTransitions/hideSidebar.anim" />
+		<animation name="showSidebar" src="guiTransitions/showSidebar.anim" />
 	</animations>
 	
 	<scripts pathPrefix="res/scripts/">
