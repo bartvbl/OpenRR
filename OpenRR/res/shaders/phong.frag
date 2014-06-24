@@ -9,8 +9,8 @@ vec4 lightSource(vec3 norm, vec3 view, gl_LightSourceParameters light)
 	vec3 lightVector = normalize(light.position.xyz - view);
 	vec3 reflection = normalize(lightVector - normalize(view.xyz));
 
-	float diffuseFactor = max(0, dot(norm, lightVector));
-	float specularDot = max(0, dot(norm, reflection));
+	float diffuseFactor = max(0.0, dot(norm, lightVector));
+	float specularDot = max(0.0, dot(norm, reflection));
 
 	float specularFactor = pow(specularDot, gl_FrontMaterial.shininess);
 	
@@ -27,12 +27,11 @@ vec4 lighting()
 
 	return
 		gl_FrontMaterial.emission +
-		gl_FrontMaterial.ambient * gl_LightModel.ambient +
 		lightSource(norm, position, gl_LightSource[0]);
 }
 
 void main()
 {
 	vec4 lightValue = lighting();
-	gl_FragColor = (1 * texture2D(diffuseTexture, gl_TexCoord[0].st) * lightValue) + ((1.0 - 1) * lightValue);
+	gl_FragColor = (1.0 * texture2D(diffuseTexture, gl_TexCoord[0].st) * lightValue) + ((1.0 - 1.0) * lightValue);
 }

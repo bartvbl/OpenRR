@@ -13,13 +13,13 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class PlaceVisualiser extends LeafNode {
 	
-	private static final double cubeHeight = 0.1d;
+	private static final double cubeHeight = 0.2d;
 	
 	//5 quads per tile 'cube' * 4 points/quad * 3 values/point = 60
 	private static final double[] vertexData = new double[12];
 	//order: 0-3 on top, starting bottom left, counter clockwise. Same for 4-7 on the bottom layer.
 	private static final int[] indexData = new int[]{
-		0, 1, 2, 0, 2, 3
+		0, 3, 1, 0, 2, 3
 		//0, 4, 5, 1,
 		//1, 5, 6, 2,
 		//2, 6, 7, 3,
