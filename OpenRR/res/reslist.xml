@@ -186,6 +186,33 @@
 		<texture name="smallVehicles_TunnelScout_Down" src="menus/smallVehicles/smallHeli_down.bmp"/>
 		<texture name="smallVehicles_TunnelScout_Disabled" src="menus/smallVehicles/smallHeli_disabled.bmp"/>
 		
+		<!-- Large vehicles menu -->
+		<texture name="largeVehicles_Background" src="menus/largeVehicles/menuBackground.png"/>
+		
+		<texture name="largeVehicles_LoaderDozer_Up" src="menus/largeVehicles/bulldozer.bmp"/>
+		<texture name="largeVehicles_LoaderDozer_Down" src="menus/largeVehicles/bulldozer_down.bmp"/>
+		<texture name="largeVehicles_LoaderDozer_Disabled" src="menus/largeVehicles/bulldozer_disabled.bmp"/>
+		
+		<texture name="largeVehicles_GraniteGrinder_Up" src="menus/largeVehicles/walkerDigger.bmp"/>
+		<texture name="largeVehicles_GraniteGrinder_Down" src="menus/largeVehicles/walkerDigger_down.bmp"/>
+		<texture name="largeVehicles_GraniteGrinder_Disabled" src="menus/largeVehicles/walkerDigger_disabled.bmp"/>
+		
+		<texture name="largeVehicles_LargeMobileLaserCutter_Up" src="menus/largeVehicles/largeMWP.bmp"/>
+		<texture name="largeVehicles_LargeMobileLaserCutter_Down" src="menus/largeVehicles/largeMWP_down.bmp"/>
+		<texture name="largeVehicles_LargeMobileLaserCutter_Disabled" src="menus/largeVehicles/largeMWP_disabled.bmp"/>
+		
+		<texture name="largeVehicles_CargoCarrier_Up" src="menus/largeVehicles/largeCatamaran.bmp"/>
+		<texture name="largeVehicles_CargoCarrier_Down" src="menus/largeVehicles/largeCatamaran_down.bmp"/>
+		<texture name="largeVehicles_CargoCarrier_Disabled" src="menus/largeVehicles/largeCatamaran_disabled.bmp"/>
+		
+		<texture name="largeVehicles_ChromeCrusher_Up" src="menus/largeVehicles/largeDigger.bmp"/>
+		<texture name="largeVehicles_ChromeCrusher_Down" src="menus/largeVehicles/largeDigger_down.bmp"/>
+		<texture name="largeVehicles_ChromeCrusher_Disabled" src="menus/largeVehicles/largeDigger_disabled.bmp"/>
+		
+		<texture name="largeVehicles_TunnelTransport_Up" src="menus/largeVehicles/largeHeli.bmp"/>
+		<texture name="largeVehicles_TunnelTransport_Down" src="menus/largeVehicles/largeHeli_down.bmp"/>
+		<texture name="largeVehicles_TunnelTransport_Disabled" src="menus/largeVehicles/largeHeli_disabled.bmp"/>
+		
 	</textures>
 	
 	<menus pathPrefix="res/menus/">
@@ -196,6 +223,7 @@
 		<menu name="notificationPanel" src="notificationPanel.xml" />
 		<menu name="buildMenu" src="buildMenu.xml" />
 		<menu name="buildSmallVehicles" src="smallVehicles.xml" />
+		<menu name="buildLargeVehicles" src="largeVehicles.xml" />
 	</menus>
 	
 	<animations pathPrefix="res/anims/">

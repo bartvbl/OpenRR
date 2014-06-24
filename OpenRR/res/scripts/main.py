@@ -12,7 +12,9 @@ def buildMainScene(params):
 	gui.show('topMainMenu')
 	gui.show('resourceSidebar')
 	gui.show('sideMainMenu')
-		
+
+#Side menu
+	
 orr_activeSideMenu = 'sideMainMenu'
 
 def registerSideMenuSwitch(actionName, menuName):
@@ -33,6 +35,7 @@ def registerSideMenuSwitch(actionName, menuName):
 		
 registerSideMenuSwitch('switchToBuildingMenu', 'buildMenu')
 registerSideMenuSwitch('switchToSmallVehiclesMenu', 'buildSmallVehicles')
+registerSideMenuSwitch('switchToLargeVehiclesMenu', 'buildLargeVehicles')
 	
 @on('GUI_AnimationComplete', menuName='sideMainMenu')
 def swapMenus(eventParams):
@@ -48,3 +51,8 @@ def returnToMainSidebar(eventParams):
 	global orr_activeSideMenu
 	gui.animateMenu(orr_activeSideMenu, 'hideSidebar')
 	orr_activeSideMenu = 'sideMainMenu'
+	
+@on('GUI_Click', action='buildToolStore')
+def buildToolStore(eventParams):
+	print 'spawning toolstore!'
+	spawn('TOOL_STORE_PLACER')
