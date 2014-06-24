@@ -10,6 +10,9 @@ public enum ORRGameObjectType {
 	MAP_CONTROLLER		(new Enum<?>[]{KEYBOARD_MAP_CONTROLLER}),
 	MOUSE_TRACKER		(new Enum<?>[]{MOUSE_PROBE_TRACKER}),
 	
+	//building placers
+	TOOL_STORE_PLACER	(new Enum<?>[]{ORRPropertyType.TOOL_STORE_PLACER}),
+	
 	//map
 	MAP					(new Enum<?>[]{MAP_MODEL, MAP_APPEARANCE}),
 	
