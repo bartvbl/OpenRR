@@ -12,6 +12,7 @@ def buildMainScene(params):
 	gui.show('topMainMenu')
 	gui.show('resourceSidebar')
 	gui.show('sideMainMenu')
+	gui.show('buildMenu')
 		
 @on('GUI_Click', action='switchToBuildingMenu')
 def switchToBuildingMenu(eventParam):
