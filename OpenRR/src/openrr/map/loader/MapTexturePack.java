@@ -24,10 +24,6 @@ public class MapTexturePack {
 		this.soilLibrary = soilLibrary;
 	}
 	
-	public void setSoilTexture(SoilType type, Soil soil) {
-		soilLibrary.setSoilTexture(type, soil);
-	}
-	
 	public void bindTexture(SoilType soilType, WallType wallType) {
 		String textureName = getTextureReferenceName(soilType, wallType);
 		this.currentBoundTextureName = textureName;
