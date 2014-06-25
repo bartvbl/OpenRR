@@ -62,9 +62,27 @@ public abstract class BuildingPlacer extends Property {
 		//2. update orientation and location
 		this.buildingX = (int) (mouseLocation.x + 0.5);
 		this.buildingY = (int) (mouseLocation.y + 0.5);
-		this.orientation = Orientation.north;
+		this.orientation = getOrientation(mouseLocation);
 		placerAppearance.updatePosition(buildingX, buildingY, orientation);
 		//3. verify possibility to place building here
+	}
+
+	private Orientation getOrientation(Vector3f mouseLocation) {
+		double tileX = mouseLocation.x - Math.floor(mouseLocation.x);
+		double tileY = mouseLocation.y - Math.floor(mouseLocation.y);
+		if(tileX > tileY) {
+			if(tileX > 1-tileY) {
+				return Orientation.east;
+			} else {
+				return Orientation.south;
+			}
+		} else {
+			if(tileX > 1-tileY) {
+				return Orientation.north;
+			} else {
+				return Orientation.west;
+			}
+		}
 	}
 
 	@Override
