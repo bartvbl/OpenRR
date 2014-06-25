@@ -68,19 +68,19 @@ public abstract class BuildingPlacer extends Property {
 	}
 
 	private Orientation getOrientation(Vector3f mouseLocation) {
-		double tileX = mouseLocation.x - Math.floor(mouseLocation.x);
-		double tileY = mouseLocation.y - Math.floor(mouseLocation.y);
+		double tileX = mouseLocation.x + 0.5 - Math.floor(mouseLocation.x + 0.5);
+		double tileY = mouseLocation.y + 0.5 - Math.floor(mouseLocation.y + 0.5);
 		if(tileX > tileY) {
-			if(tileX > 1-tileY) {
-				return Orientation.east;
-			} else {
-				return Orientation.south;
-			}
-		} else {
-			if(tileX > 1-tileY) {
+			if(tileX > 1d-tileY) {
 				return Orientation.north;
 			} else {
 				return Orientation.west;
+			}
+		} else {
+			if(tileX > 1d-tileY) {
+				return Orientation.east;
+			} else {
+				return Orientation.south;
 			}
 		}
 	}
