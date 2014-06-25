@@ -26,6 +26,10 @@ public class PlaceVisualiser extends LeafNode {
 		6, 2, 0, 6, 0, 4
 	};
 
+	private static final float[] placableBuildingTileColour = new float[]{0.0f, 1.0f, 0.0f, 0.3f};
+	private static final float[] placablePowerTileColour = new float[]{1.0f, 1.0f, 0.0f, 0.3f};
+	private static final float[] notPlacableTileColour = new float[]{1.0f, 0.0f, 0.0f, 0.3f};
+	
 	private final TileContents[][] buildingMap;
 	private final MapTileReader tileReader;
 
@@ -45,17 +49,20 @@ public class PlaceVisualiser extends LeafNode {
 		
 		for(int i = -1; i < 2; i++) {
 			for(int j = -1; j < 2; j++) {
-				drawTile(tileX + i, tileY + j);
+				if(buildingMap[i+1][j+1] == TileContents.BUILDING) {
+					drawTile(tileX + i, tileY + j, placableBuildingTileColour);
+				} else if(buildingMap[i+1][j+1] == TileContents.POWER_PATH) {
+					drawTile(tileX + i, tileY + j, placablePowerTileColour);
+				}
 			}
 		}
 	}
 
-	private void drawTile(int x, int y) {
+	private void drawTile(int x, int y, float[] tileColour) {
 		MapTile tile = tileReader.getTileAt(x, y);
-		float[] colour = new float[]{0.0f, 1.0f, 0.0f, 0.3f};
-		materialBuffer.put(colour).rewind();
+		materialBuffer.put(tileColour).rewind();
 		glMaterial(GL_FRONT, GL_DIFFUSE, materialBuffer);
-		materialBuffer.put(colour).rewind();
+		materialBuffer.put(tileColour).rewind();
 		glMaterial(GL_FRONT, GL_SPECULAR, materialBuffer);
 		int arrayPointer = 0;
 		arrayPointer = storeVertices(x-1, y-1, tile, arrayPointer, cubeHeight);
