@@ -51,15 +51,15 @@ public class PlaceVisualiser extends LeafNode {
 	}
 
 	private void drawTile(int x, int y) {
-		MapTile tile = tileReader.getTileAt(x+1, y+1);
+		MapTile tile = tileReader.getTileAt(x, y);
 		float[] colour = new float[]{0.0f, 1.0f, 0.0f, 0.3f};
 		materialBuffer.put(colour).rewind();
 		glMaterial(GL_FRONT, GL_DIFFUSE, materialBuffer);
 		materialBuffer.put(colour).rewind();
 		glMaterial(GL_FRONT, GL_SPECULAR, materialBuffer);
 		int arrayPointer = 0;
-		arrayPointer = storeVertices(x, y, tile, arrayPointer, cubeHeight);
-		storeVertices(x, y, tile, arrayPointer, 0);
+		arrayPointer = storeVertices(x-1, y-1, tile, arrayPointer, cubeHeight);
+		storeVertices(x-1, y-1, tile, arrayPointer, 0);
 		VertexArrayDrawer.drawTriangles(vertexData, indexData, 3, 4);
 	}
 

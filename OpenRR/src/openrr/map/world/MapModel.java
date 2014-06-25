@@ -20,7 +20,7 @@ public class MapModel extends Property {
 
 	@Override
 	public void handleMessage(Message<?> message) {
-
+		
 	}
 
 	@Override

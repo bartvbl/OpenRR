@@ -27,7 +27,6 @@ public class MapBuilder {
 	private static final double tileSide = 1;
 
 	public static SceneNode buildMapGeometry(MapTile[][] tileMap, MapTexturePack texturePack) {
-		System.out.println("building map..");
 		int mapWidth = tileMap.length;
 		int mapHeight = tileMap[0].length;
 		Dimension2D mapSize = new Dimension2D(mapWidth, mapHeight);
@@ -39,7 +38,6 @@ public class MapBuilder {
 		Orientation[][] orientationMap = MapWallOrientationBuilder.buildOrientationMap(wallMap, wallTypeMap, mapSize);
 		
 		SceneNode mapRootNode = generateMapSceneNode(wallMap, wallTypeMap, orientationMap, tileMap, mapSize, texturePack);
-		System.out.println("build complete.");
 		return mapRootNode;
 	}
 

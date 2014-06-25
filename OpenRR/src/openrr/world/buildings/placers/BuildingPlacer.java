@@ -51,7 +51,7 @@ public abstract class BuildingPlacer extends Property {
 		//int gameObjectID = gameObject.world.spawnGameObject(buildingType);
 		//start teleport animation
 		//update map
-		MapSoilUpdate update = new MapSoilUpdate(new Point2D(buildingX, buildingY), SoilType.POWER_PATH_SQUARE);
+		MapSoilUpdate update = new MapSoilUpdate(new Point2D(buildingX, buildingY), SoilType.POWER_PATH_SQUARE_UNPOWERED);
 		gameObject.world.dispatchMessage(new Message<MapSoilUpdate>(ORRMessageType.TILE_UPDATE, update), mapID);
 	}
 
@@ -60,8 +60,8 @@ public abstract class BuildingPlacer extends Property {
 		//1. get mouse map coordinates
 		Vector3f mouseLocation = (Vector3f) gameObject.world.requestPropertyData(mouseProbeID, ORRPropertyDataType.MOUSE_LOCATION, null, Vector3f.class);
 		//2. update orientation and location
-		this.buildingX = (int) (mouseLocation.x - 0.5);
-		this.buildingY = (int) (mouseLocation.y - 0.5);
+		this.buildingX = (int) (mouseLocation.x + 0.5);
+		this.buildingY = (int) (mouseLocation.y + 0.5);
 		this.orientation = Orientation.north;
 		placerAppearance.updatePosition(buildingX, buildingY, orientation);
 		//3. verify possibility to place building here

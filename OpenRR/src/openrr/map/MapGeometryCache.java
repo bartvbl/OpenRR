@@ -5,7 +5,6 @@ import orre.sceneGraph.SceneNode;
 
 public class MapGeometryCache {
 	private final MapTile[][] tileMap;
-	private SceneNode rootNode;
 	private SceneNode buffer;
 	private MapTexturePack texturePack;
 
