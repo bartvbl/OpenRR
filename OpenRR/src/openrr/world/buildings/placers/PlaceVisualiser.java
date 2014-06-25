@@ -13,17 +13,17 @@ import static org.lwjgl.opengl.GL11.*;
 
 public class PlaceVisualiser extends LeafNode {
 	
-	private static final double cubeHeight = 0.08d;
+	private static final double cubeHeight = 0.08;
 	
-	//5 quads per tile 'cube' * 4 points/quad * 3 values/point = 60
-	private static final double[] vertexData = new double[12];
-	//order: 0-3 on top, starting bottom left, counter clockwise. Same for 4-7 on the bottom layer.
+	//8 vertices * 3 values/vertex = 24
+	private static final double[] vertexData = new double[24];
+	
 	private static final int[] indexData = new int[]{
-		1, 2, 3, 0, 2, 1
-		//0, 4, 5, 1,
-		//1, 5, 6, 2,
-		//2, 6, 7, 3,
-		//3, 7, 4, 0
+		1, 2, 3, 0, 2, 1,
+		5, 4, 0, 5, 0, 1,
+		7, 5, 1, 7, 1, 3,
+		6, 3, 2, 3, 6, 7,
+		6, 2, 0, 6, 0, 4
 	};
 
 	private final TileContents[][] buildingMap;
@@ -58,15 +58,21 @@ public class PlaceVisualiser extends LeafNode {
 		materialBuffer.put(colour).rewind();
 		glMaterial(GL_FRONT, GL_SPECULAR, materialBuffer);
 		int arrayPointer = 0;
+		arrayPointer = storeVertices(x, y, tile, arrayPointer, cubeHeight);
+		storeVertices(x, y, tile, arrayPointer, 0);
+		VertexArrayDrawer.drawTriangles(vertexData, indexData, 3, 4);
+	}
+
+	private int storeVertices(int x, int y, MapTile tile, int arrayPointer, double heightAboveGround) {
 		for(int i = 0; i < 2; i++) {
 			for(int j = 0; j < 2; j++) {
 				vertexData[arrayPointer + 0] = (double) (x + i) + 0.5;
 				vertexData[arrayPointer + 1] = (double) (y + j) + 0.5;
-				vertexData[arrayPointer + 2] = tile.tileHeight[i][j] + cubeHeight;
+				vertexData[arrayPointer + 2] = tile.tileHeight[i][j] + heightAboveGround;
 				arrayPointer += 3;
 			}
 		}
-		VertexArrayDrawer.drawTriangles(vertexData, indexData, 3, 4);
+		return arrayPointer;
 	}
 
 	public void updatePosition(int tileX, int tileY, Orientation orientation) {
