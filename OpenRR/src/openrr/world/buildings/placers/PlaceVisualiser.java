@@ -27,7 +27,7 @@ public class PlaceVisualiser extends LeafNode {
 	};
 
 	private static final float[] placableBuildingTileColour = new float[]{0.0f, 1.0f, 0.0f, 0.3f};
-	private static final float[] placablePowerTileColour = new float[]{1.0f, 1.0f, 0.0f, 0.3f};
+	private static final float[] placablePowerTileColour = new float[]{0.3f, 1.0f, 0.0f, 0.3f};
 	private static final float[] notPlacableTileColour = new float[]{1.0f, 0.0f, 0.0f, 0.3f};
 	
 	private final TileContents[][] buildingMap;
@@ -49,12 +49,31 @@ public class PlaceVisualiser extends LeafNode {
 		
 		for(int i = -1; i < 2; i++) {
 			for(int j = -1; j < 2; j++) {
-				if(buildingMap[i+1][j+1] == TileContents.BUILDING) {
+				double rotationAngle = getRotationAngle();
+				int buildingMapX = ((int)  Math.cos(rotationAngle) * i + (int) Math.sin(rotationAngle) * j) + 1;
+				int buildingMapY = ((int) -Math.sin(rotationAngle) * i + (int) Math.cos(rotationAngle) * j) + 1;
+				if(buildingMap[buildingMapX][buildingMapY] == TileContents.BUILDING) {
 					drawTile(tileX + i, tileY + j, placableBuildingTileColour);
-				} else if(buildingMap[i+1][j+1] == TileContents.POWER_PATH) {
+				} else if(buildingMap[buildingMapX][buildingMapY] == TileContents.POWER_PATH) {
 					drawTile(tileX + i, tileY + j, placablePowerTileColour);
 				}
 			}
+		}
+	}
+
+	private double getRotationAngle() {
+		switch(orientation) {
+		case east:
+			return Math.PI / 2d;
+		case north:
+			return 0;
+		case south:
+			return Math.PI;
+		case west:
+			return (3d * Math.PI) / 2d;
+		default:
+			return 0;
+		
 		}
 	}
 
