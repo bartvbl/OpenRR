@@ -34,6 +34,9 @@ public class Map {
 	}
 
 	public void setSoil(MapSoilUpdate update) {
+		if((update.location.x < 0) || (update.location.y < 0) || (update.location.x >= tileMap.length) || (update.location.y >= tileMap[0].length)) {
+			return;
+		}
 		MapTile currentTile = tileMap[update.location.x][update.location.y];
 		MapTile updatedTile = new MapTile(currentTile.isWall(), update.soilType, currentTile.tileHeight);
 		tileMap[update.location.x][update.location.y] = updatedTile;
