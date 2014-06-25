@@ -14,10 +14,11 @@ vec4 lightSource(vec3 norm, vec3 view, gl_LightSourceParameters light)
 
 	float specularFactor = pow(specularDot, gl_FrontMaterial.shininess);
 	
-	return 
-		gl_FrontMaterial.ambient * light.ambient +
-		gl_FrontMaterial.diffuse * light.diffuse * diffuseFactor +
-		gl_FrontMaterial.specular * light.specular * specularFactor;
+	vec4 ambient = vec4(vec3(gl_FrontMaterial.ambient.rgb * light.ambient.rgb), 0.0);
+	vec4 diffuse = vec4(vec3(gl_FrontMaterial.diffuse.rgb * light.diffuse.rgb * diffuseFactor), gl_FrontMaterial.diffuse.a);
+	vec4 specular = vec4(vec3(gl_FrontMaterial.specular.rgb * light.specular.rgb * specularFactor), 0.0);
+	
+	return ambient + diffuse + specular;
 }
 
 vec4 lighting()
@@ -26,7 +27,7 @@ vec4 lighting()
 	vec3 norm = normalize(normal);
 
 	return
-		gl_FrontMaterial.emission +
+		vec4(gl_FrontMaterial.emission.rgb, 0.0) +
 		lightSource(norm, position, gl_LightSource[0]);
 }
 
