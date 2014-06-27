@@ -55,6 +55,10 @@ def returnToMainSidebar(eventParams):
 @on('GUI_Click', action='buildToolStore')
 def buildToolStore(eventParams):
 	spawn('TOOL_STORE_PLACER')
+
+@on('GUI_Click', action='buildSmallTeleport')
+def buildToolStore(eventParams):
+	spawn('SMALL_TELEPORT_PLACER')
 	
 @on('GUI_Click', action='buildDock')
 def buildToolStore(eventParams):

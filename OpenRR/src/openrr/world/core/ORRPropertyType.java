@@ -4,7 +4,9 @@ import openrr.map.world.MapAppearance;
 import openrr.map.world.MapModel;
 import openrr.world.buildings.docks.DocksAppearance;
 import openrr.world.buildings.placers.DockPlacer;
+import openrr.world.buildings.placers.SmallTeleportPlacer;
 import openrr.world.buildings.placers.ToolStorePlacer;
+import openrr.world.buildings.smallTeleport.TeleportPadAppearance;
 import openrr.world.buildings.toolStore.ToolStoreAppearance;
 import openrr.world.properties.ChrystalAppearance;
 import openrr.world.properties.Flashlight;
@@ -32,7 +34,9 @@ public enum ORRPropertyType {
 	MOUSE_PROBE_TRACKER(MouseProbeTracker.class), 
 	TOOL_STORE_PLACER(ToolStorePlacer.class),
 	DOCK_APPEARANCE(DocksAppearance.class), 
-	DOCK_PLACER(DockPlacer.class)
+	DOCK_PLACER(DockPlacer.class), 
+	SMALL_TELEPORT_PLACER(SmallTeleportPlacer.class),
+	TELEPORT_PAD_APPEARANCE(TeleportPadAppearance.class),
 	;
 	
 	public final Class<? extends Property> propertyClass;

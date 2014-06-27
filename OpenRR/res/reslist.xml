@@ -41,6 +41,7 @@
 		<lxfmlModel name="oreRefinery" src="lxfml/oreRefinery.lxfml" />
 		<lxfmlModel name="powerStation" src="lxfml/powerStation.lxfml" />
 		<lxfmlModel name="supportStation" src="lxfml/supportStation.lxfml" />
+		<lxfmlModel name="teleportPlatform" src="lxfml/teleportPlatform.lxfml" />
 	</models>
 	
 	<textures pathPrefix="res/images/">
