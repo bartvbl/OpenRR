@@ -37,11 +37,11 @@
 		
 		<!-- LXFML models -->
 		<lxfmlModel name="toolStore" src="lxfml/toolstore.lxfml" />
+		<lxfmlModel name="teleportPlatform" src="lxfml/teleportPlatform.lxfml" />
 		<lxfmlModel name="dock" src="lxfml/dock.lxfml" />
-		<lxfmlModel name="oreRefinery" src="lxfml/oreRefinery.lxfml" />
 		<lxfmlModel name="powerStation" src="lxfml/powerStation.lxfml" />
 		<lxfmlModel name="supportStation" src="lxfml/supportStation.lxfml" />
-		<lxfmlModel name="teleportPlatform" src="lxfml/teleportPlatform.lxfml" />
+		<lxfmlModel name="oreRefinery" src="lxfml/oreRefinery.lxfml" />
 	</models>
 	
 	<textures pathPrefix="res/images/">
