@@ -31,7 +31,7 @@ public class ToolStoreAppearance extends Appearance {
 
 	@Override
 	protected void initAppearance() {
-		appearance.getRootNode().setLocation(3.5, 3.5, 0);
+		appearance.getRootNode().setLocation(4, 4, 0);
 	}
 
 	@Override
