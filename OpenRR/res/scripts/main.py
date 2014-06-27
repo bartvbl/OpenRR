@@ -75,3 +75,7 @@ def buildToolStore(eventParams):
 @on('GUI_Click', action='buildSupportStation')
 def buildToolStore(eventParams):
 	spawn('SUPPORT_STATION_PLACER')
+	
+@on('GUI_Click', action='buildSnackbar')
+def buildToolStore(eventParams):
+	spawn('SNACKBAR_PLACER')

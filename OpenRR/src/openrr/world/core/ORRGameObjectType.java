@@ -17,6 +17,7 @@ public enum ORRGameObjectType {
 	ORE_REFINERY_PLACER		(new Enum<?>[]{ORRPropertyType.ORE_REFINERY_PLACER}),
 	POWER_STATION_PLACER	(new Enum<?>[]{ORRPropertyType.POWER_STATION_PLACER}),
 	SUPPORT_STATION_PLACER	(new Enum<?>[]{ORRPropertyType.SUPPORT_STATION_PLACER}),
+	SNACKBAR_PLACER			(new Enum<?>[]{ORRPropertyType.SNACKBAR_PLACER}),
 	
 	//map
 	MAP						(new Enum<?>[]{MAP_MODEL, MAP_APPEARANCE}),
@@ -62,6 +63,7 @@ public enum ORRGameObjectType {
 	GEOLOGICAL_CENTER		(new Enum<?>[]{}),
 	MINING_LASER			(new Enum<?>[]{}),
 	SUPER_TELEPORT			(new Enum<?>[]{TASK_EXECUTOR}),
+	SNACKBAR				(new Enum<?>[]{SNACKBAR_APPEARANCE, GRAVITY}),
 	
 	//effects
 	LANDSLIDE				(new Enum<?>[]{}),

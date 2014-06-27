@@ -19,7 +19,7 @@ public class HeightMapLoader {
 	private static final String zBottomRight = "zBottomRight";
 	private static final String zTopLeft = "zTopLeft";
 	private static final String zTopRight = "zTopRight";
-	private static final double tileHeightMultiplyer = 0.3;
+	private static final double tileHeightMultiplyer = 0.1;
 	
 	public static double[][] loadHeightMap(Element heightMapElement, MapLoadingContext context) throws IOException {
 		Dimension2D mapSize = context.mapSize;

@@ -8,10 +8,12 @@ import openrr.world.buildings.placers.DockPlacer;
 import openrr.world.buildings.placers.OreRefineryPlacer;
 import openrr.world.buildings.placers.PowerStationPlacer;
 import openrr.world.buildings.placers.SmallTeleportPlacer;
+import openrr.world.buildings.placers.SnackbarPlacer;
 import openrr.world.buildings.placers.SupportStationPlacer;
 import openrr.world.buildings.placers.ToolStorePlacer;
 import openrr.world.buildings.powerStation.PowerStationAppearance;
 import openrr.world.buildings.smallTeleport.TeleportPadAppearance;
+import openrr.world.buildings.snackbar.SnackbarAppearance;
 import openrr.world.buildings.supportStation.SupportStationAppearance;
 import openrr.world.buildings.toolStore.ToolStoreAppearance;
 import openrr.world.properties.ChrystalAppearance;
@@ -48,7 +50,9 @@ public enum ORRPropertyType {
 	SUPPORT_STATION_PLACER(SupportStationPlacer.class),
 	POWER_STATION_APPEARANCE(PowerStationAppearance.class),
 	ORE_REFINERY_APPEARANCE(OreRefineryAppearance.class),
-	SUPPORT_STATION_APPEARANCE(SupportStationAppearance.class)
+	SUPPORT_STATION_APPEARANCE(SupportStationAppearance.class), 
+	SNACKBAR_PLACER(SnackbarPlacer.class),
+	SNACKBAR_APPEARANCE(SnackbarAppearance.class)
 	;
 	
 	public final Class<? extends Property> propertyClass;
