@@ -1,5 +1,7 @@
 package openrr.world.buildings.placers;
 
+import java.util.Arrays;
+
 import org.lwjgl.util.vector.Vector3f;
 
 import openrr.map.Orientation;
@@ -14,7 +16,9 @@ import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.core.MessageType;
 import orre.gameWorld.core.Property;
+import orre.gameWorld.core.PropertyDataType;
 import orre.geom.Point2D;
+import orre.geom.mesh.Model;
 import orre.input.InputEvent;
 import orre.sceneGraph.SceneNode;
 
@@ -25,6 +29,7 @@ public abstract class BuildingPlacer extends Property {
 	private final ORRGameObjectType buildingType;
 	private MapTileReader reader;
 	private final TileContents[][] buildingMap;
+	private final TileContents[][] rotatedBuildingMap = new TileContents[3][3];
 	private int mouseProbeID;
 	private int mapID;
 	private boolean wasClicked = false;
@@ -54,13 +59,16 @@ public abstract class BuildingPlacer extends Property {
 		//update map
 		for(int i = -1; i < 2; i++) {
 			for(int j = -1; j < 2; j++) {
-				if((buildingMap[i + 1][j + 1] == TileContents.BUILDING) || (buildingMap[i + 1][j + 1] == TileContents.POWER_PATH)) {
+				if((rotatedBuildingMap[i + 1][j + 1] == TileContents.BUILDING) || (rotatedBuildingMap[i + 1][j + 1] == TileContents.POWER_PATH)) {
 					MapSoilUpdate update = new MapSoilUpdate(new Point2D(buildingX + i, buildingY + j), SoilType.POWER_PATH_SQUARE_UNPOWERED);
 					gameObject.world.dispatchMessage(new Message<MapSoilUpdate>(ORRMessageType.TILE_UPDATE, update), mapID);
 				}
 			}
 		}
-		gameObject.world.spawnGameObject(buildingType);
+		int buildingID = gameObject.world.spawnGameObject(buildingType);
+		Model model = (Model) gameObject.world.requestPropertyData(buildingID, PropertyDataType.APPEARANCE, null, Model.class);
+		model.getRootNode().setLocation(buildingX, buildingY, 0);
+		model.getRootNode().setRotation(0, 0, getRotationAngle());
 	}
 
 	@Override
@@ -71,8 +79,21 @@ public abstract class BuildingPlacer extends Property {
 		this.buildingX = (int) (mouseLocation.x + 0.5);
 		this.buildingY = (int) (mouseLocation.y + 0.5);
 		this.orientation = getOrientation(mouseLocation);
-		placerAppearance.updatePosition(buildingX, buildingY, orientation);
+		updateRotatedBuildingMap();
+		this.placerAppearance.updatePosition(buildingX, buildingY, rotatedBuildingMap);
 		//3. verify possibility to place building here
+	}
+
+	private void updateRotatedBuildingMap() {
+		
+		for(int i = -1; i < 2; i++) {
+			for(int j = -1; j < 2; j++) {
+				double rotationAngle = Math.toRadians(getRotationAngle());
+				int buildingMapX = ((int)  Math.cos(rotationAngle) * i + (int) Math.sin(rotationAngle) * j) + 1;
+				int buildingMapY = ((int) -Math.sin(rotationAngle) * i + (int) Math.cos(rotationAngle) * j) + 1;
+				rotatedBuildingMap[i+1][j+1] = buildingMap[buildingMapX][buildingMapY];
+			}
+		}
 	}
 
 	private Orientation getOrientation(Vector3f mouseLocation) {
@@ -90,6 +111,21 @@ public abstract class BuildingPlacer extends Property {
 			} else {
 				return Orientation.south;
 			}
+		}
+	}
+	
+	private double getRotationAngle() {
+		switch(orientation) {
+		case east:
+			return 90;
+		case north:
+			return 0;
+		case south:
+			return 180;
+		case west:
+			return 270;
+		default:
+			return 0;
 		}
 	}
 

@@ -30,12 +30,11 @@ public class PlaceVisualiser extends LeafNode {
 	private static final float[] placablePowerTileColour = new float[]{0.3f, 1.0f, 0.0f, 0.4f};
 	private static final float[] notPlacableTileColour = new float[]{1.0f, 0.0f, 0.0f, 0.4f};
 	
-	private final TileContents[][] buildingMap;
+	private TileContents[][] buildingMap;
 	private final MapTileReader tileReader;
 
 	private int tileX;
 	private int tileY;
-	private Orientation orientation;
 	
 	private FloatBuffer materialBuffer = BufferUtils.createFloatBuffer(4);
 	
@@ -46,34 +45,16 @@ public class PlaceVisualiser extends LeafNode {
 	
 	@Override
 	public void render() {
-		
 		for(int i = -1; i < 2; i++) {
 			for(int j = -1; j < 2; j++) {
-				double rotationAngle = getRotationAngle();
-				int buildingMapX = ((int)  Math.cos(rotationAngle) * i + (int) Math.sin(rotationAngle) * j) + 1;
-				int buildingMapY = ((int) -Math.sin(rotationAngle) * i + (int) Math.cos(rotationAngle) * j) + 1;
-				if(buildingMap[buildingMapX][buildingMapY] == TileContents.BUILDING) {
-					drawTile(tileX + i, tileY + j, placableBuildingTileColour);
-				} else if(buildingMap[buildingMapX][buildingMapY] == TileContents.POWER_PATH) {
-					drawTile(tileX + i, tileY + j, placablePowerTileColour);
+				if(buildingMap[i+1][j+1] != TileContents.EMPTY) {
+					if(buildingMap[i+1][j+1] == TileContents.BUILDING) {
+						drawTile(tileX+i, tileY+j, placableBuildingTileColour);
+					} else if(buildingMap[i+1][j+1] == TileContents.POWER_PATH) {
+						drawTile(tileX+i, tileY+j, placablePowerTileColour);
+					}
 				}
 			}
-		}
-	}
-
-	private double getRotationAngle() {
-		switch(orientation) {
-		case east:
-			return Math.PI / 2d;
-		case north:
-			return 0;
-		case south:
-			return Math.PI;
-		case west:
-			return (3d * Math.PI) / 2d;
-		default:
-			return 0;
-		
 		}
 	}
 
@@ -101,10 +82,10 @@ public class PlaceVisualiser extends LeafNode {
 		return arrayPointer;
 	}
 
-	public void updatePosition(int tileX, int tileY, Orientation orientation) {
+	public void updatePosition(int tileX, int tileY, TileContents[][] rotatedBuildingMap) {
 		this.tileX = tileX;
 		this.tileY = tileY;
-		this.orientation = orientation;
+		this.buildingMap = rotatedBuildingMap;
 	}
 
 }
