@@ -5,12 +5,13 @@ import openrr.world.core.ORRPropertyType;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.properties.Appearance;
+import orre.resources.ResourceType;
 import orre.sceneGraph.SceneNode;
 
 public class ChrystalAppearance extends Appearance {
 
 	public ChrystalAppearance(GameObject gameObject) {
-		super(ORRPropertyType.CHRYSTAL_APPEARANCE, "chrystal", gameObject);
+		super(ORRPropertyType.CHRYSTAL_APPEARANCE, ResourceType.model, "chrystal", gameObject);
 	}
 
 	@Override
@@ -36,7 +37,7 @@ public class ChrystalAppearance extends Appearance {
 	@Override
 	protected void placeAppearanceInScene() {
 		SceneNode mapRoot = MapWorldUtils.getMapRoot(gameObject.world);
-		mapRoot.addChild(this.appearance.root);
+		mapRoot.addChild(this.appearance.getRootNode());
 	}
 
 }

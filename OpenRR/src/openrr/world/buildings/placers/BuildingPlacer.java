@@ -43,6 +43,7 @@ public abstract class BuildingPlacer extends Property {
 		InputEvent event = (InputEvent) message.getPayload();
 		if(!wasClicked) {
 			this.placeBuilding();
+			this.gameObject.world.despawnObject(this.gameObject.id);
 		}
 		wasClicked = event.value == 1.0;
 	}
@@ -51,8 +52,15 @@ public abstract class BuildingPlacer extends Property {
 		//int gameObjectID = gameObject.world.spawnGameObject(buildingType);
 		//start teleport animation
 		//update map
-		MapSoilUpdate update = new MapSoilUpdate(new Point2D(buildingX, buildingY), SoilType.POWER_PATH_SQUARE_UNPOWERED);
-		gameObject.world.dispatchMessage(new Message<MapSoilUpdate>(ORRMessageType.TILE_UPDATE, update), mapID);
+		for(int i = -1; i < 2; i++) {
+			for(int j = -1; j < 2; j++) {
+				if((buildingMap[i + 1][j + 1] == TileContents.BUILDING) || (buildingMap[i + 1][j + 1] == TileContents.POWER_PATH)) {
+					MapSoilUpdate update = new MapSoilUpdate(new Point2D(buildingX + i, buildingY + j), SoilType.POWER_PATH_SQUARE_UNPOWERED);
+					gameObject.world.dispatchMessage(new Message<MapSoilUpdate>(ORRMessageType.TILE_UPDATE, update), mapID);
+				}
+			}
+		}
+		gameObject.world.spawnGameObject(buildingType);
 	}
 
 	@Override
@@ -88,6 +96,8 @@ public abstract class BuildingPlacer extends Property {
 	@Override
 	public void destroy() {
 		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "select");
+		SceneNode mapNode = MapWorldUtils.getMapRoot(gameObject.world);
+		mapNode.removeChild(placerAppearance);
 	}
 
 	@Override

@@ -13,7 +13,7 @@ import openrr.map.soil.SoilType;
 import orre.geom.Dimension2D;
 import orre.geom.Vector3D;
 import orre.geom.Vertex3D;
-import orre.geom.vbo.BufferDataFormatType;
+import orre.geom.vbo.VBOFormat;
 import orre.geom.vbo.GeometryNode;
 import orre.geom.vbo.GeometryBufferGenerator;
 import orre.gl.materials.Material;
@@ -157,7 +157,7 @@ public class MapBuilder {
 		Material currentMaterial = texturePack.generateBoundTextureMaterial();
 		int vertexCount = geometryDataBuffer.position() / 8;
 		IntBuffer indices = generateIndexBuffer(vertexCount);
-		GeometryNode buffer = GeometryBufferGenerator.generateGeometryBuffer(BufferDataFormatType.VERTICES_TEXTURES_NORMALS, geometryDataBuffer, indices, vertexCount, vertexCount);
+		GeometryNode buffer = GeometryBufferGenerator.generateGeometryBuffer(VBOFormat.VERTICES_TEXTURES_NORMALS, geometryDataBuffer, indices, vertexCount, vertexCount);
 		//GeometryNode normals = GeometryBufferGenerator.generateNormalsGeometryBuffer(BufferDataFormatType.VERTICES_TEXTURES_NORMALS, geometryDataBuffer, indices);
 		currentMaterial.addChild(buffer);
 		//currentMaterial.addChild(normals);

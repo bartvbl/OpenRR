@@ -26,9 +26,9 @@ public class PlaceVisualiser extends LeafNode {
 		6, 2, 0, 6, 0, 4
 	};
 
-	private static final float[] placableBuildingTileColour = new float[]{0.0f, 1.0f, 0.0f, 0.3f};
-	private static final float[] placablePowerTileColour = new float[]{0.3f, 1.0f, 0.0f, 0.3f};
-	private static final float[] notPlacableTileColour = new float[]{1.0f, 0.0f, 0.0f, 0.3f};
+	private static final float[] placableBuildingTileColour = new float[]{0.0f, 1.0f, 0.0f, 0.4f};
+	private static final float[] placablePowerTileColour = new float[]{0.3f, 1.0f, 0.0f, 0.4f};
+	private static final float[] notPlacableTileColour = new float[]{1.0f, 0.0f, 0.0f, 0.4f};
 	
 	private final TileContents[][] buildingMap;
 	private final MapTileReader tileReader;

@@ -6,11 +6,12 @@ import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.core.PropertyType;
 import orre.gameWorld.properties.Appearance;
+import orre.resources.ResourceType;
 import orre.sceneGraph.SceneNode;
 
 public class OreAppearance extends Appearance {
 	public OreAppearance(GameObject gameObject) {
-		super(ORRPropertyType.ORE_APPEARANCE, "ore", gameObject);
+		super(ORRPropertyType.ORE_APPEARANCE, ResourceType.model, "ore", gameObject);
 	}
 
 	@Override
@@ -30,13 +31,13 @@ public class OreAppearance extends Appearance {
 
 	@Override
 	protected void initAppearance() {
-		this.appearance.root.setLocation(48.5, 50.5, 0);
+		this.appearance.getRootNode().setLocation(48.5, 50.5, 0);
 	}
 
 	@Override
 	protected void placeAppearanceInScene() {
 		SceneNode mapRoot = MapWorldUtils.getMapRoot(gameObject.world);
-		mapRoot.addChild(this.appearance.root);
+		mapRoot.addChild(this.appearance.getRootNode());
 	}
 
 }
