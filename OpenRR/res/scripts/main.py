@@ -54,5 +54,8 @@ def returnToMainSidebar(eventParams):
 	
 @on('GUI_Click', action='buildToolStore')
 def buildToolStore(eventParams):
-	print 'spawning toolstore!'
 	spawn('TOOL_STORE_PLACER')
+	
+@on('GUI_Click', action='buildDock')
+def buildToolStore(eventParams):
+	spawn('DOCK_PLACER')

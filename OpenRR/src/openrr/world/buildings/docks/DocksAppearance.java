@@ -1,4 +1,4 @@
-package openrr.world.buildings;
+package openrr.world.buildings.docks;
 
 import openrr.map.world.MapWorldUtils;
 import openrr.world.core.ORRPropertyType;
@@ -8,10 +8,9 @@ import orre.gameWorld.properties.Appearance;
 import orre.resources.ResourceType;
 import orre.sceneGraph.SceneNode;
 
-public class ToolStoreAppearance extends Appearance {
-
-	public ToolStoreAppearance(GameObject gameObject) {
-		super(ORRPropertyType.TOOL_STORE_APPEARANCE, ResourceType.lxfmlModel, "toolstore", gameObject);
+public class DocksAppearance extends Appearance {
+	public DocksAppearance(GameObject gameObject) {
+		super(ORRPropertyType.TOOL_STORE_APPEARANCE, ResourceType.lxfmlModel, "dock", gameObject);
 	}
 
 	@Override
@@ -31,7 +30,7 @@ public class ToolStoreAppearance extends Appearance {
 
 	@Override
 	protected void initAppearance() {
-		appearance.getRootNode().setLocation(4, 4, 0);
+		
 	}
 
 	@Override
@@ -39,5 +38,4 @@ public class ToolStoreAppearance extends Appearance {
 		SceneNode mapRoot = MapWorldUtils.getMapRoot(gameObject.world);
 		mapRoot.addChild(this.appearance.getRootNode());
 	}
-
 }

@@ -12,6 +12,7 @@ public enum ORRGameObjectType {
 	
 	//building placers
 	TOOL_STORE_PLACER	(new Enum<?>[]{ORRPropertyType.TOOL_STORE_PLACER}),
+	DOCK_PLACER			(new Enum<?>[]{ORRPropertyType.DOCK_PLACER}),
 	
 	//map
 	MAP					(new Enum<?>[]{MAP_MODEL, MAP_APPEARANCE}),
@@ -49,7 +50,7 @@ public enum ORRGameObjectType {
 	//buildings
 	TOOL_STORE			(new Enum<?>[]{TOOL_STORE_APPEARANCE, GRAVITY}),//TASK_EXECUTOR
 	TELEPORT_PAD		(new Enum<?>[]{TASK_EXECUTOR}),
-	DOCKS				(new Enum<?>[]{TASK_EXECUTOR}),
+	DOCKS				(new Enum<?>[]{DOCK_APPEARANCE, GRAVITY}),//TASK_EXECUTOR
 	POWER_STATION		(new Enum<?>[]{}),
 	SUPPORT_STATION		(new Enum<?>[]{}),
 	ORE_REFINERY		(new Enum<?>[]{}),
