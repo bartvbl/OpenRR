@@ -63,3 +63,15 @@ def buildToolStore(eventParams):
 @on('GUI_Click', action='buildDock')
 def buildToolStore(eventParams):
 	spawn('DOCK_PLACER')
+	
+@on('GUI_Click', action='buildPowerStation')
+def buildToolStore(eventParams):
+	spawn('POWER_STATION_PLACER')
+	
+@on('GUI_Click', action='buildRefinery')
+def buildToolStore(eventParams):
+	spawn('ORE_REFINERY_PLACER')
+	
+@on('GUI_Click', action='buildSupportStation')
+def buildToolStore(eventParams):
+	spawn('SUPPORT_STATION_PLACER')

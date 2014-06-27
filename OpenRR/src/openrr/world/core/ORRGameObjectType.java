@@ -14,6 +14,9 @@ public enum ORRGameObjectType {
 	TOOL_STORE_PLACER		(new Enum<?>[]{ORRPropertyType.TOOL_STORE_PLACER}),
 	SMALL_TELEPORT_PLACER	(new Enum<?>[]{ORRPropertyType.SMALL_TELEPORT_PLACER}),
 	DOCK_PLACER				(new Enum<?>[]{ORRPropertyType.DOCK_PLACER}),
+	ORE_REFINERY_PLACER		(new Enum<?>[]{ORRPropertyType.ORE_REFINERY_PLACER}),
+	POWER_STATION_PLACER	(new Enum<?>[]{ORRPropertyType.POWER_STATION_PLACER}),
+	SUPPORT_STATION_PLACER	(new Enum<?>[]{ORRPropertyType.SUPPORT_STATION_PLACER}),
 	
 	//map
 	MAP						(new Enum<?>[]{MAP_MODEL, MAP_APPEARANCE}),
@@ -50,11 +53,11 @@ public enum ORRGameObjectType {
 	
 	//buildings
 	TOOL_STORE				(new Enum<?>[]{TOOL_STORE_APPEARANCE, GRAVITY}),//TASK_EXECUTOR
-	TELEPORT_PAD			(new Enum<?>[]{TELEPORT_PAD_APPEARANCE}),//TASK_EXECUTOR
+	TELEPORT_PAD			(new Enum<?>[]{TELEPORT_PAD_APPEARANCE, GRAVITY}),//TASK_EXECUTOR
 	DOCKS					(new Enum<?>[]{DOCK_APPEARANCE, GRAVITY}),//TASK_EXECUTOR
-	POWER_STATION			(new Enum<?>[]{}),
-	SUPPORT_STATION			(new Enum<?>[]{}),
-	ORE_REFINERY			(new Enum<?>[]{}),
+	POWER_STATION			(new Enum<?>[]{POWER_STATION_APPEARANCE, GRAVITY}),
+	SUPPORT_STATION			(new Enum<?>[]{SUPPORT_STATION_APPEARANCE, GRAVITY}),
+	ORE_REFINERY			(new Enum<?>[]{ORE_REFINERY_APPEARANCE, GRAVITY}),
 	UPGRADE_STATION			(new Enum<?>[]{}),
 	GEOLOGICAL_CENTER		(new Enum<?>[]{}),
 	MINING_LASER			(new Enum<?>[]{}),

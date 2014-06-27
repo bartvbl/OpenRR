@@ -3,10 +3,16 @@ package openrr.world.core;
 import openrr.map.world.MapAppearance;
 import openrr.map.world.MapModel;
 import openrr.world.buildings.docks.DocksAppearance;
+import openrr.world.buildings.oreRefinery.OreRefineryAppearance;
 import openrr.world.buildings.placers.DockPlacer;
+import openrr.world.buildings.placers.OreRefineryPlacer;
+import openrr.world.buildings.placers.PowerStationPlacer;
 import openrr.world.buildings.placers.SmallTeleportPlacer;
+import openrr.world.buildings.placers.SupportStationPlacer;
 import openrr.world.buildings.placers.ToolStorePlacer;
+import openrr.world.buildings.powerStation.PowerStationAppearance;
 import openrr.world.buildings.smallTeleport.TeleportPadAppearance;
+import openrr.world.buildings.supportStation.SupportStationAppearance;
 import openrr.world.buildings.toolStore.ToolStoreAppearance;
 import openrr.world.properties.ChrystalAppearance;
 import openrr.world.properties.Flashlight;
@@ -36,7 +42,13 @@ public enum ORRPropertyType {
 	DOCK_APPEARANCE(DocksAppearance.class), 
 	DOCK_PLACER(DockPlacer.class), 
 	SMALL_TELEPORT_PLACER(SmallTeleportPlacer.class),
-	TELEPORT_PAD_APPEARANCE(TeleportPadAppearance.class),
+	TELEPORT_PAD_APPEARANCE(TeleportPadAppearance.class), 
+	ORE_REFINERY_PLACER(OreRefineryPlacer.class), 
+	POWER_STATION_PLACER(PowerStationPlacer.class), 
+	SUPPORT_STATION_PLACER(SupportStationPlacer.class),
+	POWER_STATION_APPEARANCE(PowerStationAppearance.class),
+	ORE_REFINERY_APPEARANCE(OreRefineryAppearance.class),
+	SUPPORT_STATION_APPEARANCE(SupportStationAppearance.class)
 	;
 	
 	public final Class<? extends Property> propertyClass;
