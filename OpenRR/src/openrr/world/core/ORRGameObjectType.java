@@ -18,6 +18,7 @@ public enum ORRGameObjectType {
 	POWER_STATION_PLACER	(new Enum<?>[]{ORRPropertyType.POWER_STATION_PLACER}),
 	SUPPORT_STATION_PLACER	(new Enum<?>[]{ORRPropertyType.SUPPORT_STATION_PLACER}),
 	SNACKBAR_PLACER			(new Enum<?>[]{ORRPropertyType.SNACKBAR_PLACER}),
+	SUPER_TELEPORT_PLACER	(new Enum<?>[]{ORRPropertyType.SUPER_TELEPORT_PLACER}),
 	
 	//map
 	MAP						(new Enum<?>[]{MAP_MODEL, MAP_APPEARANCE}),
@@ -62,7 +63,7 @@ public enum ORRGameObjectType {
 	UPGRADE_STATION			(new Enum<?>[]{}),
 	GEOLOGICAL_CENTER		(new Enum<?>[]{}),
 	MINING_LASER			(new Enum<?>[]{}),
-	SUPER_TELEPORT			(new Enum<?>[]{TASK_EXECUTOR}),
+	SUPER_TELEPORT			(new Enum<?>[]{SUPER_TELEPORT_APPEARANCE, GRAVITY}),//TASK_EXECUTOR
 	SNACKBAR				(new Enum<?>[]{SNACKBAR_APPEARANCE, GRAVITY}),
 	
 	//effects
