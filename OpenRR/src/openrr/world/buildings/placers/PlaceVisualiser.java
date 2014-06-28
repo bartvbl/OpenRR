@@ -7,6 +7,7 @@ import org.lwjgl.BufferUtils;
 import openrr.map.MapTile;
 import openrr.map.Orientation;
 import openrr.map.world.MapTileReader;
+import orre.gl.renderer.RenderContext;
 import orre.gl.vertexArrays.VertexArrayDrawer;
 import orre.sceneGraph.LeafNode;
 import static org.lwjgl.opengl.GL11.*;
@@ -16,7 +17,7 @@ public class PlaceVisualiser extends LeafNode {
 	private static final double cubeHeight = 0.08;
 	
 	//8 vertices * 3 values/vertex = 24
-	private static final double[] vertexData = new double[24];
+	private final double[] vertexData = new double[24];
 	
 	private static final int[] indexData = new int[]{
 		1, 2, 3, 0, 2, 1,
@@ -28,7 +29,9 @@ public class PlaceVisualiser extends LeafNode {
 
 	private static final float[] placableBuildingTileColour = new float[]{0.0f, 1.0f, 0.0f, 0.4f};
 	private static final float[] placablePowerTileColour = new float[]{0.3f, 1.0f, 0.0f, 0.4f};
+	private static final float[] placableWaterTileColour = new float[]{0.1f, 0.4f, 1.0f, 0.4f};
 	private static final float[] notPlacableTileColour = new float[]{1.0f, 0.0f, 0.0f, 0.4f};
+	private static final float[] black = new float[]{0.0f, 0.0f, 0.0f, 1.0f};
 	
 	private TileContents[][] buildingMap;
 	private final MapTileReader tileReader;
@@ -45,6 +48,7 @@ public class PlaceVisualiser extends LeafNode {
 	
 	@Override
 	public void render() {
+		RenderContext.setTexturesEnabled(false);
 		for(int i = -1; i < 2; i++) {
 			for(int j = -1; j < 2; j++) {
 				if(buildingMap[i+1][j+1] != TileContents.EMPTY) {
@@ -52,6 +56,8 @@ public class PlaceVisualiser extends LeafNode {
 						drawTile(tileX+i, tileY+j, placableBuildingTileColour);
 					} else if(buildingMap[i+1][j+1] == TileContents.POWER_PATH) {
 						drawTile(tileX+i, tileY+j, placablePowerTileColour);
+					} else if(buildingMap[i+1][j+1] == TileContents.WATER) {
+						drawTile(tileX+i, tileY+j, placableWaterTileColour);
 					}
 				}
 			}
@@ -64,6 +70,10 @@ public class PlaceVisualiser extends LeafNode {
 		glMaterial(GL_FRONT, GL_DIFFUSE, materialBuffer);
 		materialBuffer.put(tileColour).rewind();
 		glMaterial(GL_FRONT, GL_SPECULAR, materialBuffer);
+		materialBuffer.put(black).rewind();
+		glMaterial(GL_FRONT, GL_EMISSION, materialBuffer);
+		materialBuffer.put(black).rewind();
+		glMaterial(GL_FRONT, GL_AMBIENT, materialBuffer);
 		int arrayPointer = 0;
 		arrayPointer = storeVertices(x-1, y-1, tile, arrayPointer, cubeHeight);
 		storeVertices(x-1, y-1, tile, arrayPointer, 0);
