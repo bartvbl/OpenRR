@@ -41,6 +41,7 @@
 		<lxfmlModel name="dock" src="lxfml/dock.lxfml" />
 		<lxfmlModel name="powerStation" src="lxfml/powerStation.lxfml" />
 		<lxfmlModel name="supportStation" src="lxfml/supportStation.lxfml" />
+		<lxfmlModel name="upgradeStation" src="lxfml/upgradeStation.lxfml" />
 		<lxfmlModel name="oreRefinery" src="lxfml/oreRefinery.lxfml" />
 		<lxfmlModel name="canteen" src="lxfml/canteen.lxfml" />
 		<lxfmlModel name="superTeleport" src="lxfml/superTeleport.lxfml" />

@@ -57,29 +57,33 @@ def buildToolStore(eventParams):
 	spawn('TOOL_STORE_PLACER')
 
 @on('GUI_Click', action='buildSmallTeleport')
-def buildToolStore(eventParams):
+def buildSmallTeleport(eventParams):
 	spawn('SMALL_TELEPORT_PLACER')
 	
 @on('GUI_Click', action='buildDock')
-def buildToolStore(eventParams):
+def buildDock(eventParams):
 	spawn('DOCK_PLACER')
 	
 @on('GUI_Click', action='buildPowerStation')
-def buildToolStore(eventParams):
+def buildPowerStation(eventParams):
 	spawn('POWER_STATION_PLACER')
 	
 @on('GUI_Click', action='buildRefinery')
-def buildToolStore(eventParams):
+def buildOreRefinery(eventParams):
 	spawn('ORE_REFINERY_PLACER')
 	
 @on('GUI_Click', action='buildSupportStation')
-def buildToolStore(eventParams):
+def buildSupportStation(eventParams):
 	spawn('SUPPORT_STATION_PLACER')
 	
 @on('GUI_Click', action='buildSuperTeleport')
-def buildToolStore(eventParams):
+def buildSuperTeleport(eventParams):
 	spawn('SUPER_TELEPORT_PLACER')
 	
 @on('GUI_Click', action='buildSnackbar')
-def buildToolStore(eventParams):
+def buildSnackbar(eventParams):
 	spawn('SNACKBAR_PLACER')
+	
+@on('GUI_Click', action='buildUpgradeStation')
+def buildUpgradeStation(eventParams):
+	spawn('UPGRADE_STATION_PLACER')

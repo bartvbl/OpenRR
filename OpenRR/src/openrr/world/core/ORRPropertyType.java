@@ -12,12 +12,14 @@ import openrr.world.buildings.placers.SnackbarPlacer;
 import openrr.world.buildings.placers.SuperTeleportPlacer;
 import openrr.world.buildings.placers.SupportStationPlacer;
 import openrr.world.buildings.placers.ToolStorePlacer;
+import openrr.world.buildings.placers.UpgradeStationPlacer;
 import openrr.world.buildings.powerStation.PowerStationAppearance;
 import openrr.world.buildings.smallTeleport.TeleportPadAppearance;
 import openrr.world.buildings.snackbar.SnackbarAppearance;
 import openrr.world.buildings.superTeleport.SuperTeleportAppearance;
 import openrr.world.buildings.supportStation.SupportStationAppearance;
 import openrr.world.buildings.toolStore.ToolStoreAppearance;
+import openrr.world.buildings.upgradeStation.UpgradeStationAppearance;
 import openrr.world.creatures.monster.MonsterTaskExecutor;
 import openrr.world.creatures.rockRaider.RockRaiderAppearance;
 import openrr.world.creatures.rockRaider.RockRaiderTaskExecutor;
@@ -63,6 +65,8 @@ public enum ORRPropertyType {
 	ROCK_RAIDER_TASK_EXECUTOR(RockRaiderTaskExecutor.class),
 	MONSTER_TASK_EXECUTOR(MonsterTaskExecutor.class),
 	SLUG_TASK_EXECUTOR(SlugTaskExecutor.class),
+	UPGRADE_STATION_APPEARANCE(UpgradeStationAppearance.class),
+	UPGRADE_STATION_PLACER(UpgradeStationPlacer.class),
 	;
 	
 	public final Class<? extends Property> propertyClass;
