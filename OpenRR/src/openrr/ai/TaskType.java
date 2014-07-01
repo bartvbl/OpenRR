@@ -1,6 +1,7 @@
 package openrr.ai;
 
 public enum TaskType {
+	//rock raider tasks
 	BUILD, 
 	CLEAR_RUBBLE, 
 	PLACE_BARRIER, 
@@ -17,5 +18,17 @@ public enum TaskType {
 	IDLE, 
 	COLLECT_CHRYSTAL,
 	COLLECT_ORE,
-	FERRY
+	FERRY,
+	
+	//monster tasks
+	SMASH_BUILDING,
+	SMASH_VEHICLE,
+	STONE_BUILDING,
+	EAT_CHRYSTAL,
+	INSPECT_ROCK_RAIDER,
+	DESTROY_POWER_PATH,
+	SUCK_BUILDING_POWER,
+	SUCK_CHRYSTAL_POWER,
+	SLEEP,
+	RUN_AWAY
 }
