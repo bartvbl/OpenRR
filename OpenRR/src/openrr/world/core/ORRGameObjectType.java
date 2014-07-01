@@ -25,8 +25,8 @@ public enum ORRGameObjectType {
 	
 	//characters
 	ROCK_RAIDER				(new Enum<?>[]{HEALTH, ROCK_RAIDER_APPEARANCE, GRAVITY, ROCK_RAIDER_TASK_EXECUTOR}), 
-	MONSTER					(new Enum<?>[]{HEALTH, GRAVITY, TASK_EXECUTOR}), 
-	SLIMY_SLUG				(new Enum<?>[]{HEALTH, GRAVITY, TASK_EXECUTOR}),
+	MONSTER					(new Enum<?>[]{HEALTH, GRAVITY, MONSTER_TASK_EXECUTOR}), 
+	SLIMY_SLUG				(new Enum<?>[]{HEALTH, GRAVITY, SLUG_TASK_EXECUTOR}),
 	BATS					(new Enum<?>[]{}),
 	SPIDER					(new Enum<?>[]{GRAVITY}),
 	

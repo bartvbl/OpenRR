@@ -18,7 +18,10 @@ import openrr.world.buildings.snackbar.SnackbarAppearance;
 import openrr.world.buildings.superTeleport.SuperTeleportAppearance;
 import openrr.world.buildings.supportStation.SupportStationAppearance;
 import openrr.world.buildings.toolStore.ToolStoreAppearance;
+import openrr.world.creatures.monster.MonsterTaskExecutor;
 import openrr.world.creatures.rockRaider.RockRaiderAppearance;
+import openrr.world.creatures.rockRaider.RockRaiderTaskExecutor;
+import openrr.world.creatures.slug.SlugTaskExecutor;
 import openrr.world.properties.ChrystalAppearance;
 import openrr.world.properties.Flashlight;
 import openrr.world.properties.GravityProperty;
@@ -58,6 +61,8 @@ public enum ORRPropertyType {
 	SUPER_TELEPORT_PLACER(SuperTeleportPlacer.class),
 	SUPER_TELEPORT_APPEARANCE(SuperTeleportAppearance.class),
 	ROCK_RAIDER_TASK_EXECUTOR(RockRaiderTaskExecutor.class),
+	MONSTER_TASK_EXECUTOR(MonsterTaskExecutor.class),
+	SLUG_TASK_EXECUTOR(SlugTaskExecutor.class),
 	;
 	
 	public final Class<? extends Property> propertyClass;
