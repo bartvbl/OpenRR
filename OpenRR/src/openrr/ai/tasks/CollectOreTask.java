@@ -1,13 +1,13 @@
 package openrr.ai.tasks;
 
 import openrr.ai.MapTileNode;
+import openrr.ai.TaskType;
 import openrr.map.world.MapTileReader;
 import openrr.world.core.ORRGameObjectType;
 import openrr.world.core.ORRPropertyDataType;
 import orre.ai.pathFinding.AStar;
 import orre.ai.pathFinding.Path;
 import orre.ai.tasks.Task;
-import orre.ai.tasks.TaskType;
 import orre.gameWorld.core.GameWorld;
 import orre.geom.Point2D;
 

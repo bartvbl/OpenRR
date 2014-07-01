@@ -18,12 +18,12 @@ import openrr.world.buildings.snackbar.SnackbarAppearance;
 import openrr.world.buildings.superTeleport.SuperTeleportAppearance;
 import openrr.world.buildings.supportStation.SupportStationAppearance;
 import openrr.world.buildings.toolStore.ToolStoreAppearance;
+import openrr.world.creatures.rockRaider.RockRaiderAppearance;
 import openrr.world.properties.ChrystalAppearance;
 import openrr.world.properties.Flashlight;
 import openrr.world.properties.GravityProperty;
 import openrr.world.properties.HealthProperty;
 import openrr.world.properties.OreAppearance;
-import openrr.world.properties.RockRaiderAppearance;
 import openrr.world.properties.Transportable;
 import openrr.world.properties.input.KeyboardMapController;
 import openrr.world.properties.input.MouseProbeTracker;
@@ -56,7 +56,8 @@ public enum ORRPropertyType {
 	SNACKBAR_PLACER(SnackbarPlacer.class),
 	SNACKBAR_APPEARANCE(SnackbarAppearance.class), 
 	SUPER_TELEPORT_PLACER(SuperTeleportPlacer.class),
-	SUPER_TELEPORT_APPEARANCE(SuperTeleportAppearance.class)
+	SUPER_TELEPORT_APPEARANCE(SuperTeleportAppearance.class),
+	ROCK_RAIDER_TASK_EXECUTOR(RockRaiderTaskExecutor.class),
 	;
 	
 	public final Class<? extends Property> propertyClass;

@@ -1,9 +1,9 @@
 package openrr.world.properties;
 
+import openrr.ai.TaskType;
 import openrr.ai.tasks.CollectOreTask;
 import openrr.world.core.ORRPropertyType;
 import orre.ai.tasks.Task;
-import orre.ai.tasks.TaskType;
 import orre.animation.Animatable;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;

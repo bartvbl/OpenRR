@@ -24,7 +24,7 @@ public enum ORRGameObjectType {
 	MAP						(new Enum<?>[]{MAP_MODEL, MAP_APPEARANCE}),
 	
 	//characters
-	ROCK_RAIDER				(new Enum<?>[]{HEALTH, ROCK_RAIDER_APPEARANCE, GRAVITY, TASK_EXECUTOR}), 
+	ROCK_RAIDER				(new Enum<?>[]{HEALTH, ROCK_RAIDER_APPEARANCE, GRAVITY, ROCK_RAIDER_TASK_EXECUTOR}), 
 	MONSTER					(new Enum<?>[]{HEALTH, GRAVITY, TASK_EXECUTOR}), 
 	SLIMY_SLUG				(new Enum<?>[]{HEALTH, GRAVITY, TASK_EXECUTOR}),
 	BATS					(new Enum<?>[]{}),

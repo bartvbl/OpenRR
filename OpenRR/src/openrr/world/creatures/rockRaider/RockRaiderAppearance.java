@@ -1,4 +1,4 @@
-package openrr.world.properties;
+package openrr.world.creatures.rockRaider;
 
 import openrr.map.world.MapWorldUtils;
 import openrr.world.core.ORRPropertyType;

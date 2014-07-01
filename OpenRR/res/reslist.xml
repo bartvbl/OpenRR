@@ -36,7 +36,7 @@
 		<!--<model name="map_stud" src="stud.mdl"/>-->
 		
 		<!-- LXFML models -->
-		<lxfmlModel name="toolStore" src="lxfml/toolstore.lxfml" />
+		<lxfmlModel name="toolstore" src="lxfml/toolstore.lxfml" />
 		<lxfmlModel name="teleportPlatform" src="lxfml/teleportPlatform.lxfml" />
 		<lxfmlModel name="dock" src="lxfml/dock.lxfml" />
 		<lxfmlModel name="powerStation" src="lxfml/powerStation.lxfml" />
