@@ -33,7 +33,6 @@ public abstract class BuildingPlacer extends Property {
 	private final TileContents[][] rotatedBuildingMap = new TileContents[3][3];
 	private int mouseProbeID;
 	private int mapID;
-	private boolean wasClicked = false;
 	private int buildingX;
 	private int buildingY;
 	private Orientation orientation;
@@ -46,12 +45,8 @@ public abstract class BuildingPlacer extends Property {
 	
 	@Override
 	public void handleMessage(Message<?> message) {
-		InputEvent event = (InputEvent) message.getPayload();
-		if(!wasClicked) {
-			this.placeBuilding();
-			this.gameObject.world.despawnObject(this.gameObject.id);
-		}
-		wasClicked = event.value == 1.0;
+		this.placeBuilding();
+		this.gameObject.world.despawnObject(this.gameObject.id);
 	}
 
 	private void placeBuilding() {
