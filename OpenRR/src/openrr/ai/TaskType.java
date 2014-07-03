@@ -19,6 +19,7 @@ public enum TaskType {
 	COLLECT_CHRYSTAL,
 	COLLECT_ORE,
 	FERRY,
+	ATTACK_MONSTER,
 	
 	//monster tasks
 	SMASH_BUILDING,
@@ -30,5 +31,5 @@ public enum TaskType {
 	SUCK_BUILDING_POWER,
 	SUCK_CHRYSTAL_POWER,
 	SLEEP,
-	RUN_AWAY
+	RUN_AWAY, 
 }
