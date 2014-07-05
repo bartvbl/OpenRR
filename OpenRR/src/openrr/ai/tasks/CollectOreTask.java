@@ -8,6 +8,7 @@ import openrr.world.core.ORRGameObjectType;
 import openrr.world.core.ORRPropertyDataType;
 import orre.ai.pathFinding.AStar;
 import orre.ai.pathFinding.Path;
+import orre.ai.tasks.Assignment;
 import orre.ai.tasks.Plan;
 import orre.ai.tasks.Task;
 import orre.ai.tasks.TaskRequest;
@@ -28,7 +29,7 @@ public class CollectOreTask extends Task {
 	}
 
 	@Override
-	public Plan plan(TaskRequest request) {
+	public Assignment plan(TaskRequest request) {
 		if(!(request instanceof MapTaskRequest)) {
 			//can't plan a collection task without knowing where the to-be retrieved item is located
 			return null;
@@ -39,6 +40,6 @@ public class CollectOreTask extends Task {
 		MapTileNode unitLocation = new MapTileNode(reader, mapRequest.locationOnMap.x, mapRequest.locationOnMap.y);
 		MapTileNode taskLocation = new MapTileNode(reader, location.x, location.y);
 		this.pathToTask = astar.findPath(unitLocation, taskLocation);
-		
+		return null;
 	}
 }
