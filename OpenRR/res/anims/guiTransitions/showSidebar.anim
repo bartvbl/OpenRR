@@ -1,6 +1,6 @@
 animation showSidebar
 
-keyframe frame0 of duration 0.00001 s
+keyframe frame0 of duration instant
 translate menuRoot along x-axis for 100 units
 set menuRoot x-axis visibility to 1.0 units
 

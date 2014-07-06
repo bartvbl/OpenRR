@@ -31,7 +31,7 @@ public class AnimationGenerator {
 			actions[1] = new TranslateAction("root", Axis.y, dy);
 			actions[2] = new SetAction("root", Axis.z, TransitionType.rotation, Math.toDegrees(Math.atan2(dy, dx)) + 90);
 			
-			KeyFrame frame = new KeyFrame("Frame " + frameNumber, distance / moveSpeed, false, actions);
+			KeyFrame frame = new KeyFrame("Frame " + frameNumber, distance / moveSpeed, false, false, actions);
 			frameNumber++;
 			
 			keyFrames.add(frame);
