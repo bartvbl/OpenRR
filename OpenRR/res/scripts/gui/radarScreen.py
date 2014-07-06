@@ -17,5 +17,5 @@ def expandRadarPanel(eventParams):
 def resetRadarPanel(eventParams):
 	global orr_radarScreenState
 	if not orr_radarScreenState:
-		gui.hide('radarPanel')
 		gui.show('radarPanel_retracted')
+		gui.hide('radarPanel')

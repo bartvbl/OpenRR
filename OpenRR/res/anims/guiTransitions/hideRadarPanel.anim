@@ -3,7 +3,4 @@ animation hideRadarPanel
 keyframe frame0 of duration 0.5 s
 translate menuRoot along x-axis for -167 units
 
-keyframe frame1 of duration instant
-set menuRoot x-axis visibility to 0.0 units
-
 end animation
