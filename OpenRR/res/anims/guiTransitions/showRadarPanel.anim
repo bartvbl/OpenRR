@@ -1,10 +1,11 @@
 animation showRadarPanel
 
 keyframe frame0 of duration instant
-set menuRoot x-axis visibility to 1.0 units
 translate menuRoot along x-axis for -167 units
+set menuRoot x-axis visibility to 0.0 units
 
 keyframe frame0 of duration 0.5 s
+set menuRoot x-axis visibility to 1.0 units
 translate menuRoot along x-axis for 167 units
 
 end animation
