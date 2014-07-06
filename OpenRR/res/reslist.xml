@@ -230,6 +230,7 @@
 		<menu name="sideMainMenu" src="sideMain.xml" />
 		<menu name="topMainMenu" src="topMain.xml" />
 		<menu name="radarPanel" src="radarPanel.xml" />
+		<menu name="radarPanel_retracted" src="radarPanel_retracted.xml" />
 		<menu name="resourceSidebar" src="resourceSidebar.xml" />
 		<menu name="notificationPanel" src="notificationPanel.xml" />
 		<menu name="buildMenu" src="buildMenu.xml" />
@@ -243,6 +244,9 @@
 		
 		<animation name="hideSidebar" src="guiTransitions/hideSidebar.anim" />
 		<animation name="showSidebar" src="guiTransitions/showSidebar.anim" />
+		
+		<animation name="showRadarPanel" src="guiTransitions/showRadarPanel.anim" />
+		<animation name="hideRadarPanel" src="guiTransitions/hideRadarPanel.anim" />
 	</animations>
 	
 	<scripts pathPrefix="res/scripts/">

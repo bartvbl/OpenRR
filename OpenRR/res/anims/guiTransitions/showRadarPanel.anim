@@ -1,0 +1,9 @@
+animation showRadarPanel
+
+keyframe frame0 of duration instant
+translate menuRoot along x-axis for -165 units
+
+keyframe frame0 of duration 0.5 s
+translate menuRoot along x-axis for 165 units
+
+end animation

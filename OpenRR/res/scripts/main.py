@@ -8,11 +8,10 @@ def buildMainScene(params):
 	
 	#set up UI
 	gui.show('notificationPanel')
-	gui.show('radarPanel')
+	gui.show('radarPanel_retracted')
 	gui.show('topMainMenu')
 	gui.show('resourceSidebar')
 	gui.show('sideMainMenu')
 
-from gui.sidebars import initSidebars
-
-initSidebars()
+from gui.sidebars import *
+from gui.radarScreen import *

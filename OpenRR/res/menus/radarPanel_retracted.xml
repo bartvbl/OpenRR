@@ -1,0 +1,22 @@
+<menu>
+	<container x="-167px" y="100% - 200px" width="210px" height="200px" name="menuRoot">
+		<image
+			name="menuBackground"
+			x="0px"
+			y="0px"
+			width="210px"
+			height="200px"
+			image="radarPanelBase"
+		/>
+		<imageButton
+			name="openRadarButton"
+			x="171px"
+			y="127px"
+			width="39px"
+			height="40px"
+			overImage="radar_Over" 
+			downImage="radar_Down"
+			onClick="toggleRadarPanel" 
+		/>
+	</container>
+</menu>
