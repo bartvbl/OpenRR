@@ -45,7 +45,10 @@ public abstract class BuildingPlacer extends Property {
 	
 	@Override
 	public void handleMessage(Message<?> message) {
-		this.placeBuilding();
+		InputEvent event = (InputEvent) message.getPayload();
+		if(event.command.equals("select")) {
+			this.placeBuilding();
+		}// else: command = "back" -> despawn placer
 		this.gameObject.world.despawnObject(this.gameObject.id);
 	}
 
@@ -129,6 +132,7 @@ public abstract class BuildingPlacer extends Property {
 	@Override
 	public void destroy() {
 		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "select");
+		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "back");
 		SceneNode mapNode = MapWorldUtils.getMapRoot(gameObject.world);
 		mapNode.removeChild(placerAppearance);
 	}
@@ -142,6 +146,7 @@ public abstract class BuildingPlacer extends Property {
 		this.placerAppearance = new PlaceVisualiser(buildingMap, reader);
 		mapNode.addChild(placerAppearance);
 		gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "select");
+		gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "back");
 	}
 
 }
