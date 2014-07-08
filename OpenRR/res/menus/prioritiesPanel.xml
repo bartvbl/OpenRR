@@ -145,7 +145,7 @@
 		
 		<!-- Disable buttons -->
 		
-		<imageButton
+		<imageToggleButton
 			name="disable0Button"
 			x="173px"
 			y="258px"
@@ -156,7 +156,7 @@
 			onClick="togglePriority 0" 
 		/>
 		
-		<imageButton
+		<imageToggleButton
 			name="disable1Button"
 			x="118px"
 			y="265px"
@@ -167,7 +167,7 @@
 			onClick="togglePriority 1" 
 		/>
 		
-		<imageButton
+		<imageToggleButton
 			name="disable2Button"
 			x="63px"
 			y="272px"
@@ -178,7 +178,7 @@
 			onClick="togglePriority 2" 
 		/>
 		
-		<imageButton
+		<imageToggleButton
 			name="disable3Button"
 			x="173px"
 			y="204px"
@@ -189,7 +189,7 @@
 			onClick="togglePriority 3" 
 		/>
 		
-		<imageButton
+		<imageToggleButton
 			name="disable4Button"
 			x="118px"
 			y="197px"
@@ -200,7 +200,7 @@
 			onClick="togglePriority 4" 
 		/>
 		
-		<imageButton
+		<imageToggleButton
 			name="disable5Button"
 			x="63px"
 			y="190px"
@@ -211,7 +211,7 @@
 			onClick="togglePriority 5" 
 		/>
 		
-		<imageButton
+		<imageToggleButton
 			name="disable6Button"
 			x="173px"
 			y="122px"
@@ -222,7 +222,7 @@
 			onClick="togglePriority 6" 
 		/>
 		
-		<imageButton
+		<imageToggleButton
 			name="disable7Button"
 			x="118px"
 			y="129px"
@@ -233,7 +233,7 @@
 			onClick="togglePriority 7" 
 		/>
 		
-		<imageButton
+		<imageToggleButton
 			name="disable8Button"
 			x="63px"
 			y="136px"
@@ -244,7 +244,7 @@
 			onClick="togglePriority 8" 
 		/>
 		
-		<imageButton
+		<imageToggleButton
 			name="disable9Button"
 			x="173px"
 			y="68px"
@@ -255,7 +255,7 @@
 			onClick="togglePriority 9" 
 		/>
 		
-		<imageButton
+		<imageToggleButton
 			name="disable10Button"
 			x="118px"
 			y="61px"
@@ -266,7 +266,7 @@
 			onClick="togglePriority 10" 
 		/>
 		
-		<imageButton
+		<imageToggleButton
 			name="disable11Button"
 			x="63px"
 			y="54px"
