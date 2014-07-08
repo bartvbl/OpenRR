@@ -1,41 +1,57 @@
 from ore import on, spawn, gui
 
+orr_sideMenuState = 0
 orr_activeSideMenu = 'sideMainMenu'
 
-def registerSideMenuSwitch(actionName, menuName):
+def registerSideMenuSwitch(actionName, menuName, showAnimation, hideAnimation, returnAction):
+	#Hide sidebar
 	@on('GUI_Click', action=actionName)
 	def switchToBuildingMenu(eventParam):
+		global orr_sideMenuState
 		global orr_activeSideMenu
-		orr_activeSideMenu = menuName
-		gui.animateMenu('sideMainMenu', 'hideSidebar')
-		
+		if orr_sideMenuState == 0:
+			orr_activeSideMenu = menuName
+			gui.animateMenu('sideMainMenu', 'hideSidebar')
+			orr_sideMenuState = 1
+	
+	#When sidebar hidden, show new menu
+	@on('GUI_AnimationComplete', menuName='sideMainMenu')
+	def swapMenus(eventParams):
+		global orr_sideMenuState
+		global orr_activeSideMenu
+		if orr_sideMenuState == 1 and orr_activeSideMenu == menuName:
+			gui.hide('sideMainMenu')
+			gui.show(menuName)
+			gui.animateMenu(menuName, showAnimation)
+			orr_sideMenuState = 2
+	
+	#The menu is now active.
+	
+	#When a return button is clicked, hide menu
+	@on('GUI_Click', action=returnAction)
+	def returnFromRegularSidebar(eventParams):
+		global orr_sideMenuState
+		global orr_activeSideMenu
+		if orr_sideMenuState == 2 and orr_activeSideMenu == menuName:
+			gui.animateMenu(menuName, hideAnimation)
+			orr_sideMenuState = 3
+	
+	#When menu is hidden, show the sidebar
 	@on('GUI_AnimationComplete', menuName=menuName)
 	def swapMenus(eventParams):
+		global orr_sideMenuState
 		global orr_activeSideMenu
-		if orr_activeSideMenu != 'sideMainMenu':
-			return
-		gui.show('sideMainMenu')
-		gui.hide(menuName)
-		gui.animateMenu('sideMainMenu', 'showSidebar')
+		if orr_sideMenuState == 3 and orr_activeSideMenu == menuName:
+			orr_activeSideMenu = 'sideMainMenu'
+			gui.show('sideMainMenu')
+			gui.hide(menuName)
+			gui.animateMenu('sideMainMenu', 'showSidebar')
+			orr_sideMenuState = 0
 		
-registerSideMenuSwitch('switchToBuildingMenu', 'buildMenu')
-registerSideMenuSwitch('switchToSmallVehiclesMenu', 'buildSmallVehicles')
-registerSideMenuSwitch('switchToLargeVehiclesMenu', 'buildLargeVehicles')
-
-@on('GUI_AnimationComplete', menuName='sideMainMenu')
-def swapMenus(eventParams):
-	global orr_activeSideMenu
-	if orr_activeSideMenu == 'sideMainMenu':
-		return
-	gui.hide('sideMainMenu')
-	gui.show(orr_activeSideMenu)
-	gui.animateMenu(orr_activeSideMenu, 'showSidebar')
-
-@on('GUI_Click', action="switchToMain")
-def returnToMainSidebar(eventParams):
-	global orr_activeSideMenu
-	gui.animateMenu(orr_activeSideMenu, 'hideSidebar')
-	orr_activeSideMenu = 'sideMainMenu'
+registerSideMenuSwitch('switchToBuildingMenu', 'buildMenu', 'showSidebar', 'hideSidebar', 'switchToMain')
+registerSideMenuSwitch('switchToSmallVehiclesMenu', 'buildSmallVehicles', 'showSidebar', 'hideSidebar', 'switchToMain')
+registerSideMenuSwitch('switchToLargeVehiclesMenu', 'buildLargeVehicles', 'showSidebar', 'hideSidebar', 'switchToMain')
+registerSideMenuSwitch('togglePrioritiesPanel', 'prioritiesPanel', 'showPrioritiesPanel', 'hidePrioritiesPanel', 'togglePrioritiesPanel')
 	
 @on('GUI_Click', action='buildToolStore')
 def buildToolStore(eventParams):
