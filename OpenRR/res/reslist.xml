@@ -224,6 +224,9 @@
 		<texture name="largeVehicles_TunnelTransport_Down" src="menus/largeVehicles/largeHeli_down.bmp"/>
 		<texture name="largeVehicles_TunnelTransport_Disabled" src="menus/largeVehicles/largeHeli_disabled.bmp"/>
 		
+		<!-- Priorities panel -->
+		<texture name="priorities_Background" src="menus/prioritiesPanel/prioritiesBase.png"/>
+		
 	</textures>
 	
 	<menus pathPrefix="res/menus/">
@@ -236,6 +239,7 @@
 		<menu name="buildMenu" src="buildMenu.xml" />
 		<menu name="buildSmallVehicles" src="smallVehicles.xml" />
 		<menu name="buildLargeVehicles" src="largeVehicles.xml" />
+		<menu name="prioritiesPanel" src="prioritiesPanel.xml" />
 	</menus>
 	
 	<animations pathPrefix="res/anims/">
@@ -247,6 +251,9 @@
 		
 		<animation name="showRadarPanel" src="guiTransitions/showRadarPanel.anim" />
 		<animation name="hideRadarPanel" src="guiTransitions/hideRadarPanel.anim" />
+		
+		<animation name="showPrioritiesPanel" src="guiTransitions/showPrioritiesPanel.anim" />
+		<animation name="hidePrioritiesPanel" src="guiTransitions/hidePrioritiesPanel.anim" />
 	</animations>
 	
 	<scripts pathPrefix="res/scripts/">

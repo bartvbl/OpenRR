@@ -6,5 +6,6 @@ set menuRoot x-axis visibility to 1.0 units
 
 keyframe frame1 of duration 0.2 s
 translate menuRoot along x-axis for -100 units
+set menuRoot x-axis visibility to 1.0 units
 
 end animation
