@@ -242,6 +242,51 @@
 		<texture name="priorities_reset_Over" src="menus/prioritiesPanel/reset_over.bmp"/>
 		<texture name="priorities_reset_Down" src="menus/prioritiesPanel/reset_down.bmp"/>
 		
+		<!-- Priority icons -->
+		
+		<texture name="priorities_barrier_Up" src="menus/prioritiesPanel/priorities/barrier.bmp"/>
+		
+		<texture name="priorities_build_Up" src="menus/prioritiesPanel/priorities/build.bmp"/>
+		<texture name="priorities_build_Down" src="menus/prioritiesPanel/priorities/build_down.bmp"/>
+		<texture name="priorities_build_Disabled" src="menus/prioritiesPanel/priorities/build_disabled.bmp"/>
+		
+		<texture name="priorities_clearRubble_Up" src="menus/prioritiesPanel/priorities/clearRubble.bmp"/>
+		<texture name="priorities_clearRubble_Down" src="menus/prioritiesPanel/priorities/clearRubble_down.bmp"/>
+		<texture name="priorities_clearRubble_Disabled" src="menus/prioritiesPanel/priorities/clearRubble_disabled.bmp"/>
+		
+		<texture name="priorities_collectChrystal_Up" src="menus/prioritiesPanel/priorities/collectChrystal.bmp"/>
+		<texture name="priorities_collectChrystal_Down" src="menus/prioritiesPanel/priorities/collectChrystal_down.bmp"/>
+		<texture name="priorities_collectChrystal_Disabled" src="menus/prioritiesPanel/priorities/collectChrystal_disabled.bmp"/>
+		
+		<texture name="priorities_collectOre_Up" src="menus/prioritiesPanel/priorities/collectOre.bmp"/>
+		<texture name="priorities_collectOre_Down" src="menus/prioritiesPanel/priorities/collectOre_down.bmp"/>
+		<texture name="priorities_collectOre_Disabled" src="menus/prioritiesPanel/priorities/collectOre_disabled.bmp"/>
+		
+		<texture name="priorities_collectStud_Up" src="menus/prioritiesPanel/priorities/collectStud.bmp"/>
+		<texture name="priorities_collectStud_Disabled" src="menus/prioritiesPanel/priorities/collectStud_Disabled.bmp"/>
+		
+		<texture name="priorities_drill_Up" src="menus/prioritiesPanel/priorities/drill.bmp"/>
+		<texture name="priorities_drill_Down" src="menus/prioritiesPanel/priorities/drill_down.bmp"/>
+		<texture name="priorities_drill_Disabled" src="menus/prioritiesPanel/priorities/drill_disabled.bmp"/>
+		
+		<texture name="priorities_drive_Up" src="menus/prioritiesPanel/priorities/drive.bmp"/>
+		<texture name="priorities_drive_Down" src="menus/prioritiesPanel/priorities/drive_down.bmp"/>
+		<texture name="priorities_drive_Disabled" src="menus/prioritiesPanel/priorities/drive_disabled.bmp"/>
+		
+		<texture name="priorities_recharge_Up" src="menus/prioritiesPanel/priorities/recharge.bmp"/>
+		<texture name="priorities_recharge_Down" src="menus/prioritiesPanel/priorities/recharge_down.bmp"/>
+		<texture name="priorities_recharge_Disabled" src="menus/prioritiesPanel/priorities/recharge_disabled.bmp"/>
+		
+		<texture name="priorities_refine_Up" src="menus/prioritiesPanel/priorities/refine.bmp"/>
+		
+		<texture name="priorities_reinforce_Up" src="menus/prioritiesPanel/priorities/reinforce.bmp"/>
+		<texture name="priorities_reinforce_Down" src="menus/prioritiesPanel/priorities/reinforce_down.bmp"/>
+		<texture name="priorities_reinforce_Disabled" src="menus/prioritiesPanel/priorities/reinforce_disabled.bmp"/>
+		
+		<texture name="priorities_repair_Up" src="menus/prioritiesPanel/priorities/repair.bmp"/>
+		<texture name="priorities_repair_Down" src="menus/prioritiesPanel/priorities/repair_down.bmp"/>
+		<texture name="priorities_repair_Disabled" src="menus/prioritiesPanel/priorities/repair_disabled.bmp"/>
+		
 	</textures>
 	
 	<menus pathPrefix="res/menus/">

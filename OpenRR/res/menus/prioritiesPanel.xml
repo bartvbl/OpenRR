@@ -277,5 +277,163 @@
 			onClick="togglePriority 11" 
 		/>
 		
+		<!-- priority icons -->
+		
+		<imageButton
+			name="priority11Button"
+			x="40px"
+			y="16px"
+			width="40px"
+			height="40px"
+			upImage="priorities_barrier_Up"
+			overImage="priorities_barrier_Up" 
+			downImage="priorities_barrier_Up" 
+			disabledImage="priorities_barrier_Up" 
+			onClick="maximisePriority 11" 
+		/>
+		
+		<imageButton
+			name="priority10Button"
+			x="95px"
+			y="23px"
+			width="40px"
+			height="40px"
+			upImage="priorities_build_Up"
+			overImage="priorities_build_Up"
+			downImage="priorities_build_Down" 
+			disabledImage="priorities_build_Disabled" 
+			onClick="maximisePriority 10" 
+		/>
+		
+		<imageButton
+			name="priority9Button"
+			x="150px"
+			y="30px"
+			width="40px"
+			height="40px"
+			upImage="priorities_clearRubble_Up"
+			overImage="priorities_clearRubble_Up"
+			downImage="priorities_clearRubble_Down" 
+			disabledImage="priorities_clearRubble_Disabled" 
+			onClick="maximisePriority 9" 
+		/>
+		
+		<imageButton
+			name="priority8Button"
+			x="150px"
+			y="84px"
+			width="40px"
+			height="40px"
+			upImage="priorities_collectChrystal_Up"
+			overImage="priorities_collectChrystal_Up"
+			downImage="priorities_collectChrystal_Down" 
+			disabledImage="priorities_collectChrystal_Disabled" 
+			onClick="maximisePriority 8" 
+		/>
+		
+		<imageButton
+			name="priority7Button"
+			x="95px"
+			y="91px"
+			width="40px"
+			height="40px"
+			upImage="priorities_collectOre_Up"
+			overImage="priorities_collectOre_Up"
+			downImage="priorities_collectOre_Down" 
+			disabledImage="priorities_collectOre_Disabled" 
+			onClick="maximisePriority 7" 
+		/>
+		
+		<imageButton
+			name="priority6Button"
+			x="40px"
+			y="98px"
+			width="40px"
+			height="40px"
+			upImage="priorities_collectStud_Up"
+			overImage="priorities_collectStud_Up"
+			downImage="priorities_collectStud_Up"
+			disabledImage="priorities_collectStud_Disabled" 
+			onClick="maximisePriority 6" 
+		/>
+		
+		<imageButton
+			name="priority5Button"
+			x="40px"
+			y="152px"
+			width="40px"
+			height="40px"
+			upImage="priorities_drill_Up"
+			overImage="priorities_drill_Up" 
+			downImage="priorities_drill_Down" 
+			disabledImage="priorities_drill_Disabled" 
+			onClick="maximisePriority 5" 
+		/>
+		
+		<imageButton
+			name="priority4Button"
+			x="95px"
+			y="159px"
+			width="40px"
+			height="40px"
+			upImage="priorities_drive_Up"
+			overImage="priorities_drive_Up"
+			downImage="priorities_drive_Down" 
+			disabledImage="priorities_drive_Disabled" 
+			onClick="maximisePriority 4" 
+		/>
+		
+		<imageButton
+			name="priority3Button"
+			x="150px"
+			y="166px"
+			width="40px"
+			height="40px"
+			upImage="priorities_recharge_Up"
+			overImage="priorities_recharge_Up"
+			downImage="priorities_recharge_Down" 
+			disabledImage="priorities_recharge_Disabled" 
+			onClick="maximisePriority 3" 
+		/>
+		
+		<imageButton
+			name="priority2Button"
+			x="150px"
+			y="220px"
+			width="40px"
+			height="40px"
+			upImage="priorities_refine_Up"
+			overImage="priorities_refine_Up"
+			downImage="priorities_refine_Up" 
+			disabledImage="priorities_refine_Up" 
+			onClick="maximisePriority 2" 
+		/>
+		
+		<imageButton
+			name="priority1Button"
+			x="95px"
+			y="227px"
+			width="40px"
+			height="40px"
+			upImage="priorities_reinforce_Up"
+			overImage="priorities_reinforce_Up"
+			downImage="priorities_reinforce_Down" 
+			disabledImage="priorities_reinforce_Disabled" 
+			onClick="maximisePriority 1" 
+		/>
+		
+		<imageButton
+			name="priority0Button"
+			x="41px"
+			y="234px"
+			width="40px"
+			height="40px"
+			upImage="priorities_repair_Up"
+			overImage="priorities_repair_Up"
+			downImage="priorities_repair_Down"
+			disabledImage="priorities_repair_Disabled" 
+			onClick="maximisePriority 0" 
+		/>
+		
 	</container>
 </menu>
