@@ -227,6 +227,21 @@
 		<!-- Priorities panel -->
 		<texture name="priorities_Background" src="menus/prioritiesPanel/prioritiesBase.png"/>
 		
+		<texture name="priorities_arrowLeft_Over" src="menus/prioritiesPanel/arrowLeft_over.bmp"/>
+		<texture name="priorities_arrowLeft_Down" src="menus/prioritiesPanel/arrowLeft_down.bmp"/>
+		
+		<texture name="priorities_arrowRight_Over" src="menus/prioritiesPanel/arrowRight_over.bmp"/>
+		<texture name="priorities_arrowRight_Down" src="menus/prioritiesPanel/arrowRight_down.bmp"/>
+		
+		<texture name="priorities_arrowUp_Over" src="menus/prioritiesPanel/arrowUp_over.bmp"/>
+		<texture name="priorities_arrowUp_Down" src="menus/prioritiesPanel/arrowUp_down.bmp"/>
+		
+		<texture name="priorities_disable_Over" src="menus/prioritiesPanel/disable_over.bmp"/>
+		<texture name="priorities_disable_Down" src="menus/prioritiesPanel/disable_down.bmp"/>
+		
+		<texture name="priorities_reset_Over" src="menus/prioritiesPanel/reset_over.bmp"/>
+		<texture name="priorities_reset_Down" src="menus/prioritiesPanel/reset_down.bmp"/>
+		
 	</textures>
 	
 	<menus pathPrefix="res/menus/">

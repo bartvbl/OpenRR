@@ -8,5 +8,274 @@
 			height="300px"
 			image="priorities_Background"
 		/>
+		
+		<imageButton
+			name="resetPrioritiesButton"
+			x="10px"
+			y="17px"
+			width="21px"
+			height="28px"
+			overImage="priorities_reset_Over" 
+			downImage="priorities_reset_Down"
+			onClick="resetPriorities" 
+		/>
+		
+		<!-- Increase priority arrow buttons -->
+		
+		<imageButton
+			name="increasePriority1Button"
+			x="80px"
+			y="240px"
+			width="16px"
+			height="24px"
+			overImage="priorities_arrowLeft_Over" 
+			downImage="priorities_arrowLeft_Down"
+			onClick="increasePriority 1" 
+		/>
+		
+		<imageButton
+			name="increasePriority2Button"
+			x="135px"
+			y="233px"
+			width="16px"
+			height="24px"
+			overImage="priorities_arrowLeft_Over" 
+			downImage="priorities_arrowLeft_Down"
+			onClick="increasePriority 2" 
+		/>
+		
+		<imageButton
+			name="increasePriority3Button"
+			x="152px"
+			y="206px"
+			width="21px"
+			height="15px"
+			overImage="priorities_arrowUp_Over" 
+			downImage="priorities_arrowUp_Down"
+			onClick="increasePriority 3" 
+		/>
+		
+		<imageButton
+			name="increasePriority4Button"
+			x="135px"
+			y="172px"
+			width="16px"
+			height="24px"
+			overImage="priorities_arrowRight_Over" 
+			downImage="priorities_arrowRight_Down"
+			onClick="increasePriority 4" 
+		/>
+		
+		<imageButton
+			name="increasePriority5Button"
+			x="80px"
+			y="165px"
+			width="16px"
+			height="24px"
+			overImage="priorities_arrowRight_Over" 
+			downImage="priorities_arrowRight_Down"
+			onClick="increasePriority 5" 
+		/>
+		
+		<imageButton
+			name="increasePriority6Button"
+			x="152px"
+			y="70px"
+			width="21px"
+			height="15px"
+			overImage="priorities_arrowUp_Over" 
+			downImage="priorities_arrowUp_Down"
+			onClick="increasePriority 6" 
+		/>
+		
+		<imageButton
+			name="increasePriority7Button"
+			x="80px"
+			y="104px"
+			width="16px"
+			height="24px"
+			overImage="priorities_arrowLeft_Over" 
+			downImage="priorities_arrowLeft_Down"
+			onClick="increasePriority 7" 
+		/>
+		
+		<imageButton
+			name="increasePriority8Button"
+			x="135px"
+			y="97px"
+			width="16px"
+			height="24px"
+			overImage="priorities_arrowLeft_Over" 
+			downImage="priorities_arrowLeft_Down"
+			onClick="increasePriority 8" 
+		/>
+		
+		<imageButton
+			name="increasePriority9Button"
+			x="42px"
+			y="138px"
+			width="21px"
+			height="15px"
+			overImage="priorities_arrowUp_Over" 
+			downImage="priorities_arrowUp_Down"
+			onClick="increasePriority 9" 
+		/>
+		
+		<imageButton
+			name="increasePriority10Button"
+			x="135px"
+			y="36px"
+			width="16px"
+			height="24px"
+			overImage="priorities_arrowRight_Over" 
+			downImage="priorities_arrowRight_Down"
+			onClick="increasePriority 10" 
+		/>
+		
+		<imageButton
+			name="increasePriority11Button"
+			x="80px"
+			y="29px"
+			width="16px"
+			height="24px"
+			overImage="priorities_arrowRight_Over" 
+			downImage="priorities_arrowRight_Down"
+			onClick="increasePriority 11" 
+		/>
+		
+		<!-- Disable buttons -->
+		
+		<imageButton
+			name="disable0Button"
+			x="173px"
+			y="258px"
+			width="19px"
+			height="18px"
+			overImage="priorities_disable_Over" 
+			downImage="priorities_disable_Down"
+			onClick="togglePriority 0" 
+		/>
+		
+		<imageButton
+			name="disable1Button"
+			x="118px"
+			y="265px"
+			width="19px"
+			height="18px"
+			overImage="priorities_disable_Over" 
+			downImage="priorities_disable_Down"
+			onClick="togglePriority 1" 
+		/>
+		
+		<imageButton
+			name="disable2Button"
+			x="63px"
+			y="272px"
+			width="19px"
+			height="18px"
+			overImage="priorities_disable_Over" 
+			downImage="priorities_disable_Down"
+			onClick="togglePriority 2" 
+		/>
+		
+		<imageButton
+			name="disable3Button"
+			x="173px"
+			y="204px"
+			width="19px"
+			height="18px"
+			overImage="priorities_disable_Over" 
+			downImage="priorities_disable_Down"
+			onClick="togglePriority 3" 
+		/>
+		
+		<imageButton
+			name="disable4Button"
+			x="118px"
+			y="197px"
+			width="19px"
+			height="18px"
+			overImage="priorities_disable_Over" 
+			downImage="priorities_disable_Down"
+			onClick="togglePriority 4" 
+		/>
+		
+		<imageButton
+			name="disable5Button"
+			x="63px"
+			y="190px"
+			width="19px"
+			height="18px"
+			overImage="priorities_disable_Over" 
+			downImage="priorities_disable_Down"
+			onClick="togglePriority 5" 
+		/>
+		
+		<imageButton
+			name="disable6Button"
+			x="173px"
+			y="122px"
+			width="19px"
+			height="18px"
+			overImage="priorities_disable_Over" 
+			downImage="priorities_disable_Down"
+			onClick="togglePriority 6" 
+		/>
+		
+		<imageButton
+			name="disable7Button"
+			x="118px"
+			y="129px"
+			width="19px"
+			height="18px"
+			overImage="priorities_disable_Over" 
+			downImage="priorities_disable_Down"
+			onClick="togglePriority 7" 
+		/>
+		
+		<imageButton
+			name="disable8Button"
+			x="63px"
+			y="136px"
+			width="19px"
+			height="18px"
+			overImage="priorities_disable_Over" 
+			downImage="priorities_disable_Down"
+			onClick="togglePriority 8" 
+		/>
+		
+		<imageButton
+			name="disable9Button"
+			x="173px"
+			y="68px"
+			width="19px"
+			height="18px"
+			overImage="priorities_disable_Over" 
+			downImage="priorities_disable_Down"
+			onClick="togglePriority 9" 
+		/>
+		
+		<imageButton
+			name="disable10Button"
+			x="118px"
+			y="61px"
+			width="19px"
+			height="18px"
+			overImage="priorities_disable_Over" 
+			downImage="priorities_disable_Down"
+			onClick="togglePriority 10" 
+		/>
+		
+		<imageButton
+			name="disable11Button"
+			x="63px"
+			y="54px"
+			width="19px"
+			height="18px"
+			overImage="priorities_disable_Over" 
+			downImage="priorities_disable_Down"
+			onClick="togglePriority 11" 
+		/>
+		
 	</container>
 </menu>
