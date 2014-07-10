@@ -88,3 +88,7 @@ def buildSnackbar(eventParams):
 @on('GUI_Click', action='buildUpgradeStation')
 def buildUpgradeStation(eventParams):
 	spawn('UPGRADE_STATION_PLACER')
+		
+@on('GUI_Click', action='buildMiningLaser')
+def buildUpgradeStation(eventParams):
+	spawn('MINING_LASER_PLACER')

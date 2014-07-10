@@ -3,8 +3,10 @@ package openrr.world.core;
 import openrr.map.world.MapAppearance;
 import openrr.map.world.MapModel;
 import openrr.world.buildings.docks.DocksAppearance;
+import openrr.world.buildings.miningLaser.MiningLaserAppearance;
 import openrr.world.buildings.oreRefinery.OreRefineryAppearance;
 import openrr.world.buildings.placers.DockPlacer;
+import openrr.world.buildings.placers.MiningLaserPlacer;
 import openrr.world.buildings.placers.OreRefineryPlacer;
 import openrr.world.buildings.placers.PowerStationPlacer;
 import openrr.world.buildings.placers.SmallTeleportPlacer;
@@ -66,7 +68,9 @@ public enum ORRPropertyType {
 	MONSTER_TASK_EXECUTOR(MonsterTaskExecutor.class),
 	SLUG_TASK_EXECUTOR(SlugTaskExecutor.class),
 	UPGRADE_STATION_APPEARANCE(UpgradeStationAppearance.class),
-	UPGRADE_STATION_PLACER(UpgradeStationPlacer.class),
+	UPGRADE_STATION_PLACER(UpgradeStationPlacer.class), 
+	MINING_LASER_APPEARANCE(MiningLaserAppearance.class), 
+	MINING_LASER_PLACER(MiningLaserPlacer.class),
 	;
 	
 	public final Class<? extends Property> propertyClass;

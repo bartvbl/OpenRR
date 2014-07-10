@@ -124,7 +124,7 @@
 			overImage="buildingMenu_Laser_Up" 
 			downImage="buildingMenu_Laser_Down"
 			disabledImage="buildingMenu_Laser_Disabled" 
-			onClick="buildLaser" 
+			onClick="buildMiningLaser" 
 		/>
 		<imageButton
 			name="buildSuperTeleportButton"
