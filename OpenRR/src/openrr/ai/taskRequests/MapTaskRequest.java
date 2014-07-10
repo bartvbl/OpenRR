@@ -1,4 +1,4 @@
-package openrr.ai.tasks.core;
+package openrr.ai.taskRequests;
 
 import orre.ai.tasks.TaskRequest;
 import orre.geom.Point2D;

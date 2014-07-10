@@ -1,5 +1,6 @@
 package openrr.ai.tasks.core;
 
+import openrr.ai.taskRequests.MapTaskRequest;
 import orre.ai.tasks.TaskRequest;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.PropertyDataType;
