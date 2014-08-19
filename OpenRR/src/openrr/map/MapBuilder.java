@@ -107,16 +107,16 @@ public class MapBuilder {
 			
 			Vector3D triangle2edge1 = topRight.minus(bottomLeft);
 			Vector3D triangle2edge2 = bottomRight.minus(bottomLeft);
-			normals[1] = triangle2edge1.vectorProduct(triangle2edge2);
+			normals[1] = triangle2edge2.vectorProduct(triangle2edge1);
 		} else {
 			//tile origin is bottom right corner, hyopthenuse is leading diagonal
 			Vector3D triangle1edge1 = topRight.minus(bottomLeft);
 			Vector3D triangle1edge2 = topLeft.minus(bottomLeft);
 			normals[0] = triangle1edge1.vectorProduct(triangle1edge2);
 			
-			Vector3D triangle2edge1 = topLeft.minus(topRight);
-			Vector3D triangle2edge2 = bottomLeft.minus(bottomRight);
-			normals[1] = triangle2edge1.vectorProduct(triangle2edge2);
+			Vector3D triangle2edge1 = topLeft.minus(bottomLeft);
+			Vector3D triangle2edge2 = bottomRight.minus(bottomLeft);
+			normals[1] = triangle2edge2.vectorProduct(triangle2edge1);
 		}
 	}
 
