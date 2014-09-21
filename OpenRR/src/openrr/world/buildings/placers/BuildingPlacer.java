@@ -9,9 +9,11 @@ import openrr.map.soil.SoilType;
 import openrr.map.world.MapTileReader;
 import openrr.map.world.MapWorldUtils;
 import openrr.map.world.events.MapSoilUpdate;
+import openrr.world.buildings.animations.BuildingAnimationGenerator;
 import openrr.world.core.ORRGameObjectType;
 import openrr.world.core.ORRMessageType;
 import openrr.world.core.ORRPropertyDataType;
+import orre.animation.Animation;
 import orre.animation.AnimationType;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
@@ -68,7 +70,8 @@ public abstract class BuildingPlacer extends Property {
 		Model model = (Model) gameObject.world.requestPropertyData(buildingID, PropertyDataType.APPEARANCE, null, Model.class);
 		model.getRootNode().setLocation(buildingX, buildingY, 0);
 		model.getRootNode().setRotation(0, 0, getRotationAngle());
-		this.gameObject.world.services.animationService.applyAnimation(AnimationType.teleportBuilding, model);
+		Animation teleportAnimation = BuildingAnimationGenerator.generateAnimationFor(model);
+		this.gameObject.world.services.animationService.applyAnimation(teleportAnimation, model);
 	}
 
 	@Override
