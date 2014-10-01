@@ -14,8 +14,8 @@ public class BuildingAnimationGenerator {
 	
 	private static final int minHeight = 6;
 	private static final int maxHeight = 10;
-	private static final int minSize = -10;
-	private static final int maxSize = 10;
+	private static final int minSize = -3;
+	private static final int maxSize = 3;
 	private static final int minRotation = -1400;
 	private static final int maxRotation = 1400;
 
@@ -38,8 +38,8 @@ public class BuildingAnimationGenerator {
 			setupActions[3 * i + 1] = new TranslateAction(partName, Axis.x, horizontalDistance);
 			runningActions[3 * i + 1] = new TranslateAction(partName, Axis.x, -horizontalDistance);
 			
-			setupActions[3 * i + 2] = new RotationAction(partName, rotation, Axis.z);
-			runningActions[3 * i + 2] = new RotationAction(partName, -rotation, Axis.z);
+			setupActions[3 * i + 2] = new RotationAction(partName, Axis.z, rotation);
+			runningActions[3 * i + 2] = new RotationAction(partName, Axis.z, -rotation);
 		}
 		
 		KeyFrame setupFrame = new KeyFrame("setupFrame", 0.0001, false, true, setupActions);
