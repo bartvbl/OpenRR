@@ -45,7 +45,7 @@
 		<lxfmlModel name="oreRefinery" src="lxfml/oreRefinery.lxfml" />
 		<lxfmlModel name="canteen" src="lxfml/canteen.lxfml" />
 		<lxfmlModel name="superTeleport" src="lxfml/superTeleport.lxfml" />
-		<lxfmlModel name="miningLaser" src="lxfml/miningLaser.lxfml" />
+		<!--<lxfmlModel name="miningLaser" src="lxfml/miningLaser.lxfml" />-->
 	</models>
 	
 	<textures pathPrefix="res/images/">
