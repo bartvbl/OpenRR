@@ -94,24 +94,29 @@ public class MapBuilder {
 	}
 
 	private static void calculateTileNormals(int x, int y, Vector3D[][] mapVertices, Vector3D[] normals, boolean rotated) {
+		Vector3D bottomLeft = mapVertices[x][y];
+		Vector3D bottomRight = mapVertices[x + 1][y];
+		Vector3D topLeft = mapVertices[x][y + 1];
+		Vector3D topRight = mapVertices[x + 1][y + 1];
+		
 		if(!rotated) {
 			//tile origin is at bottom left corner, hypothenuse is antidiagonal
-			Vector3D triangle1edge1 = mapVertices[x + 1][y + 1].minus(mapVertices[x][y]);
-			Vector3D triangle1edge2 = mapVertices[x][y + 1].minus(mapVertices[x][y]);
+			Vector3D triangle1edge1 = topRight.minus(bottomLeft);
+			Vector3D triangle1edge2 = topLeft.minus(bottomLeft);
 			normals[0] = triangle1edge1.vectorProduct(triangle1edge2);
 			
-			Vector3D triangle2edge1 = mapVertices[x + 1][y + 1].minus(mapVertices[x][y]);
-			Vector3D triangle2edge2 = mapVertices[x + 1][y].minus(mapVertices[x][y]);
-			normals[1] = triangle2edge1.vectorProduct(triangle2edge2);
+			Vector3D triangle2edge1 = topRight.minus(bottomLeft);
+			Vector3D triangle2edge2 = bottomRight.minus(bottomLeft);
+			normals[1] = triangle2edge2.vectorProduct(triangle2edge1);
 		} else {
 			//tile origin is bottom right corner, hyopthenuse is leading diagonal
-			Vector3D triangle1edge1 = mapVertices[x + 1][y + 1].minus(mapVertices[x + 1][y]);
-			Vector3D triangle1edge2 = mapVertices[x][y + 1].minus(mapVertices[x + 1][y]);
+			Vector3D triangle1edge1 = topRight.minus(bottomLeft);
+			Vector3D triangle1edge2 = topLeft.minus(bottomLeft);
 			normals[0] = triangle1edge1.vectorProduct(triangle1edge2);
 			
-			Vector3D triangle2edge1 = mapVertices[x][y + 1].minus(mapVertices[x + 1][y]);
-			Vector3D triangle2edge2 = mapVertices[x][y].minus(mapVertices[x + 1][y]);
-			normals[1] = triangle2edge1.vectorProduct(triangle2edge2);
+			Vector3D triangle2edge1 = topLeft.minus(bottomLeft);
+			Vector3D triangle2edge2 = bottomRight.minus(bottomLeft);
+			normals[1] = triangle2edge2.vectorProduct(triangle2edge1);
 		}
 	}
 
@@ -158,9 +163,9 @@ public class MapBuilder {
 		int vertexCount = geometryDataBuffer.position() / 8;
 		IntBuffer indices = generateIndexBuffer(vertexCount);
 		GeometryNode buffer = GeometryBufferGenerator.generateGeometryBuffer(VBOFormat.VERTICES_TEXTURES_NORMALS, geometryDataBuffer, indices, vertexCount, vertexCount);
-		//GeometryNode normals = GeometryBufferGenerator.generateNormalsGeometryBuffer(BufferDataFormatType.VERTICES_TEXTURES_NORMALS, geometryDataBuffer, indices);
+		GeometryNode normals = GeometryBufferGenerator.generateNormalsGeometryBuffer(VBOFormat.VERTICES_TEXTURES_NORMALS, geometryDataBuffer, indices);
 		currentMaterial.addChild(buffer);
-		//currentMaterial.addChild(normals);
+		currentMaterial.addChild(normals);
 		rootNode.addChild(currentMaterial);
 	}
 

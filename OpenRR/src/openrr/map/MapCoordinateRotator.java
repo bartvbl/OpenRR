@@ -23,9 +23,9 @@ public class MapCoordinateRotator {
 		vertices[1] = createVertex(cornerVertices[1], rotatedTextureCoordinates.u2, rotatedTextureCoordinates.v1, normals[0]);
 		vertices[2] = createVertex(cornerVertices[3], rotatedTextureCoordinates.u1, rotatedTextureCoordinates.v2, normals[0]);
 		
-		vertices[3] = createVertex(cornerVertices[1], rotatedTextureCoordinates.u2, rotatedTextureCoordinates.v1, normals[0]);
-		vertices[4] = createVertex(cornerVertices[2], rotatedTextureCoordinates.u2, rotatedTextureCoordinates.v2, normals[0]);
-		vertices[5] = createVertex(cornerVertices[3], rotatedTextureCoordinates.u1, rotatedTextureCoordinates.v2, normals[0]);
+		vertices[3] = createVertex(cornerVertices[1], rotatedTextureCoordinates.u2, rotatedTextureCoordinates.v1, normals[1]);
+		vertices[4] = createVertex(cornerVertices[2], rotatedTextureCoordinates.u2, rotatedTextureCoordinates.v2, normals[1]);
+		vertices[5] = createVertex(cornerVertices[3], rotatedTextureCoordinates.u1, rotatedTextureCoordinates.v2, normals[1]);
 	}
 
 	private static Vertex3D createVertex(Vector3D coordinate, double textureU, double textureV, Vector3D normal) {
@@ -33,12 +33,21 @@ public class MapCoordinateRotator {
 	}
 
 	private static Vector3D[] calculateNormals(int x, int y, Vector3D[][] mapVertices, Vector3D[][][] mapNormals) {
-		Vector3D[] normals = new Vector3D[4];
-		for(int i = 0; i < 2; i++) {
-			for(int j = 0; j < 2; j++) {
-				normals[2*i + j] = calculateNormal(x + i, y + j, mapVertices, mapNormals);
-			}
-		}
+		Vector3D bottomLeft = mapVertices[x][y];
+		Vector3D bottomRight = mapVertices[x+1][y];
+		Vector3D topLeft = mapVertices[x][y+1];
+		Vector3D topRight = mapVertices[x+1][y+1];
+		
+		Vector3D normal1Edge1 = topLeft.minus(bottomLeft);
+		Vector3D normal1Edge2 = bottomRight.minus(bottomLeft);
+		Vector3D normal2Edge1 = topLeft.minus(topRight);
+		Vector3D normal2Edge2 = bottomRight.minus(topRight);
+		
+		Vector3D[] normals = new Vector3D[2];
+		
+		normals[0] = normal1Edge2.vectorProduct(normal1Edge1).normalize();
+		normals[1] = normal2Edge1.vectorProduct(normal2Edge2).normalize();
+		
 		return normals;
 	}
 
