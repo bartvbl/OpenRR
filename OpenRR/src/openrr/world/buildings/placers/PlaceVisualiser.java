@@ -32,6 +32,7 @@ public class PlaceVisualiser extends LeafNode {
 	private static final float[] placableWaterTileColour = new float[]{0.1f, 0.4f, 1.0f, 0.4f};
 	private static final float[] notPlacableTileColour = new float[]{1.0f, 0.0f, 0.0f, 0.4f};
 	private static final float[] black = new float[]{0.0f, 0.0f, 0.0f, 1.0f};
+	private static final float[] white = new float[]{1.0f, 1.0f, 1.0f, 1.0f};
 	
 	private TileContents[][] buildingMap;
 	private final MapTileReader tileReader;
@@ -70,7 +71,7 @@ public class PlaceVisualiser extends LeafNode {
 		glMaterial(GL_FRONT, GL_DIFFUSE, materialBuffer);
 		materialBuffer.put(tileColour).rewind();
 		glMaterial(GL_FRONT, GL_SPECULAR, materialBuffer);
-		materialBuffer.put(black).rewind();
+		materialBuffer.put(tileColour).rewind();
 		glMaterial(GL_FRONT, GL_EMISSION, materialBuffer);
 		materialBuffer.put(black).rewind();
 		glMaterial(GL_FRONT, GL_AMBIENT, materialBuffer);

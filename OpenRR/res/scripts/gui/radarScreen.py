@@ -2,7 +2,7 @@ from ore import on, spawn, gui
 
 orr_radarScreenState = False
 
-@on('GUI_Click', action="toggleRadarPanel")
+@on('GUI_Click', action="toggleRadarPanel", menuName="radarPanel")
 def expandRadarPanel(eventParams):
 	global orr_radarScreenState
 	if orr_radarScreenState:
