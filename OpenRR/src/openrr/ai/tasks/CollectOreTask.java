@@ -32,9 +32,15 @@ public class CollectOreTask extends Task {
 
 	@Override
 	public Assignment plan(TaskRequest request, TaskMaster taskMaster) {
+		//step 1: move to ore, and pick it up.
 		MoveAction moveToOreAction = MoveAction.plan(request);
-		Action[] plannedActions = new Action[]{moveToOreAction};
-		Assignment deliveryAssignment = taskMaster.assignTask(new MapTaskRequest())
-		return new Assignment(new Plan(plannedActions));
+		Action[] plannedActions = {moveToOreAction};
+		Task[] completedTasks = {this};
+		Assignment pickupAssignment = new Assignment(completedTasks, new Plan(plannedActions));
+		
+		//step 2: deliver the ore to some place.
+		Assignment deliveryAssignment = taskMaster.findAssignment(new MapTaskRequest(request.targetID, new TaskType[]{TaskType.DELIVER_CHRYSTAL}, location));
+		
+		return pickupAssignment.next(deliveryAssignment);
 	}
 }
