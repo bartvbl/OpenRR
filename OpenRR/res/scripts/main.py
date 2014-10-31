@@ -2,6 +2,8 @@
 def buildMainScene(params):
 	spawn('MAP')
 	spawn('MAP_CONTROLLER')
+	spawn('PRIORITIES_UPDATER')
+	spawn('ORE')
 	spawn('ROCK_RAIDER')
 	spawn('MOUSE_TRACKER')
 	spawn('FLASHLIGHT')
