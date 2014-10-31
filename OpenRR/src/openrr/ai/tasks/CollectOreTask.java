@@ -1,14 +1,9 @@
 package openrr.ai.tasks;
 
-import openrr.ai.MapTileNode;
 import openrr.ai.TaskType;
 import openrr.ai.actions.MoveAction;
+import openrr.ai.actions.PickupAction;
 import openrr.ai.taskRequests.MapTaskRequest;
-import openrr.map.world.MapTileReader;
-import openrr.world.core.ORRGameObjectType;
-import openrr.world.core.ORRPropertyDataType;
-import orre.ai.pathFinding.AStar;
-import orre.ai.pathFinding.Path;
 import orre.ai.tasks.Action;
 import orre.ai.tasks.Assignment;
 import orre.ai.tasks.Plan;
@@ -21,7 +16,6 @@ import orre.geom.Point2D;
 public class CollectOreTask extends Task {
 
 	private final Point2D location;
-	private Path pathToTask;
 	private final GameWorld world;
 
 	public CollectOreTask(int gameObjectID, Point2D oreLocation, GameWorld world) {
@@ -33,8 +27,9 @@ public class CollectOreTask extends Task {
 	@Override
 	public Assignment plan(TaskRequest request, TaskMaster taskMaster) {
 		//step 1: move to ore, and pick it up.
-		MoveAction moveToOreAction = MoveAction.plan(request);
-		Action[] plannedActions = {moveToOreAction};
+		MoveAction moveToOreAction = MoveAction.plan(request, world);
+		PickupAction pickupAction = PickupAction.plan(request, world);
+		Action[] plannedActions = {moveToOreAction, pickupAction};
 		Task[] completedTasks = {this};
 		Assignment pickupAssignment = new Assignment(completedTasks, new Plan(plannedActions));
 		
