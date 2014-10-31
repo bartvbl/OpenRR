@@ -13,8 +13,8 @@ import orre.geom.mesh.Model;
 
 public class BuildingAnimationGenerator {
 	
-	private static final int minHeight = 2;
-	private static final int maxHeight = 6;
+	private static final int minHeight = 6;
+	private static final int maxHeight = 10;
 	private static final int minSize = 0;
 	private static final int maxSize = 0;
 	private static final int minRotation = -1400;
