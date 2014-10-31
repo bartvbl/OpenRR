@@ -10,6 +10,9 @@ public enum ORRGameObjectType {
 	MAP_CONTROLLER			(new Enum<?>[]{KEYBOARD_MAP_CONTROLLER}),
 	MOUSE_TRACKER			(new Enum<?>[]{MOUSE_PROBE_TRACKER}),
 	
+	//utility
+	PRIORITIES_UPDATER		(new Enum<?>[]{ORRPropertyType.PRIORITIES_UPDATER}),
+	
 	//building placers
 	TOOL_STORE_PLACER		(new Enum<?>[]{ORRPropertyType.TOOL_STORE_PLACER}),
 	SMALL_TELEPORT_PLACER	(new Enum<?>[]{ORRPropertyType.SMALL_TELEPORT_PLACER}),
@@ -49,7 +52,7 @@ public enum ORRGameObjectType {
 	
 	//transportables
 	CHRYSTAL				(new Enum<?>[]{CHRYSTAL_APPEARANCE, TRANSPORTABLE, GRAVITY}),
-	ORE						(new Enum<?>[]{TRANSPORTABLE, GRAVITY, ORE_APPEARANCE}),
+	ORE						(new Enum<?>[]{TRANSPORTABLE, ORE_APPEARANCE, GRAVITY}),
 	DYNAMITE				(new Enum<?>[]{TRANSPORTABLE, GRAVITY}),
 	BUILDING_STUD			(new Enum<?>[]{TRANSPORTABLE, GRAVITY}),
 	CONSTRUCTION_BARRIER	(new Enum<?>[]{TRANSPORTABLE, GRAVITY}),

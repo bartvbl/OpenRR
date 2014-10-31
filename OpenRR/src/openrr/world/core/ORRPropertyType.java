@@ -34,6 +34,7 @@ import openrr.world.properties.OreAppearance;
 import openrr.world.properties.Transportable;
 import openrr.world.properties.input.KeyboardMapController;
 import openrr.world.properties.input.MouseProbeTracker;
+import openrr.world.properties.utility.PrioritiesUpdater;
 import orre.gameWorld.core.Property;
 
 public enum ORRPropertyType {
@@ -71,6 +72,7 @@ public enum ORRPropertyType {
 	UPGRADE_STATION_PLACER(UpgradeStationPlacer.class), 
 	MINING_LASER_APPEARANCE(MiningLaserAppearance.class), 
 	MINING_LASER_PLACER(MiningLaserPlacer.class),
+	PRIORITIES_UPDATER(PrioritiesUpdater.class),
 	;
 	
 	public final Class<? extends Property> propertyClass;
