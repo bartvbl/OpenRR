@@ -5,6 +5,9 @@ import openrr.world.core.ORRPropertyType;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.core.Property;
+import orre.gameWorld.core.PropertyDataType;
+import orre.geom.Point3D;
+import orre.geom.mesh.Model;
 
 public class OreAcceptingBuilding extends Property {
 
@@ -29,7 +32,9 @@ public class OreAcceptingBuilding extends Property {
 
 	@Override
 	public void init() {
-		this.gameObject.world.services.aiService.registerTask(new DeliverOreTask(gameObject.id, gameObject.world));
+		Model appearance = (Model) gameObject.requestPropertyData(PropertyDataType.APPEARANCE, Model.class);
+		Point3D location = appearance.getRootNode().getLocation();
+		this.gameObject.world.services.aiService.registerTask(new DeliverOreTask(gameObject.id, location.in2D(), gameObject.world));
 	}
 
 }

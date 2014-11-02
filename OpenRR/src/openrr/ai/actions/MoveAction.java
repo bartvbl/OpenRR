@@ -11,26 +11,19 @@ import orre.ai.tasks.Action;
 import orre.ai.tasks.TaskRequest;
 import orre.gameWorld.core.GameWorld;
 import orre.gameWorld.core.PropertyDataType;
+import orre.geom.Point2D;
 import orre.geom.mesh.Model;
 
 public class MoveAction extends Action {
 
 	private static final AStar astar = new AStar();
 	
-	public static MoveAction plan(TaskRequest request, GameWorld world) {
-		
-		if(!(request instanceof MapTaskRequest)) {
-			//can't plan a collection task without knowing where the to-be retrieved item is located
-			throw new RuntimeException("MoveAction requires a MapTaskRequest");
-		}
-		
-		MapTaskRequest mapRequest = (MapTaskRequest) request;
+	public static MoveAction plan(Point2D start, Point2D destination, GameWorld world) {
 		int mapID = world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];
 		
-		Model appearance = (Model) world.requestPropertyData(request.targetID, PropertyDataType.APPEARANCE, null, Model.class);
 		MapTileReader reader = (MapTileReader) world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
-		MapTileNode taskLocation = new MapTileNode(reader, mapRequest.locationOnMap.x, mapRequest.locationOnMap.y);
-		MapTileNode unitLocation = new MapTileNode(reader, (int)appearance.getRootNode().getX(), (int)appearance.getRootNode().getY());
+		MapTileNode taskLocation = new MapTileNode(reader, start.x, start.y);
+		MapTileNode unitLocation = new MapTileNode(reader, destination.x, destination.y);
 		Path pathToTask = astar.findPath(unitLocation, taskLocation);
 		
 		return new MoveAction(pathToTask);

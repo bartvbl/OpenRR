@@ -13,7 +13,7 @@ import orre.ai.tasks.TaskRequest;
 import orre.gameWorld.core.GameWorld;
 import orre.geom.Point2D;
 
-public class CollectOreTask extends Task {
+public class CollectOreTask extends ORRTask {
 
 	private final Point2D location;
 	private final GameWorld world;
@@ -27,7 +27,8 @@ public class CollectOreTask extends Task {
 	@Override
 	public Assignment plan(TaskRequest request, TaskMaster taskMaster) {
 		//step 1: move to ore, and pick it up.
-		MoveAction moveToOreAction = MoveAction.plan(request, world);
+		MapTaskRequest mapRequest = getMapTaskRequest(request);
+		MoveAction moveToOreAction = MoveAction.plan(mapRequest.locationOnMap, location, world);
 		PickupAction pickupAction = PickupAction.plan(request, world);
 		Action[] plannedActions = {moveToOreAction, pickupAction};
 		Task[] completedTasks = {this};
