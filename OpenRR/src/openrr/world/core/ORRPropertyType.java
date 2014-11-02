@@ -26,14 +26,15 @@ import openrr.world.creatures.monster.MonsterTaskExecutor;
 import openrr.world.creatures.rockRaider.RockRaiderAppearance;
 import openrr.world.creatures.rockRaider.RockRaiderTaskExecutor;
 import openrr.world.creatures.slug.SlugTaskExecutor;
-import openrr.world.properties.ChrystalAppearance;
 import openrr.world.properties.Flashlight;
 import openrr.world.properties.GravityProperty;
 import openrr.world.properties.HealthProperty;
-import openrr.world.properties.OreAppearance;
-import openrr.world.properties.Transportable;
 import openrr.world.properties.input.KeyboardMapController;
 import openrr.world.properties.input.MouseProbeTracker;
+import openrr.world.properties.transportables.ChrystalAppearance;
+import openrr.world.properties.transportables.OreAcceptingBuilding;
+import openrr.world.properties.transportables.OreAppearance;
+import openrr.world.properties.transportables.Transportable;
 import openrr.world.properties.utility.PrioritiesUpdater;
 import orre.gameWorld.core.Property;
 
@@ -72,7 +73,8 @@ public enum ORRPropertyType {
 	UPGRADE_STATION_PLACER(UpgradeStationPlacer.class), 
 	MINING_LASER_APPEARANCE(MiningLaserAppearance.class), 
 	MINING_LASER_PLACER(MiningLaserPlacer.class),
-	PRIORITIES_UPDATER(PrioritiesUpdater.class),
+	PRIORITIES_UPDATER(PrioritiesUpdater.class), 
+	ORE_ACCEPTING_BUILDING(OreAcceptingBuilding.class),
 	;
 	
 	public final Class<? extends Property> propertyClass;

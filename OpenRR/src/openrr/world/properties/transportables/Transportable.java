@@ -1,4 +1,4 @@
-package openrr.world.properties;
+package openrr.world.properties.transportables;
 
 import openrr.ai.TaskType;
 import openrr.ai.tasks.CollectOreTask;

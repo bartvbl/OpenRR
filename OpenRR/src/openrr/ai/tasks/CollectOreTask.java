@@ -34,8 +34,9 @@ public class CollectOreTask extends Task {
 		Assignment pickupAssignment = new Assignment(completedTasks, new Plan(plannedActions));
 		
 		//step 2: deliver the ore to some place.
-		Assignment deliveryAssignment = taskMaster.findAssignment(new MapTaskRequest(request.targetID, new TaskType[]{TaskType.DELIVER_CHRYSTAL}, location));
+		Assignment deliveryAssignment = taskMaster.findAssignment(new MapTaskRequest(request.targetID, new TaskType[]{TaskType.DELIVER_ORE}, location));
 		
-		return pickupAssignment.next(deliveryAssignment);
+		Assignment collectOreAssignment = pickupAssignment.next(deliveryAssignment);
+		return collectOreAssignment;
 	}
 }
