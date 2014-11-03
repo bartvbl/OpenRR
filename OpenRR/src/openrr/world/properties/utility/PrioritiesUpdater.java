@@ -21,6 +21,7 @@ public class PrioritiesUpdater extends Property {
 			COLLECT_ORE,
 			CLEAR_RUBBLE,
 			DRIVE_VEHICLE,
+			DELIVER_ORE,
 			GET_TOOL,
 			IDLE
 	};

@@ -31,7 +31,7 @@ public class OreAppearance extends Appearance {
 
 	@Override
 	protected void initAppearance() {
-		this.appearance.getRootNode().setLocation(48.5, 50.5, 0);
+		this.appearance.getRootNode().setLocation(47.5, 49.5, 0);
 	}
 
 	@Override
