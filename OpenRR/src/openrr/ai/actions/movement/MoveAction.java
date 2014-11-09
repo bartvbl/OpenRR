@@ -1,5 +1,7 @@
 package openrr.ai.actions.movement;
 
+import org.lwjgl.util.vector.Vector3f;
+
 import openrr.ai.MapTileNode;
 import openrr.ai.taskRequests.MapTaskRequest;
 import openrr.map.world.MapTileReader;
@@ -9,6 +11,7 @@ import orre.ai.pathFinding.AStar;
 import orre.ai.pathFinding.Path;
 import orre.ai.tasks.Action;
 import orre.ai.tasks.TaskRequest;
+import orre.animation.AnimationType;
 import orre.gameWorld.core.GameWorld;
 import orre.gameWorld.core.PropertyDataType;
 import orre.geom.Point2D;
@@ -19,7 +22,15 @@ import orre.sceneGraph.CoordinateNode;
 public class MoveAction extends Action {
 
 	private static final AStar astar = new AStar();
-	private final CoordinateNode targetNode;
+
+	private boolean hasStarted = false;
+	private boolean hasFinished = false;
+	private MapTileNode nextNode;
+	
+	private final Mesh3D target;
+	private final GameWorld world;
+	private final double movementSpeed;
+
 	
 	public static MoveAction plan(int targetID, Point2D start, Point2D destination, GameWorld world) {
 		int mapID = world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];
@@ -31,15 +42,19 @@ public class MoveAction extends Action {
 		
 		Mesh3D rootNode = (Mesh3D) world.requestPropertyData(targetID, PropertyDataType.APPEARANCE, null, Mesh3D.class);
 		
-		return new MoveAction(pathToTask, rootNode.root);
+		return new MoveAction(pathToTask, targetID, rootNode, world);
 	}
 	
-	private MoveAction(Path pathToTask, CoordinateNode targetNode) {
+	private MoveAction(Path pathToTask, int targetID, Mesh3D target, GameWorld world) {
 		this.path = pathToTask;
-		this.targetNode = targetNode;
+		this.target = target;
+		this.world = world;
+		this.movementSpeed = (double)world.requestPropertyData(targetID, ORRPropertyDataType.MOVEMENT_SPEED_SOIL, (Double)1d, Double.class);
+		this.nextNode = (MapTileNode) path.getStartingState();
 	}
 	
 	private final Path path;
+	private int walkingAnimationID;
 
 	@Override
 	public boolean isExecutionPossible() {
@@ -48,12 +63,38 @@ public class MoveAction extends Action {
 
 	@Override
 	public void update() {
+		if(!hasStarted) {
+			this.walkingAnimationID = this.world.services.animationService.applyAnimation(AnimationType.raiderWalking, target);
+		}
 		
+		double angle = Math.atan2(nextNode.y - target.root.getY(), nextNode.x - target.root.getX());
+		double dx = Math.cos(angle)*movementSpeed;
+		double dy = Math.sin(angle)*movementSpeed;
+		
+		this.target.root.translate(dx, dy, 0);
+		this.target.root.setRotationZ(Math.toDegrees(angle) + 90);
+		
+		
+		dx = target.root.getX() - nextNode.x;
+		dy = target.root.getY() - nextNode.y;
+		double distanceToTarget = Math.sqrt(dx*dx + dy*dy);
+		
+		if(distanceToTarget < 1.1 * movementSpeed) {
+			if(path.hasFinished()) {
+				this.hasFinished = true;
+			} else {
+				this.nextNode = (MapTileNode) path.getNextState();
+			}
+		}
+		
+		if(path.hasFinished()) {
+			this.world.services.animationService.stopAnimation(walkingAnimationID);
+		}
 	}
 
 	@Override
 	public boolean isFinished() {
-		return path.hasFinished();
+		return hasFinished;
 	}
 
 	@Override
