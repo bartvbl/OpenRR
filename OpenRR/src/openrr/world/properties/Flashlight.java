@@ -21,7 +21,7 @@ public class Flashlight extends Property {
 	private MapTileReader reader;
 
 	public Flashlight(GameObject gameObject) {
-		super(ORRPropertyType.LIGHT, gameObject);
+		super(ORRPropertyType.LIGHT, gameObject, true);
 	}
 
 	@Override

@@ -38,7 +38,7 @@ public abstract class BuildingPlacer extends Property {
 	private Orientation orientation;
 	
 	public BuildingPlacer(Enum<?> type, GameObject gameObject, TileContents[][] buildingMap, ORRGameObjectType building) {
-		super(type, gameObject);
+		super(type, gameObject, true);
 		this.buildingType = building;
 		this.buildingMap = buildingMap;
 	}

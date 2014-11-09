@@ -17,7 +17,7 @@ public class MouseProbeTracker extends Property {
 	private double mouseY;
 
 	public MouseProbeTracker(GameObject gameObject) {
-		super(ORRPropertyType.MOUSE_PROBE_TRACKER, gameObject);
+		super(ORRPropertyType.MOUSE_PROBE_TRACKER, gameObject, true);
 	}
 
 	@Override

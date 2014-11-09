@@ -13,10 +13,12 @@ import orre.gameWorld.core.GameWorld;
 import orre.gameWorld.core.PropertyDataType;
 import orre.geom.Point2D;
 import orre.geom.mesh.Model;
+import orre.sceneGraph.CoordinateNode;
 
 public class MoveAction extends Action {
 
 	private static final AStar astar = new AStar();
+	private final CoordinateNode targetNode;
 	
 	public static MoveAction plan(int targetID, Point2D start, Point2D destination, GameWorld world) {
 		int mapID = world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];
@@ -26,12 +28,14 @@ public class MoveAction extends Action {
 		MapTileNode unitLocation = new MapTileNode(reader, destination.x, destination.y);
 		Path pathToTask = astar.findPath(unitLocation, taskLocation);
 		
-		return new MoveAction(pathToTask);
+		CoordinateNode rootNode = (CoordinateNode) world.requestPropertyData(targetID, PropertyDataType.APPEARANCE, null, CoordinateNode.class);
+		
+		return new MoveAction(pathToTask, rootNode);
 	}
-
 	
-	private MoveAction(Path pathToTask) {
+	private MoveAction(Path pathToTask, CoordinateNode targetNode) {
 		this.path = pathToTask;
+		this.targetNode = targetNode;
 	}
 	
 	private final Path path;
