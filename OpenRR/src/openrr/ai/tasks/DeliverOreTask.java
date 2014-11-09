@@ -2,8 +2,8 @@ package openrr.ai.tasks;
 
 import openrr.ai.TaskType;
 import openrr.ai.actions.DropoffAction;
-import openrr.ai.actions.MoveAction;
 import openrr.ai.actions.PickupAction;
+import openrr.ai.actions.movement.MoveAction;
 import openrr.ai.taskRequests.MapTaskRequest;
 import orre.ai.tasks.Action;
 import orre.ai.tasks.Assignment;

@@ -1,4 +1,4 @@
-package openrr.ai.actions;
+package openrr.ai.actions.movement;
 
 import openrr.ai.MapTileNode;
 import openrr.ai.taskRequests.MapTaskRequest;
@@ -12,6 +12,7 @@ import orre.ai.tasks.TaskRequest;
 import orre.gameWorld.core.GameWorld;
 import orre.gameWorld.core.PropertyDataType;
 import orre.geom.Point2D;
+import orre.geom.mesh.Mesh3D;
 import orre.geom.mesh.Model;
 import orre.sceneGraph.CoordinateNode;
 
@@ -28,9 +29,9 @@ public class MoveAction extends Action {
 		MapTileNode unitLocation = new MapTileNode(reader, destination.x, destination.y);
 		Path pathToTask = astar.findPath(unitLocation, taskLocation);
 		
-		CoordinateNode rootNode = (CoordinateNode) world.requestPropertyData(targetID, PropertyDataType.APPEARANCE, null, CoordinateNode.class);
+		Mesh3D rootNode = (Mesh3D) world.requestPropertyData(targetID, PropertyDataType.APPEARANCE, null, Mesh3D.class);
 		
-		return new MoveAction(pathToTask, rootNode);
+		return new MoveAction(pathToTask, rootNode.root);
 	}
 	
 	private MoveAction(Path pathToTask, CoordinateNode targetNode) {

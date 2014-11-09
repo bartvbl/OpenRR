@@ -24,6 +24,7 @@ import openrr.world.buildings.toolStore.ToolStoreAppearance;
 import openrr.world.buildings.upgradeStation.UpgradeStationAppearance;
 import openrr.world.creatures.monster.MonsterTaskExecutor;
 import openrr.world.creatures.rockRaider.RockRaiderAppearance;
+import openrr.world.creatures.rockRaider.RockRaiderMovementSpeed;
 import openrr.world.creatures.rockRaider.RockRaiderTaskExecutor;
 import openrr.world.creatures.slug.SlugTaskExecutor;
 import openrr.world.properties.Flashlight;
@@ -74,7 +75,8 @@ public enum ORRPropertyType {
 	MINING_LASER_APPEARANCE(MiningLaserAppearance.class), 
 	MINING_LASER_PLACER(MiningLaserPlacer.class),
 	PRIORITIES_UPDATER(PrioritiesUpdater.class), 
-	ORE_ACCEPTING_BUILDING(OreAcceptingBuilding.class),
+	ORE_ACCEPTING_BUILDING(OreAcceptingBuilding.class), 
+	ROCK_RAIDER_MOVEMENT(RockRaiderMovementSpeed.class),
 	;
 	
 	public final Class<? extends Property> propertyClass;
