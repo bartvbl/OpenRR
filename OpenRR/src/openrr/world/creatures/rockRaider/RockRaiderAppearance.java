@@ -37,7 +37,6 @@ public class RockRaiderAppearance extends Appearance {
 	protected void initAppearance() {
 		appearance.getRootNode().setLocation(2.5, 2.5, 0);
 		appearance.getRootNode().rotate(0, 0, 180);
-		gameObject.world.services.animationService.applyAnimation(AnimationType.raiderWalking, appearance);
 	}
 
 	@Override

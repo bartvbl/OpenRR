@@ -18,7 +18,7 @@ public class MoveAction extends Action {
 
 	private static final AStar astar = new AStar();
 	
-	public static MoveAction plan(Point2D start, Point2D destination, GameWorld world) {
+	public static MoveAction plan(int targetID, Point2D start, Point2D destination, GameWorld world) {
 		int mapID = world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];
 		
 		MapTileReader reader = (MapTileReader) world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);

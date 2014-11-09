@@ -31,7 +31,7 @@ public class DeliverOreTask extends Task {
 			throw new RuntimeException("ORR tasks need to have MapTaskRequests!");
 		}
 		MapTaskRequest mapRequest = (MapTaskRequest) request;
-		MoveAction moveToBuildingAction = MoveAction.plan(mapRequest.locationOnMap, buildingLocation, world);
+		MoveAction moveToBuildingAction = MoveAction.plan(request.targetID, mapRequest.locationOnMap, buildingLocation, world);
 		DropoffAction pickupAction = DropoffAction.plan(request, world);
 		Action[] plannedActions = {moveToBuildingAction, pickupAction};
 		Task[] completedTasks = {this};
