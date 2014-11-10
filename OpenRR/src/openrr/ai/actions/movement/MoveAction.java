@@ -59,6 +59,7 @@ public class MoveAction extends Action {
 	public void update() {
 		if(!hasStarted) {
 			this.walkingAnimationID = this.world.services.animationService.applyAnimation(AnimationType.raiderWalking, target);
+			hasStarted = true;
 		}
 		
 		if(!hasFinished) {
@@ -78,13 +79,10 @@ public class MoveAction extends Action {
 		if(distanceToTarget < 1.1 * movementSpeed) {
 			if(path.hasFinished()) {
 				this.hasFinished = true;
+				this.world.services.animationService.stopAnimation(walkingAnimationID);
 			} else {
 				this.nextNode = (MapTileNode) path.getNextState();
 			}
-		}
-		
-		if(this.hasFinished) {
-			this.world.services.animationService.stopAnimation(walkingAnimationID);
 		}
 	}
 
