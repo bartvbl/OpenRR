@@ -13,7 +13,7 @@ public class RockRaiderMovementSpeed extends MovementSettingsProperty {
 
 	@Override
 	protected double getSoilMovementSpeed() {
-		return 0.1;
+		return 0.02;
 	}
 
 	@Override
