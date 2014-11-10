@@ -36,8 +36,8 @@ public class MoveAction extends Action {
 		int mapID = world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];
 		
 		MapTileReader reader = (MapTileReader) world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
-		MapTileNode taskLocation = new MapTileNode(reader, start.x, start.y);
-		MapTileNode unitLocation = new MapTileNode(reader, destination.x, destination.y);
+		MapTileNode unitLocation = new MapTileNode(reader, start.x, start.y);
+		MapTileNode taskLocation = new MapTileNode(reader, destination.x, destination.y);
 		Path pathToTask = astar.findPath(unitLocation, taskLocation);
 		
 		Mesh3D rootNode = (Mesh3D) world.requestPropertyData(targetID, PropertyDataType.APPEARANCE, null, Mesh3D.class);
@@ -67,16 +67,18 @@ public class MoveAction extends Action {
 			this.walkingAnimationID = this.world.services.animationService.applyAnimation(AnimationType.raiderWalking, target);
 		}
 		
-		double angle = Math.atan2(nextNode.y - target.root.getY(), nextNode.x - target.root.getX());
-		double dx = Math.cos(angle)*movementSpeed;
-		double dy = Math.sin(angle)*movementSpeed;
+		if(!hasFinished) {
+			double angle = Math.atan2(nextNode.y - target.root.getY(), nextNode.x - target.root.getX());
+			double dx = Math.cos(angle)*movementSpeed;
+			double dy = Math.sin(angle)*movementSpeed;
+			
+			this.target.root.translate(dx, dy, 0);
+			this.target.root.setRotationZ(Math.toDegrees(angle) + 90);
+		}
 		
-		this.target.root.translate(dx, dy, 0);
-		this.target.root.setRotationZ(Math.toDegrees(angle) + 90);
 		
-		
-		dx = target.root.getX() - nextNode.x;
-		dy = target.root.getY() - nextNode.y;
+		double dx = target.root.getX() - nextNode.x;
+		double dy = target.root.getY() - nextNode.y;
 		double distanceToTarget = Math.sqrt(dx*dx + dy*dy);
 		
 		if(distanceToTarget < 1.1 * movementSpeed) {
@@ -87,7 +89,7 @@ public class MoveAction extends Action {
 			}
 		}
 		
-		if(path.hasFinished()) {
+		if(this.hasFinished) {
 			this.world.services.animationService.stopAnimation(walkingAnimationID);
 		}
 	}
