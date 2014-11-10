@@ -35,7 +35,7 @@ public class CollectOreTask extends ORRTask {
 		Assignment pickupAssignment = new Assignment(completedTasks, new Plan(plannedActions));
 		
 		//step 2: deliver the ore to some place.
-		Assignment deliveryAssignment = taskMaster.findAssignment(new MapTaskRequest(gameObjectID, new TaskType[]{TaskType.DELIVER_ORE}, location));
+		Assignment deliveryAssignment = taskMaster.findAssignment(new MapTaskRequest(request.targetID, new TaskType[]{TaskType.DELIVER_ORE}, location));
 		
 		Assignment collectOreAssignment = pickupAssignment.next(deliveryAssignment);
 		return collectOreAssignment;

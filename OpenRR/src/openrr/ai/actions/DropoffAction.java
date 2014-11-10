@@ -26,7 +26,7 @@ public class DropoffAction  extends Action {
 
 	@Override
 	public boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	@Override

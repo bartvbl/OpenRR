@@ -1,23 +1,17 @@
 package openrr.ai.actions.movement;
 
-import org.lwjgl.util.vector.Vector3f;
-
 import openrr.ai.MapTileNode;
-import openrr.ai.taskRequests.MapTaskRequest;
 import openrr.map.world.MapTileReader;
 import openrr.world.core.ORRGameObjectType;
 import openrr.world.core.ORRPropertyDataType;
 import orre.ai.pathFinding.AStar;
 import orre.ai.pathFinding.Path;
 import orre.ai.tasks.Action;
-import orre.ai.tasks.TaskRequest;
 import orre.animation.AnimationType;
 import orre.gameWorld.core.GameWorld;
 import orre.gameWorld.core.PropertyDataType;
 import orre.geom.Point2D;
 import orre.geom.mesh.Mesh3D;
-import orre.geom.mesh.Model;
-import orre.sceneGraph.CoordinateNode;
 
 public class MoveAction extends Action {
 
@@ -30,7 +24,7 @@ public class MoveAction extends Action {
 	private final Mesh3D target;
 	private final GameWorld world;
 	private final double movementSpeed;
-
+ 
 	
 	public static MoveAction plan(int targetID, Point2D start, Point2D destination, GameWorld world) {
 		int mapID = world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];

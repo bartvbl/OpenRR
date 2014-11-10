@@ -26,7 +26,7 @@ public class PickupAction extends Action {
 
 	@Override
 	public boolean isFinished() {
-		return false;
+		return true;
 	}
 
 	@Override
