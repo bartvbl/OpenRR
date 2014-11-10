@@ -25,11 +25,6 @@ public class OreAppearance extends Appearance {
 	}
 
 	@Override
-	public void destroy() {
-
-	}
-
-	@Override
 	protected void initAppearance() {
 		this.appearance.getRootNode().setLocation(47.5, 49.5, 0);
 	}
@@ -38,6 +33,12 @@ public class OreAppearance extends Appearance {
 	protected void placeAppearanceInScene() {
 		SceneNode mapRoot = MapWorldUtils.getMapRoot(gameObject.world);
 		mapRoot.addChild(this.appearance.getRootNode());
+	}
+
+	@Override
+	protected void removeAppearenceFromScene() {
+		SceneNode mapRoot = MapWorldUtils.getMapRoot(gameObject.world);
+		mapRoot.removeChild(this.appearance.getRootNode());
 	}
 
 }

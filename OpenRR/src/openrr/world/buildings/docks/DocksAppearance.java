@@ -24,11 +24,6 @@ public class DocksAppearance extends Appearance {
 	}
 
 	@Override
-	public void destroy() {
-		
-	}
-
-	@Override
 	protected void initAppearance() {
 		
 	}
@@ -37,5 +32,11 @@ public class DocksAppearance extends Appearance {
 	protected void placeAppearanceInScene() {
 		SceneNode mapRoot = MapWorldUtils.getMapRoot(gameObject.world);
 		mapRoot.addChild(this.appearance.getRootNode());
+	}
+
+	@Override
+	protected void removeAppearenceFromScene() {
+		SceneNode mapRoot = MapWorldUtils.getMapRoot(gameObject.world);
+		mapRoot.removeChild(this.appearance.getRootNode());
 	}
 }
