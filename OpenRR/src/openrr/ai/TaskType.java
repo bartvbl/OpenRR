@@ -34,4 +34,7 @@ public enum TaskType {
 	SUCK_CHRYSTAL_POWER,
 	SLEEP,
 	RUN_AWAY, 
+	
+	//building tasks
+	TELEPORT_ROCK_RAIDER,
 }
