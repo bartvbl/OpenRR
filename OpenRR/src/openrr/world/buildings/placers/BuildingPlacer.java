@@ -70,6 +70,10 @@ public abstract class BuildingPlacer extends Property {
 		model.getRootNode().setRotation(0, 0, getRotationAngle());
 		Animation teleportAnimation = BuildingAnimationGenerator.generateAnimationFor(model);
 		this.gameObject.world.services.animationService.applyAnimation(teleportAnimation, model);
+		
+		//already de-register here.
+		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "select");
+		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "back");
 	}
 
 	@Override
@@ -132,8 +136,6 @@ public abstract class BuildingPlacer extends Property {
 
 	@Override
 	public void destroy() {
-		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "select");
-		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "back");
 		SceneNode mapNode = MapWorldUtils.getMapRoot(gameObject.world);
 		mapNode.removeChild(placerAppearance);
 	}
