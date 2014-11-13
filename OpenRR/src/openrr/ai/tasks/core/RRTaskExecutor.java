@@ -16,7 +16,7 @@ public class RRTaskExecutor extends TaskExecutor {
 	}
 
 	@Override
-	protected TaskRequest generateTaskRequest() {
+	protected final TaskRequest generateTaskRequest() {
 		Model appearance = (Model) gameObject.requestPropertyData(PropertyDataType.APPEARANCE, Model.class);
 		Point3D location = appearance.getRootNode().getLocation();
 		Point2D location2D = location.in2D();

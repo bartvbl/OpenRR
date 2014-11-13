@@ -1,5 +1,6 @@
 package openrr.world.core;
 
+import openrr.ai.tasks.core.TaskExecutors;
 import openrr.map.world.MapAppearance;
 import openrr.map.world.MapModel;
 import openrr.world.buildings.docks.DocksAppearance;
@@ -25,7 +26,6 @@ import openrr.world.buildings.upgradeStation.UpgradeStationAppearance;
 import openrr.world.creatures.monster.MonsterTaskExecutor;
 import openrr.world.creatures.rockRaider.RockRaiderAppearance;
 import openrr.world.creatures.rockRaider.RockRaiderMovementSpeed;
-import openrr.world.creatures.rockRaider.RockRaiderTaskExecutor;
 import openrr.world.creatures.slug.SlugTaskExecutor;
 import openrr.world.properties.Flashlight;
 import openrr.world.properties.GravityProperty;
@@ -43,7 +43,6 @@ public enum ORRPropertyType {
 	HEALTH(HealthProperty.class), 
 	LIGHT(Flashlight.class), 
 	GRAVITY(GravityProperty.class), 
-	ROCK_RAIDER_APPEARANCE(RockRaiderAppearance.class), 
 	TRANSPORTABLE(Transportable.class), 
 	ORE_APPEARANCE(OreAppearance.class), 
 	CHRYSTAL_APPEARANCE(ChrystalAppearance.class),
@@ -67,7 +66,6 @@ public enum ORRPropertyType {
 	SNACKBAR_APPEARANCE(SnackbarAppearance.class), 
 	SUPER_TELEPORT_PLACER(SuperTeleportPlacer.class),
 	SUPER_TELEPORT_APPEARANCE(SuperTeleportAppearance.class),
-	ROCK_RAIDER_TASK_EXECUTOR(RockRaiderTaskExecutor.class),
 	MONSTER_TASK_EXECUTOR(MonsterTaskExecutor.class),
 	SLUG_TASK_EXECUTOR(SlugTaskExecutor.class),
 	UPGRADE_STATION_APPEARANCE(UpgradeStationAppearance.class),
@@ -76,7 +74,12 @@ public enum ORRPropertyType {
 	MINING_LASER_PLACER(MiningLaserPlacer.class),
 	PRIORITIES_UPDATER(PrioritiesUpdater.class), 
 	ORE_ACCEPTING_BUILDING(OreAcceptingBuilding.class), 
+	ROCK_RAIDER_APPEARANCE(RockRaiderAppearance.class), 
 	ROCK_RAIDER_MOVEMENT(RockRaiderMovementSpeed.class),
+	
+// Task Executors
+	ROCK_RAIDER_TASK_EXECUTOR(TaskExecutors.RockRaiderTaskExecutor.class),
+	TOOL_STORE_TASK_EXECUTOR(TaskExecutors.ToolStoreTaskExecutor.class),
 	;
 	
 	public final Class<? extends Property> propertyClass;
