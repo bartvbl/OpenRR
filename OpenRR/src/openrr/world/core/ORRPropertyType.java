@@ -1,6 +1,7 @@
 package openrr.world.core;
 
-import openrr.ai.tasks.core.TaskExecutors;
+import openrr.ai.tasks.core.RockRaiderTaskExecutor;
+import openrr.ai.tasks.core.ToolStoreTaskExecutor;
 import openrr.map.world.MapAppearance;
 import openrr.map.world.MapModel;
 import openrr.world.buildings.docks.DocksAppearance;
@@ -78,8 +79,8 @@ public enum ORRPropertyType {
 	ROCK_RAIDER_MOVEMENT(RockRaiderMovementSpeed.class),
 	
 // Task Executors
-	ROCK_RAIDER_TASK_EXECUTOR(TaskExecutors.RockRaiderTaskExecutor.class),
-	TOOL_STORE_TASK_EXECUTOR(TaskExecutors.ToolStoreTaskExecutor.class),
+	ROCK_RAIDER_TASK_EXECUTOR(RockRaiderTaskExecutor.class),
+	TOOL_STORE_TASK_EXECUTOR(ToolStoreTaskExecutor.class),
 	;
 	
 	public final Class<? extends Property> propertyClass;
