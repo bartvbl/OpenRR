@@ -60,7 +60,7 @@ public class MapAppearance extends Property {
 		rebuildMap();
 		this.gameObject.setPropertyData(ORRPropertyDataType.MAP_TILES, map.getMapTileReader());
 		this.gameObject.takeControl(new GraphicsObject(mapNode));
-		Mesh3D mapMesh = new Mesh3D("map", mapNode);
+		Mesh3D mapMesh = new Mesh3D(mapNode);
 		this.gameObject.setPropertyData(PropertyDataType.APPEARANCE, mapMesh);
 		this.gameObject.world.scene3DRoot.addChild(mapNode);
 	}
