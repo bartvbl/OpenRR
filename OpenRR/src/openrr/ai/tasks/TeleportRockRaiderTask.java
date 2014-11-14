@@ -13,6 +13,7 @@ public class TeleportRockRaiderTask extends ORRTask {
 
 	@Override
 	public Assignment plan(TaskRequest request, TaskMaster taskMaster) {
+		System.out.println("Planning..");
 		return null;
 	}
 

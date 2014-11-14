@@ -17,7 +17,6 @@ public class MoveAction extends Action {
 
 	private static final AStar astar = new AStar();
 
-	private boolean hasStarted = false;
 	private boolean hasFinished = false;
 	private MapTileNode nextNode;
 	
@@ -57,11 +56,6 @@ public class MoveAction extends Action {
 
 	@Override
 	public void update() {
-		if(!hasStarted) {
-			this.walkingAnimationID = this.world.services.animationService.applyAnimation(AnimationType.raiderWalking, target);
-			hasStarted = true;
-		}
-		
 		if(!hasFinished) {
 			double angle = Math.atan2(nextNode.y - target.root.getY(), nextNode.x - target.root.getX());
 			double dx = Math.cos(angle)*movementSpeed;
@@ -71,7 +65,6 @@ public class MoveAction extends Action {
 			this.target.root.setRotationZ(Math.toDegrees(angle) + 90);
 		}
 		
-		
 		double dx = target.root.getX() - nextNode.x;
 		double dy = target.root.getY() - nextNode.y;
 		double distanceToTarget = Math.sqrt(dx*dx + dy*dy);
@@ -79,7 +72,6 @@ public class MoveAction extends Action {
 		if(distanceToTarget < 1.1 * movementSpeed) {
 			if(path.hasFinished()) {
 				this.hasFinished = true;
-				this.world.services.animationService.stopAnimation(walkingAnimationID);
 			} else {
 				this.nextNode = (MapTileNode) path.getNextState();
 			}
@@ -95,5 +87,14 @@ public class MoveAction extends Action {
 	public double getCost() {
 		return path.getStepCount();
 	}
-	
+
+	@Override
+	public void start() {
+		this.walkingAnimationID = this.world.services.animationService.applyAnimation(AnimationType.raiderWalking, target);
+	}
+
+	@Override
+	public void end() {
+		this.world.services.animationService.stopAnimation(walkingAnimationID);
+	}
 }

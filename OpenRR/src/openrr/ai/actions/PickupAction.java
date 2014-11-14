@@ -9,10 +9,8 @@ import orre.gameWorld.core.MessageHandler;
 import orre.gameWorld.core.MessageType;
 import orre.gameWorld.core.PropertyDataType;
 import orre.geom.mesh.Mesh3D;
-import orre.sceneGraph.CoordinateNode;
 
 public class PickupAction extends Action implements MessageHandler {
-	private boolean hasStarted = false;
 	private boolean isFinished = false;
 	
 	private final Mesh3D rootNode;
@@ -37,12 +35,6 @@ public class PickupAction extends Action implements MessageHandler {
 
 	@Override
 	public void update() {
-		if(!hasStarted) {
-			world.services.animationService.applyAnimation(AnimationType.raiderPickup, rootNode);
-			world.addMessageListener(MessageType.ANIMATION_ENDED, this);
-			hasStarted = true;
-			world.despawnObject(pickupObjectID);
-		}
 		
 	}
 
@@ -61,6 +53,18 @@ public class PickupAction extends Action implements MessageHandler {
 		if(message.type == MessageType.ANIMATION_ENDED) {
 			this.isFinished = true;
 		}
+	}
+
+	@Override
+	public void start() {
+		world.services.animationService.applyAnimation(AnimationType.raiderPickup, rootNode);
+		world.addMessageListener(MessageType.ANIMATION_ENDED, this);
+		world.despawnObject(pickupObjectID);
+	}
+
+	@Override
+	public void end() {
+		
 	}
 
 }

@@ -33,4 +33,14 @@ public class DropoffAction  extends Action {
 	public double getCost() {
 		return 0; //0: not relevant for cost calculations
 	}
+
+	@Override
+	public void start() {
+		
+	}
+
+	@Override
+	public void end() {
+		
+	}
 }

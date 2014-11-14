@@ -34,7 +34,7 @@ public class DeliverOreTask extends Task {
 		MoveAction moveToBuildingAction = MoveAction.plan(request.targetID, mapRequest.locationOnMap, buildingLocation, world);
 		DropoffAction pickupAction = DropoffAction.plan(request, world);
 		Action[] plannedActions = {moveToBuildingAction, pickupAction};
-		Task[] completedTasks = {this};
+		Task[] completedTasks = {}; //doesn't include deliver ore task, as it can be completed multiple times
 		return new Assignment(completedTasks, new Plan(plannedActions));
 	}
 
