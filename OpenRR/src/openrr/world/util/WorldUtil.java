@@ -17,4 +17,8 @@ public class WorldUtil {
 		return new Point2D((int)appearance.getRootNode().getX(), (int) appearance.getRootNode().getY());
 	}
 
+	public static Model getAppearance(int targetID, GameWorld world) {
+		return (Model) world.requestPropertyData(targetID, PropertyDataType.APPEARANCE, null, Model.class);
+	}
+
 }

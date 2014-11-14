@@ -1,5 +1,6 @@
 package openrr.ai.actions;
 
+import openrr.world.buildings.animations.BuildingAnimationGenerator;
 import openrr.world.core.ORRGameObjectType;
 import openrr.world.util.WorldUtil;
 import orre.ai.tasks.Action;
@@ -45,9 +46,8 @@ public class TeleportAction extends Action {
 
 	@Override
 	public void start() {
-		System.out.println("Started!");
 		int raiderID = world.spawnGameObject(ORRGameObjectType.ROCK_RAIDER);
-		this.action = AnimationAction.plan(raiderID, AnimationType.teleportRockRaider, world);
+		this.action = AnimationAction.plan(raiderID, BuildingAnimationGenerator.generateAnimationFor(WorldUtil.getAppearance(raiderID, world)), world);
 		CoordinateNode teleporterRoot = WorldUtil.getRootNode(request.targetID, world);
 		CoordinateNode raiderRoot = WorldUtil.getRootNode(raiderID, world);
 		raiderRoot.setLocation(teleporterRoot.getX(), teleporterRoot.getY(), 0);
