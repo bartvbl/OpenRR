@@ -9,7 +9,7 @@ import orre.geom.Point2D;
 import orre.geom.Point3D;
 import orre.geom.mesh.Model;
 
-public class RRTaskExecutor extends TaskExecutor {
+public abstract class RRTaskExecutor extends TaskExecutor {
 
 	public RRTaskExecutor(GameObject gameObject, Enum<?> propertyType, Enum<?>[] assignableTaskTypes) {
 		super(gameObject, propertyType, assignableTaskTypes);
