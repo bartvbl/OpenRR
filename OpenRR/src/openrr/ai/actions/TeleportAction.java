@@ -7,6 +7,7 @@ import openrr.world.core.ORRGameObjectType;
 import openrr.world.util.WorldUtil;
 import orre.ai.tasks.Action;
 import orre.ai.tasks.TaskRequest;
+import orre.animation.Animation;
 import orre.animation.AnimationType;
 import orre.gameWorld.core.GameWorld;
 import orre.geom.mesh.Model;
@@ -51,11 +52,13 @@ public class TeleportAction extends Action {
 	public void start() {
 		int raiderID = world.spawnGameObject(ORRGameObjectType.ROCK_RAIDER);
 		Model rockRaiderAppearance = WorldUtil.getAppearance(raiderID, world);
-		this.action = AnimationAction.plan(raiderID, BuildingAnimationGenerator.generateAnimationFor(rockRaiderAppearance), world);
+		Animation teleportRaiderAnimation = BuildingAnimationGenerator.generateAnimationFor(rockRaiderAppearance);
+		this.action = AnimationAction.plan(raiderID, teleportRaiderAnimation, world);
 		CoordinateNode teleporterRoot = WorldUtil.getRootNode(request.targetID, world);
 		CoordinateNode raiderRoot = WorldUtil.getRootNode(raiderID, world);
 		raiderRoot.setLocation(teleporterRoot.getX(), teleporterRoot.getY(), 0);
 		raiderRoot.setRotationZ(teleporterRoot.getRotationZ());
+		action.start();
 	}
 
 	@Override

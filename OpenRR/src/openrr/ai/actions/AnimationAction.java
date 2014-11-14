@@ -36,6 +36,7 @@ public class AnimationAction extends Action implements MessageHandler {
 		this.animationType = type;
 		this.world = world;
 		this.animation = null;
+		world.addMessageListener(MessageType.ANIMATION_ENDED, this);
 	}
 
 	public AnimationAction(Mesh3D rootNode, Animation animation, GameWorld world) {
@@ -43,6 +44,7 @@ public class AnimationAction extends Action implements MessageHandler {
 		this.animation = animation;
 		this.world = world;
 		this.animationType = null;
+		world.addMessageListener(MessageType.ANIMATION_ENDED, this);
 	}
 
 	@Override
@@ -82,6 +84,7 @@ public class AnimationAction extends Action implements MessageHandler {
 		} else {
 			this.animationID = world.services.animationService.applyAnimation(animation, rootNode);
 		}
+		System.out.println("Animation ID: " + animationID);
 		world.addMessageListener(MessageType.ANIMATION_ENDED, this);
 	}
 
