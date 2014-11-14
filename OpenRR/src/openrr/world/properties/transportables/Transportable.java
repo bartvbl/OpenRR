@@ -25,7 +25,7 @@ public class Transportable extends Property {
 	public void tick() {
 		Model appearance = (Model) gameObject.requestPropertyData(PropertyDataType.APPEARANCE, Model.class);
 		Point3D location = appearance.getRootNode().getLocation();
-		gameObject.world.services.aiService.registerTask(new CollectOreTask(gameObject.id, location.in2D(), gameObject.world));
+		gameObject.world.services.aiService.registerTask(new CollectOreTask(gameObject.id, location.in2D()));
 	}
 
 	@Override

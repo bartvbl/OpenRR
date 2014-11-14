@@ -23,7 +23,7 @@ public class OreAcceptingBuilding extends Property {
 	public void tick() {
 		Model appearance = (Model) gameObject.requestPropertyData(PropertyDataType.APPEARANCE, Model.class);
 		Point3D location = appearance.getRootNode().getLocation();
-		this.gameObject.world.services.aiService.registerTask(new DeliverOreTask(gameObject.id, location.in2D(), gameObject.world));
+		this.gameObject.world.services.aiService.registerTask(new DeliverOreTask(gameObject.id, location.in2D()));
 	}
 
 	@Override

@@ -16,16 +16,14 @@ import orre.geom.Point2D;
 public class CollectOreTask extends ORRTask {
 
 	private final Point2D location;
-	private final GameWorld world;
 
-	public CollectOreTask(int gameObjectID, Point2D oreLocation, GameWorld world) {
+	public CollectOreTask(int gameObjectID, Point2D oreLocation) {
 		super(TaskType.COLLECT_ORE, gameObjectID);
 		this.location = oreLocation;
-		this.world = world;
 	}
 
 	@Override
-	public Assignment plan(TaskRequest request, TaskMaster taskMaster) {
+	public Assignment plan(TaskRequest request, TaskMaster taskMaster, GameWorld world) {
 		//step 1: move to ore, and pick it up.
 		MapTaskRequest mapRequest = getMapTaskRequest(request);
 		MoveAction moveToOreAction = MoveAction.plan(request.targetID, mapRequest.locationOnMap, location, world);

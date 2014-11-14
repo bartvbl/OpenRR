@@ -15,18 +15,15 @@ import orre.gameWorld.core.GameWorld;
 import orre.geom.Point2D;
 
 public class DeliverOreTask extends Task {
-
-	private final GameWorld world;
 	private final Point2D buildingLocation;
 
-	public DeliverOreTask(int gameObjectID, Point2D buildingLocation, GameWorld world) {
+	public DeliverOreTask(int gameObjectID, Point2D buildingLocation) {
 		super(TaskType.DELIVER_ORE, gameObjectID);
-		this.world = world;
 		this.buildingLocation = buildingLocation;
 	}
 
 	@Override
-	public Assignment plan(TaskRequest request, TaskMaster taskMaster) {
+	public Assignment plan(TaskRequest request, TaskMaster taskMaster, GameWorld world) {
 		if(!(request instanceof MapTaskRequest)) {
 			throw new RuntimeException("ORR tasks need to have MapTaskRequests!");
 		}
