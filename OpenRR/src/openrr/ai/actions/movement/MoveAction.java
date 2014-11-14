@@ -12,6 +12,7 @@ import orre.gameWorld.core.GameWorld;
 import orre.gameWorld.core.PropertyDataType;
 import orre.geom.Point2D;
 import orre.geom.mesh.Mesh3D;
+import orre.geom.mesh.Model;
 
 public class MoveAction extends Action {
 
@@ -20,7 +21,7 @@ public class MoveAction extends Action {
 	private boolean hasFinished = false;
 	private MapTileNode nextNode;
 	
-	private final Mesh3D target;
+	private final Model target;
 	private final GameWorld world;
 	private final double movementSpeed;
  
@@ -33,12 +34,12 @@ public class MoveAction extends Action {
 		MapTileNode taskLocation = new MapTileNode(reader, destination.x, destination.y);
 		Path pathToTask = astar.findPath(unitLocation, taskLocation);
 		
-		Mesh3D rootNode = (Mesh3D) world.requestPropertyData(targetID, PropertyDataType.APPEARANCE, null, Mesh3D.class);
+		Model rootNode = (Model) world.requestPropertyData(targetID, PropertyDataType.APPEARANCE, null, Model.class);
 		
 		return new MoveAction(pathToTask, targetID, rootNode, world);
 	}
 	
-	private MoveAction(Path pathToTask, int targetID, Mesh3D target, GameWorld world) {
+	private MoveAction(Path pathToTask, int targetID, Model target, GameWorld world) {
 		this.path = pathToTask;
 		this.target = target;
 		this.world = world;
@@ -57,16 +58,16 @@ public class MoveAction extends Action {
 	@Override
 	public void update() {
 		if(!hasFinished) {
-			double angle = Math.atan2(nextNode.y - target.root.getY(), nextNode.x - target.root.getX());
+			double angle = Math.atan2(nextNode.y - target.getRootNode().getY(), nextNode.x - target.getRootNode().getX());
 			double dx = Math.cos(angle)*movementSpeed;
 			double dy = Math.sin(angle)*movementSpeed;
 			
-			this.target.root.translate(dx, dy, 0);
-			this.target.root.setRotationZ(Math.toDegrees(angle) + 90);
+			this.target.getRootNode().translate(dx, dy, 0);
+			this.target.getRootNode().setRotationZ(Math.toDegrees(angle) + 90);
 		}
 		
-		double dx = target.root.getX() - nextNode.x;
-		double dy = target.root.getY() - nextNode.y;
+		double dx = target.getRootNode().getX() - nextNode.x;
+		double dy = target.getRootNode().getY() - nextNode.y;
 		double distanceToTarget = Math.sqrt(dx*dx + dy*dy);
 		
 		if(distanceToTarget < 1.1 * movementSpeed) {

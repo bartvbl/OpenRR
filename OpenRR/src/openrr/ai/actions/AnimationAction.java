@@ -84,7 +84,6 @@ public class AnimationAction extends Action implements MessageHandler {
 		} else {
 			this.animationID = world.services.animationService.applyAnimation(animation, rootNode);
 		}
-		System.out.println("Animation ID: " + animationID);
 		world.addMessageListener(MessageType.ANIMATION_ENDED, this);
 	}
 

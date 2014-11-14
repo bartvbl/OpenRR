@@ -9,20 +9,21 @@ import orre.gameWorld.core.MessageHandler;
 import orre.gameWorld.core.MessageType;
 import orre.gameWorld.core.PropertyDataType;
 import orre.geom.mesh.Mesh3D;
+import orre.geom.mesh.Model;
 
 public class PickupAction extends Action implements MessageHandler {
 	private boolean isFinished = false;
 	
-	private final Mesh3D rootNode;
+	private final Model rootNode;
 	private final GameWorld world;
 	private final int pickupObjectID;
 	
 	public static PickupAction plan(TaskRequest request, int pickupObjectID, GameWorld world) {
-		Mesh3D rootNode = (Mesh3D) world.requestPropertyData(request.targetID, PropertyDataType.APPEARANCE, null, Mesh3D.class);
+		Model rootNode = (Model) world.requestPropertyData(request.targetID, PropertyDataType.APPEARANCE, null, Model.class);
 		return new PickupAction(rootNode, pickupObjectID, world);
 	}
 	
-	private PickupAction(Mesh3D rootNode, int pickupObjectID, GameWorld world) {
+	private PickupAction(Model rootNode, int pickupObjectID, GameWorld world) {
 		this.rootNode = rootNode;
 		this.world = world;
 		this.pickupObjectID = pickupObjectID;
