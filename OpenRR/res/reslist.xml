@@ -305,7 +305,7 @@
 	
 	<animations pathPrefix="res/anims/">
 		<animation name="raiderWalking" src="raiderWalking.anim"/>
-		<!--<animation name="teleportBuilding" src="teleportBuilding.anim" />-->
+		<animation name="teleportRockRaider" src="teleportRaider.anim" />
 		
 		<animation name="hideSidebar" src="guiTransitions/hideSidebar.anim" />
 		<animation name="showSidebar" src="guiTransitions/showSidebar.anim" />

@@ -1,7 +1,6 @@
 package openrr.ai.actions;
 
 import orre.ai.tasks.Action;
-import orre.ai.tasks.TaskRequest;
 import orre.animation.AnimationType;
 import orre.gameWorld.core.GameWorld;
 import orre.gameWorld.core.Message;
@@ -17,8 +16,8 @@ public class AnimationAction extends Action implements MessageHandler {
 	private final GameWorld world;
 	private final AnimationType animationType;
 	
-	public static AnimationAction plan(TaskRequest request, AnimationType type, GameWorld world) {
-		Mesh3D rootNode = (Mesh3D) world.requestPropertyData(request.targetID, PropertyDataType.APPEARANCE, null, Mesh3D.class);
+	public static AnimationAction plan(int targetID, AnimationType type, GameWorld world) {
+		Mesh3D rootNode = (Mesh3D) world.requestPropertyData(targetID, PropertyDataType.APPEARANCE, null, Mesh3D.class);
 		return new AnimationAction(rootNode, type, world);
 	}
 	

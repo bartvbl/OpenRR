@@ -22,9 +22,4 @@ public abstract class ORRTask extends Task {
 		return (MapTaskRequest) request;
 	}
 	
-	protected Point2D getTargetLocation(MapTaskRequest request, GameWorld world) {
-		Model appearance = (Model) world.requestPropertyData(request.targetID, PropertyDataType.APPEARANCE, null, Model.class);
-		return new Point2D((int)appearance.getRootNode().getX(), (int) appearance.getRootNode().getY());
-	}
-	
 }
