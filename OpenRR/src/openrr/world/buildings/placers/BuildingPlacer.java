@@ -49,6 +49,11 @@ public abstract class BuildingPlacer extends Property {
 		if(event.command.equals("select")) {
 			this.placeBuilding();
 		}// else: command = "back" -> despawn placer
+		
+		//already de-register here.
+		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "select");
+		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "back");
+		
 		this.gameObject.world.despawnObject(this.gameObject.id);
 	}
 
@@ -71,9 +76,7 @@ public abstract class BuildingPlacer extends Property {
 		Animation teleportAnimation = BuildingAnimationGenerator.generateAnimationFor(model);
 		this.gameObject.world.services.animationService.applyAnimation(teleportAnimation, model);
 		
-		//already de-register here.
-		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "select");
-		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "back");
+		
 	}
 
 	@Override
