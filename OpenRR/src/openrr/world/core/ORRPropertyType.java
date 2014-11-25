@@ -33,6 +33,7 @@ import openrr.world.properties.GravityProperty;
 import openrr.world.properties.HealthProperty;
 import openrr.world.properties.input.KeyboardMapController;
 import openrr.world.properties.input.MouseProbeTracker;
+import openrr.world.properties.input.MouseTileSelector;
 import openrr.world.properties.transportables.ChrystalAppearance;
 import openrr.world.properties.transportables.OreAcceptingBuilding;
 import openrr.world.properties.transportables.OreAppearance;
@@ -77,6 +78,7 @@ public enum ORRPropertyType {
 	ORE_ACCEPTING_BUILDING(OreAcceptingBuilding.class), 
 	ROCK_RAIDER_APPEARANCE(RockRaiderAppearance.class), 
 	ROCK_RAIDER_MOVEMENT(RockRaiderMovementSpeed.class),
+	MOUSE_TILE_SELECTOR(MouseTileSelector.class),
 	
 // Task Executors
 	ROCK_RAIDER_TASK_EXECUTOR(RockRaiderTaskExecutor.class),

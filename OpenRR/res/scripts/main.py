@@ -6,6 +6,7 @@ def buildMainScene(params):
 	spawn('ORE')
 	spawn('MOUSE_TRACKER')
 	spawn('FLASHLIGHT')
+	spawn('TILE_SELECTOR')
 	
 	#set up UI
 	gui.show('notificationPanel')

@@ -9,6 +9,7 @@ public enum ORRGameObjectType {
 	BUILDING_PLACEMENT		(new Enum<?>[]{}),
 	MAP_CONTROLLER			(new Enum<?>[]{KEYBOARD_MAP_CONTROLLER}),
 	MOUSE_TRACKER			(new Enum<?>[]{MOUSE_PROBE_TRACKER}),
+	TILE_SELECTOR			(new Enum<?>[]{MOUSE_TILE_SELECTOR}),
 	
 	//utility
 	PRIORITIES_UPDATER		(new Enum<?>[]{ORRPropertyType.PRIORITIES_UPDATER}),
