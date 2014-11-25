@@ -23,6 +23,7 @@ public class MouseTileSelector extends Property {
 			if(event.command.equals("select")) {
 				mouseState = event.value == 1.0;
 				if((mouseState == false) && (wasMouseDown == true)) {
+					
 					System.out.println("Clicked map!");
 				}
 				wasMouseDown = mouseState;
