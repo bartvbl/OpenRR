@@ -50,6 +50,8 @@ public abstract class BuildingPlacer extends Property {
 			this.placeBuilding();
 		}// else: command = "back" -> despawn placer
 		
+		event.consume();
+		
 		//already de-register here.
 		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "select");
 		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "back");
