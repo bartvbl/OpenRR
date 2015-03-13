@@ -20,7 +20,7 @@ public class GravityProperty extends Property {
 	private MapTileReader reader;
 
 	public GravityProperty(GameObject gameObject) {
-		super(ORRPropertyType.GRAVITY, gameObject);
+		super(ORRPropertyType.GRAVITY, gameObject, true);
 	}
 
 	@Override

@@ -1,4 +1,5 @@
-from ore import on, spawn, gui
+from ore import on, spawn, gui, ai
+from orr import registerTask
 
 orr_sideMenuState = 0
 orr_activeSideMenu = 'sideMainMenu'
@@ -92,3 +93,8 @@ def buildUpgradeStation(eventParams):
 @on('GUI_Click', action='buildMiningLaser')
 def buildUpgradeStation(eventParams):
 	spawn('MINING_LASER_PLACER')
+
+
+@on('GUI_Click', action='teleportRockRaider')
+def teleportRockRaider(eventParams):
+	registerTask('TELEPORT_ROCK_RAIDER')

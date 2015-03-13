@@ -1,0 +1,11 @@
+animation teleportRockRaider
+
+keyframe frame0 of duration instant
+translate root along z-axis for 8 units
+set root z-axis rotation to 1000 degrees
+
+keyframe frame1 of duration 3 s
+translate root along z-axis for -8 units
+rotate root -1000 degrees around z-axis 
+
+end animation

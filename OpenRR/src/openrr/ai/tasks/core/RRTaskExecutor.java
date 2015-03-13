@@ -9,14 +9,14 @@ import orre.geom.Point2D;
 import orre.geom.Point3D;
 import orre.geom.mesh.Model;
 
-public class RRTaskExecutor extends TaskExecutor {
+public abstract class RRTaskExecutor extends TaskExecutor {
 
 	public RRTaskExecutor(GameObject gameObject, Enum<?> propertyType, Enum<?>[] assignableTaskTypes) {
 		super(gameObject, propertyType, assignableTaskTypes);
 	}
 
 	@Override
-	protected TaskRequest generateTaskRequest() {
+	protected final TaskRequest generateTaskRequest() {
 		Model appearance = (Model) gameObject.requestPropertyData(PropertyDataType.APPEARANCE, Model.class);
 		Point3D location = appearance.getRootNode().getLocation();
 		Point2D location2D = location.in2D();

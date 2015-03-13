@@ -4,7 +4,8 @@ import openrr.map.world.events.MapSoilUpdate;
 import orre.gameWorld.core.EnforcedClassEnum;
 
 public enum ORRMessageType implements EnforcedClassEnum {
-	TILE_UPDATE(MapSoilUpdate.class),
+	TILE_UPDATE(MapSoilUpdate.class), 
+	BUILDING_TELEPORT_COMPLETE(Object.class),
 	;
 	
 	private final Class<?> classValue;

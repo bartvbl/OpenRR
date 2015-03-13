@@ -28,7 +28,7 @@ public class KeyboardMapController extends Property {
 	private static final double mapMoveSpeed = 0.3d;
 
 	public KeyboardMapController(GameObject gameObject) {
-		super(ORRPropertyType.KEYBOARD_MAP_CONTROLLER, gameObject);
+		super(ORRPropertyType.KEYBOARD_MAP_CONTROLLER, gameObject, true);
 	}
 
 	@Override

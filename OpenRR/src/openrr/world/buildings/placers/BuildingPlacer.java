@@ -38,7 +38,7 @@ public abstract class BuildingPlacer extends Property {
 	private Orientation orientation;
 	
 	public BuildingPlacer(Enum<?> type, GameObject gameObject, TileContents[][] buildingMap, ORRGameObjectType building) {
-		super(type, gameObject);
+		super(type, gameObject, true);
 		this.buildingType = building;
 		this.buildingMap = buildingMap;
 	}
@@ -49,6 +49,13 @@ public abstract class BuildingPlacer extends Property {
 		if(event.command.equals("select")) {
 			this.placeBuilding();
 		}// else: command = "back" -> despawn placer
+		
+		event.consume();
+		
+		//already de-register here.
+		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "select");
+		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "back");
+		
 		this.gameObject.world.despawnObject(this.gameObject.id);
 	}
 
@@ -70,6 +77,8 @@ public abstract class BuildingPlacer extends Property {
 		model.getRootNode().setRotation(0, 0, getRotationAngle());
 		Animation teleportAnimation = BuildingAnimationGenerator.generateAnimationFor(model);
 		this.gameObject.world.services.animationService.applyAnimation(teleportAnimation, model);
+		
+		
 	}
 
 	@Override
@@ -132,8 +141,6 @@ public abstract class BuildingPlacer extends Property {
 
 	@Override
 	public void destroy() {
-		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "select");
-		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "back");
 		SceneNode mapNode = MapWorldUtils.getMapRoot(gameObject.world);
 		mapNode.removeChild(placerAppearance);
 	}
