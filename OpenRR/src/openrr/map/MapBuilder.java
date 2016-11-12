@@ -23,8 +23,8 @@ import orre.sceneGraph.SceneNode;
 public class MapBuilder {
 	private static final int verticesPerTile = 6;
 	private static final int doublesPerVertex = 3 + 2 + 3; //xyz coordinate + uv texture coordinate + xyz normal coordinate
-	private static final double wallHeight = 1.1;
-	private static final double tileSide = 1;
+	private static final float wallHeight = 1.1f;
+	private static final float tileSide = 1;
 
 	public static SceneNode buildMapGeometry(MapTile[][] tileMap, MapTexturePack texturePack) {
 		int mapWidth = tileMap.length;
@@ -50,7 +50,7 @@ public class MapBuilder {
 		int numVertices = (mapSize.width) * (mapSize.height);
 		int geometryBufferSize = numVertices * verticesPerTile * doublesPerVertex;
 		
-		DoubleBuffer geometryDataBuffer = BufferUtils.createDoubleBuffer(geometryBufferSize);
+		FloatBuffer geometryDataBuffer = BufferUtils.createFloatBuffer(geometryBufferSize);
 		
 		Vector3D[][] mapVertices = calculateMapVertices(wallMap, tileMap, mapSize);
 		//0 index is for the triangle that intersects with 0, 0.5. 1 for the other.
@@ -140,15 +140,19 @@ public class MapBuilder {
 				
 				MapTile mapTile = tileMap[xCoord][yCoord];
 				double tileHeight = calculateTileEdgeHeight(wallMap, xCoord, yCoord, mapTile);
-				mapVertices[x][y] = new Vector3D(((double)x * tileSide) - (tileSide / 2d), ((double)y * tileSide) - (tileSide / 2d), tileHeight);
+				mapVertices[x][y] = new Vector3D(
+						(float) (((float)x * tileSide) - (tileSide / 2d)), 
+						(float) (((float)y * tileSide) - (tileSide / 2d)), 
+						(float) tileHeight
+					);
 			}
 		}
 		return mapVertices;
 	}
 	
-	private static void putVertices(Vertex3D[] vertices, DoubleBuffer geometryDataBuffer) {
+	private static void putVertices(Vertex3D[] vertices, FloatBuffer geometryDataBuffer) {
 		for(Vertex3D vertex : vertices) {
-			double[] vertexData = vertex.toArray();
+			float[] vertexData = vertex.toArray();
 			geometryDataBuffer.put(vertexData);
 		}
 	}
@@ -158,7 +162,7 @@ public class MapBuilder {
 		return mapTile.tileHeight[0][0] + vertexWallHeight;
 	}
 
-	private static void compileGeometryBuffer(MapTexturePack texturePack, SceneNode rootNode, DoubleBuffer geometryDataBuffer) {
+	private static void compileGeometryBuffer(MapTexturePack texturePack, SceneNode rootNode, FloatBuffer geometryDataBuffer) {
 		Material currentMaterial = texturePack.generateBoundTextureMaterial();
 		int vertexCount = geometryDataBuffer.position() / 8;
 		IntBuffer indices = generateIndexBuffer(vertexCount);

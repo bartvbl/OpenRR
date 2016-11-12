@@ -47,10 +47,10 @@ public class MapTexturePack {
 	}
 	
 	private SubTextureCoordinate generateTextureCoordinates(MapTexture texture, MapTextureCoordinate coordinate) {
-		double u1 = (double)coordinate.x / (double)texture.widthInTextures;
-		double v1 = (double)coordinate.y / (double)texture.heightInTextures;
-		double u2 = (double)(coordinate.x + 1) / (double)texture.widthInTextures;
-		double v2 = (double)(coordinate.y + 1) / (double)texture.heightInTextures;
+		float u1 = (float)coordinate.x / (float)texture.widthInTextures;
+		float v1 = (float)coordinate.y / (float)texture.heightInTextures;
+		float u2 = (float)(coordinate.x + 1) / (float)texture.widthInTextures;
+		float v2 = (float)(coordinate.y + 1) / (float)texture.heightInTextures;
 		return new SubTextureCoordinate(u1, v1, u2, v2);
 	}
 

@@ -17,7 +17,7 @@ public class PlaceVisualiser extends LeafNode {
 	private static final double cubeHeight = 0.08;
 	
 	//8 vertices * 3 values/vertex = 24
-	private final double[] vertexData = new double[24];
+	private final float[] vertexData = new float[24];
 	
 	private static final int[] indexData = new int[]{
 		1, 2, 3, 0, 2, 1,
@@ -84,9 +84,9 @@ public class PlaceVisualiser extends LeafNode {
 	private int storeVertices(int x, int y, MapTile tile, int arrayPointer, double heightAboveGround) {
 		for(int i = 0; i < 2; i++) {
 			for(int j = 0; j < 2; j++) {
-				vertexData[arrayPointer + 0] = (double) (x + i) + 0.5;
-				vertexData[arrayPointer + 1] = (double) (y + j) + 0.5;
-				vertexData[arrayPointer + 2] = tile.tileHeight[i][j] + heightAboveGround;
+				vertexData[arrayPointer + 0] = (float) (x + i) + 0.5f;
+				vertexData[arrayPointer + 1] = (float) (y + j) + 0.5f;
+				vertexData[arrayPointer + 2] = (float) (tile.tileHeight[i][j] + heightAboveGround);
 				arrayPointer += 3;
 			}
 		}

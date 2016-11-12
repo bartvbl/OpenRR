@@ -28,7 +28,7 @@ public class MapCoordinateRotator {
 		vertices[5] = createVertex(cornerVertices[3], rotatedTextureCoordinates.u1, rotatedTextureCoordinates.v2, normals[1]);
 	}
 
-	private static Vertex3D createVertex(Vector3D coordinate, double textureU, double textureV, Vector3D normal) {
+	private static Vertex3D createVertex(Vector3D coordinate, float textureU, float textureV, Vector3D normal) {
 		return new Vertex3D(coordinate.x, coordinate.y, coordinate.z, textureU, textureV, normal.x, normal.y, normal.z);
 	}
 
