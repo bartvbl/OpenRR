@@ -4,6 +4,7 @@ import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 
 import orre.gl.util.TransformMatrixUtils;
+import orre.rendering.RenderState;
 import orre.sceneGraph.Camera;
 
 public class MapCamera extends Camera {
@@ -29,7 +30,7 @@ public class MapCamera extends Camera {
 	}
 	
 	@Override
-	public void transform() {
+	public void transform(RenderState state) {
 		transformationMatrix.setIdentity();
 		transformationMatrix.translate(new Vector3f(location.x, location.y, 0));
 		transformationMatrix.rotate((float) Math.toRadians(rotation.z), zAxis);

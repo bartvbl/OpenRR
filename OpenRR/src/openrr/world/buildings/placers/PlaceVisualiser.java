@@ -7,8 +7,8 @@ import org.lwjgl.BufferUtils;
 import openrr.map.MapTile;
 import openrr.map.Orientation;
 import openrr.map.world.MapTileReader;
-import orre.gl.renderer.RenderContext;
-import orre.gl.vertexArrays.VertexArrayDrawer;
+import orre.rendering.RenderState;
+import orre.rendering.ShaderProperty;
 import orre.sceneGraph.LeafNode;
 import static org.lwjgl.opengl.GL11.*;
 
@@ -48,8 +48,8 @@ public class PlaceVisualiser extends LeafNode {
 	}
 	
 	@Override
-	public void render() {
-		RenderContext.setTexturesEnabled(false);
+	public void render(RenderState state) {
+		state.shaders.setPropertyb(ShaderProperty.TEXTURES_ENABLED, false);
 		for(int i = -1; i < 2; i++) {
 			for(int j = -1; j < 2; j++) {
 				if(buildingMap[i+1][j+1] != TileContents.EMPTY) {

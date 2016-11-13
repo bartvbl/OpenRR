@@ -2,6 +2,8 @@ package openrr.map.soil;
 
 import orre.gl.materials.Material;
 import orre.gl.texture.Texture;
+import orre.rendering.RenderState;
+import orre.rendering.ShaderProperty;
 import orre.resources.partiallyLoadables.PartiallyLoadableTexture;
 
 public class MapTexture {
@@ -23,8 +25,8 @@ public class MapTexture {
 		this.texture = this.partiallyLoadedTexture.getTexture();
 	}
 	
-	public void bind() {
-		this.texture.bind();
+	public void bind(RenderState state) {
+		state.shaders.setPropertyi(ShaderProperty.TEXTURE, texture.id);
 	}
 
 	public Material generateTextureMaterial() {

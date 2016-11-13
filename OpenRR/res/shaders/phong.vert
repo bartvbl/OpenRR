@@ -1,13 +1,21 @@
-#version 120
+#version 450
 
-varying vec3 normal;
-varying vec3 position;
+layout(location = 0) in vec4 position;
+layout(location = 1) in vec2 texCoord;
+layout(location = 2) in vec4 normal;
+
+layout(location = 0) out vec4 out_position;
+layout(location = 1) out vec2 out_texCoord;
+layout(location = 2) out vec4 out_normal;
+
+layout(location = 5) uniform mat4 MVP;
+layout(location = 6) uniform mat4 MVP_normal;
 
 void main( void )
 {
-	gl_Position = ftransform();
-	gl_TexCoord[0] = gl_MultiTexCoord0;
+	out_position = MVP * position;
+	out_texCoord = texCoord;
+	out_normal = MVP_normal * normal;
 
-	normal = gl_NormalMatrix * gl_Normal;
-	position = ( gl_ModelViewMatrix * gl_Vertex ).xyz;
+	gl_Position = out_position;
 }

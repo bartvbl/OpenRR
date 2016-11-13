@@ -1,5 +1,6 @@
 package openrr.world.properties.input;
 
+import orre.rendering.RenderState;
 import orre.sceneGraph.ContainerNode;
 
 public class MapTileSelectionNode extends ContainerNode {
@@ -9,7 +10,7 @@ public class MapTileSelectionNode extends ContainerNode {
 	}
 	
 	@Override
-	public void render() {
+	public void render(RenderState state) {
 		
 	}
 

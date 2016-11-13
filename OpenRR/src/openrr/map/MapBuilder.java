@@ -13,10 +13,10 @@ import openrr.map.soil.SoilType;
 import orre.geom.Dimension2D;
 import orre.geom.Vector3D;
 import orre.geom.Vertex3D;
-import orre.geom.vbo.VBOFormat;
-import orre.geom.vbo.GeometryNode;
-import orre.geom.vbo.GeometryBufferGenerator;
 import orre.gl.materials.Material;
+import orre.gl.vao.GeometryBufferGenerator;
+import orre.gl.vao.GeometryNode;
+import orre.gl.vao.VBOFormat;
 import orre.sceneGraph.ContainerNode;
 import orre.sceneGraph.SceneNode;
 
