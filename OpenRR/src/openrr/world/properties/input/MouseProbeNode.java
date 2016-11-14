@@ -1,6 +1,7 @@
 package openrr.world.properties.input;
 
 import orre.gl.util.CoordConverter;
+import orre.rendering.RenderState;
 import orre.sceneGraph.LeafNode;
 import orre.sceneGraph.SceneNode;
 
@@ -20,8 +21,8 @@ public class MouseProbeNode extends LeafNode implements SceneNode {
 	}
 	
 	@Override
-	public void preRender() {
-		mapCoordinates = CoordConverter.getMapCoords((int)mouseX, (int)mouseY);
+	public void preRender(RenderState state) {
+		mapCoordinates = CoordConverter.getMapCoords(state, (int)mouseX, (int)mouseY);
 	}
 	
 	public String toString() {
