@@ -3,7 +3,6 @@ package openrr.camera;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 
-import orre.gl.util.TransformMatrixUtils;
 import orre.rendering.RenderState;
 import orre.sceneGraph.Camera;
 
@@ -42,7 +41,7 @@ public class MapCamera extends Camera {
 		transformationMatrix.translate(new Vector3f(0, 0, (location.z)));
 		Matrix4f inverse = new Matrix4f();
 		Matrix4f.invert(transformationMatrix, inverse);
-		TransformMatrixUtils.applyMatrixOnCurrentMatrix(inverse);
+		state.transformations.applyTransformation(inverse);
 	}
 
 	public double getX() {
