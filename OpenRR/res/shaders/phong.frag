@@ -7,7 +7,7 @@ layout(location = 2) in vec4 normal;
 out vec4 colour;
 
 layout(location = 3) uniform sampler2D diffuseTexture;
-layout(location = 7) uniform float texturesEnabled;
+layout(location = 5) uniform float texturesEnabled;
 
 layout(location = 14) uniform vec4 light_position;
 layout(location = 15) uniform vec4 light_ambient;
