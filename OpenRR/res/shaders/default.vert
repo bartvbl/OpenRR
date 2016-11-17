@@ -1,18 +1,20 @@
 #version 450
 
-layout(location = 0) in vec4 position;
-layout(location = 1) in vec2 texCoord;
+in layout(location=0) vec4 position;
+in layout(location=1) vec2 textureCoordinate;
 
-layout(location = 0) out vec4 out_position;
-layout(location = 1) out vec2 out_texCoord;
+out layout(location=0) vec4 outPosition;
+out layout(location=1) vec2 outTexCoord;
 
-layout(location = 6) uniform mat4 MVP;
-layout(location = 10) uniform mat4 MVP_normal;
+uniform layout(location=6) mat4 MVPMatrix;
+uniform layout(location=10) mat4 MVPNormalMatrix;
 
 void main( void )
 {
-	out_position = MVP * position;
-	out_texCoord = texCoord;
-
-	gl_Position = out_position;
+	vec4 newPosition = MVPMatrix * position;
+	
+	gl_Position = newPosition;
+	outPosition = newPosition;
+	
+	outTexCoord = textureCoordinate;
 }

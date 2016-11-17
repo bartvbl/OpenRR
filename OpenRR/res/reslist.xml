@@ -328,5 +328,6 @@
 	<!-- The shader loader adds .vert and .frag extensions to the source path -->
 	<shaders pathPrefix="res/shaders/">
 		<shader name="phong" src="phong"/>
+		<shader name="default" src="default"/>
 	</shaders>
 </resList>

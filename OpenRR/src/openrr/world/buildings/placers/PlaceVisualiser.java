@@ -7,6 +7,8 @@ import org.lwjgl.BufferUtils;
 import openrr.map.MapTile;
 import openrr.map.Orientation;
 import openrr.map.world.MapTileReader;
+import orre.gl.util.OneShotDrawer;
+import orre.gl.vao.VBOFormat;
 import orre.rendering.RenderState;
 import orre.rendering.ShaderProperty;
 import orre.sceneGraph.LeafNode;
@@ -54,31 +56,29 @@ public class PlaceVisualiser extends LeafNode {
 			for(int j = -1; j < 2; j++) {
 				if(buildingMap[i+1][j+1] != TileContents.EMPTY) {
 					if(buildingMap[i+1][j+1] == TileContents.BUILDING) {
-						drawTile(tileX+i, tileY+j, placableBuildingTileColour);
+						drawTile(state, tileX+i, tileY+j, placableBuildingTileColour);
 					} else if(buildingMap[i+1][j+1] == TileContents.POWER_PATH) {
-						drawTile(tileX+i, tileY+j, placablePowerTileColour);
+						drawTile(state, tileX+i, tileY+j, placablePowerTileColour);
 					} else if(buildingMap[i+1][j+1] == TileContents.WATER) {
-						drawTile(tileX+i, tileY+j, placableWaterTileColour);
+						drawTile(state, tileX+i, tileY+j, placableWaterTileColour);
 					}
 				}
 			}
 		}
 	}
 
-	private void drawTile(int x, int y, float[] tileColour) {
+	private void drawTile(RenderState state, int x, int y, float[] tileColour) {
 		MapTile tile = tileReader.getTileAt(x, y);
-		materialBuffer.put(tileColour).rewind();
-		glMaterial(GL_FRONT, GL_DIFFUSE, materialBuffer);
-		materialBuffer.put(tileColour).rewind();
-		glMaterial(GL_FRONT, GL_SPECULAR, materialBuffer);
-		materialBuffer.put(tileColour).rewind();
-		glMaterial(GL_FRONT, GL_EMISSION, materialBuffer);
-		materialBuffer.put(black).rewind();
-		glMaterial(GL_FRONT, GL_AMBIENT, materialBuffer);
+		
+		state.shaders.setProperty4f(ShaderProperty.MATERIAL_AMBIENT, tileColour);
+		state.shaders.setProperty4f(ShaderProperty.MATERIAL_DIFFUSE, tileColour);
+		state.shaders.setProperty4f(ShaderProperty.MATERIAL_SPECULAR, tileColour);
+		state.shaders.setProperty4f(ShaderProperty.MATERIAL_EMISSION, black);
+		
 		int arrayPointer = 0;
 		arrayPointer = storeVertices(x-1, y-1, tile, arrayPointer, cubeHeight);
 		storeVertices(x-1, y-1, tile, arrayPointer, 0);
-		VertexArrayDrawer.drawTriangles(vertexData, indexData, 3, 4);
+		OneShotDrawer.drawTriangles(state, vertexData, indexData, VBOFormat.VERTICES);
 	}
 
 	private int storeVertices(int x, int y, MapTile tile, int arrayPointer, double heightAboveGround) {
