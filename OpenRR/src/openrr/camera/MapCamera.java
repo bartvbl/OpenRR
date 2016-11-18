@@ -39,9 +39,6 @@ public class MapCamera extends Camera {
 		transformationMatrix.rotate((float) Math.toRadians(rotation.x), xAxis);
 		
 		transformationMatrix.translate(new Vector3f(0, 0, (location.z)));
-		Matrix4f inverse = new Matrix4f();
-		Matrix4f.invert(transformationMatrix, inverse);
-		state.transformations.applyTransformation(inverse);
 	}
 
 	public double getX() {
