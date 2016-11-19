@@ -46,7 +46,7 @@ public class Flashlight extends Property {
 		this.light = new Light();
 		this.mouseProbeID = gameObject.world.getOnlyGameObject(ORRGameObjectType.MOUSE_TRACKER);
 		int mapID = gameObject.world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];
-		gameObject.world.scene3DRoot.addChild(light);
+		gameObject.world.sceneRoot.addChild(light);
 		this.reader = (MapTileReader) gameObject.world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
 	}
 }

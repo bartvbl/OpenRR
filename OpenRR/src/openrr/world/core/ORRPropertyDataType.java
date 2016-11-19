@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.lwjgl.util.vector.Vector3f;
 
+import openrr.camera.MapCamera;
 import openrr.map.world.MapTileReader;
 
 public enum ORRPropertyDataType {
@@ -16,7 +17,8 @@ public enum ORRPropertyDataType {
 	MOVEMENT_SPEED_WATER(Double.class),
 	MOVEMENT_SPEED_POWER_PATH(Double.class),
 	MOVEMENT_SPEED_AIR(Double.class),
-	MOVEMENT_SPEED_RUBBLE(Double.class),
+	MOVEMENT_SPEED_RUBBLE(Double.class), 
+	MAP_CAMERA(MapCamera.class),
 	;
 	
 	public final Class<?> expectedReturnDataType;

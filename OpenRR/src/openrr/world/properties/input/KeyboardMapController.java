@@ -97,9 +97,8 @@ public class KeyboardMapController extends Property {
 		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "enableMapRotation");
 		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "rotateMap");
 		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "tiltMap");
-		camera = new MapCamera();
+		camera = (MapCamera) this.gameObject.world.requestPropertyData(mapID, ORRPropertyDataType.MAP_CAMERA, null, MapCamera.class);
 		camera.translate(0, 0, 30);
-		gameObject.world.services.cameraService.activateCamera(camera);
 	}
 
 }

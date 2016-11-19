@@ -2,6 +2,7 @@ package openrr.map.world;
 
 import java.util.ArrayList;
 
+import openrr.camera.MapCamera;
 import openrr.map.Map;
 import openrr.map.world.events.MapSoilUpdate;
 import openrr.world.core.ORRMessageType;
@@ -13,10 +14,10 @@ import orre.gameWorld.core.GraphicsObject;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.core.Property;
 import orre.gameWorld.core.PropertyDataType;
-import orre.gameWorld.properties.Appearance;
 import orre.geom.mesh.Mesh3D;
-import orre.geom.mesh.ModelPart;
 import orre.resources.Resource;
+import orre.resources.ResourceType;
+import orre.resources.partiallyLoadables.Shader;
 import orre.sceneGraph.ContainerNode;
 import orre.sceneGraph.CoordinateNode;
 import orre.sceneGraph.SceneNode;
@@ -25,6 +26,7 @@ public class MapAppearance extends Property {
 
 	private Map map;
 	private ContainerNode mapGeometryNode;
+	private MapCamera camera;
 
 	public MapAppearance(GameObject gameObject) {
 		super(ORRPropertyType.MAP_APPEARANCE, gameObject);
@@ -62,7 +64,19 @@ public class MapAppearance extends Property {
 		this.gameObject.takeControl(new GraphicsObject(mapNode));
 		Mesh3D mapMesh = new Mesh3D(mapNode);
 		this.gameObject.setPropertyData(PropertyDataType.APPEARANCE, mapMesh);
-		this.gameObject.world.scene3DRoot.addChild(mapNode);
+		
+		ContainerNode mapRootNode = new ContainerNode("Map Root");
+		
+		this.camera = new MapCamera();
+		mapRootNode.addChild(camera);
+		this.gameObject.setPropertyData(ORRPropertyDataType.MAP_CAMERA, camera);
+		
+		ContainerNode shader = ((Shader) this.gameObject.world.resourceCache.getResource(ResourceType.shader, "phong").content).createSceneNode();
+		camera.addChild(shader);
+		
+		shader.addChild(mapNode);
+		
+		this.gameObject.world.sceneRoot.addChild(mapRootNode);
 	}
 	
 	private void rebuildMap() {
