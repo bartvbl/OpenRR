@@ -167,9 +167,9 @@ public class MapBuilder {
 		int vertexCount = geometryDataBuffer.position() / 8;
 		IntBuffer indices = generateIndexBuffer(vertexCount);
 		GeometryNode buffer = GeometryBufferGenerator.generateGeometryBuffer(VBOFormat.VERTICES_TEXTURES_NORMALS, geometryDataBuffer, indices, vertexCount, vertexCount);
-//		GeometryNode normals = GeometryBufferGenerator.generateNormalsGeometryBuffer(VBOFormat.VERTICES_TEXTURES_NORMALS, geometryDataBuffer, indices);
+		GeometryNode normals = GeometryBufferGenerator.generateNormalsGeometryBuffer(VBOFormat.VERTICES_TEXTURES_NORMALS, geometryDataBuffer, indices);
 		currentMaterial.addChild(buffer);
-//		currentMaterial.addChild(normals);
+		currentMaterial.addChild(normals);
 		rootNode.addChild(currentMaterial);
 	}
 

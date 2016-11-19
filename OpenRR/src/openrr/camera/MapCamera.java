@@ -3,6 +3,7 @@ package openrr.camera;
 import org.lwjgl.util.vector.Matrix4f;
 import org.lwjgl.util.vector.Vector3f;
 
+import orre.gl.RenderUtils;
 import orre.gl.camera.Camera;
 import orre.rendering.RenderState;
 
@@ -34,6 +35,7 @@ public class MapCamera extends Camera {
 	
 	@Override
 	public void transform(RenderState state) {
+		// View
 		transformationMatrix.setIdentity();
 		
 		transformationMatrix.rotate((float) Math.toRadians(-rotation.y), yAxis);
@@ -48,6 +50,9 @@ public class MapCamera extends Camera {
 		transformationMatrix.translate(new Vector3f(-location.x, -location.y, 0));
 		
 		state.transformations.setViewMatrix(transformationMatrix);
+		
+		// Projection
+		RenderUtils.set3DMode(state);
 	}
 
 	public double getX() {
