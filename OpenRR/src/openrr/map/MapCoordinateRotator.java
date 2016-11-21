@@ -8,11 +8,10 @@ import orre.util.ArrayUtils;
 public class MapCoordinateRotator {
 	private static Vertex3D[] vertices = new Vertex3D[6];
 	
-	public static Vertex3D[] generateRotatedTileCoordinates(int x, int y, Vector3D[][] mapVertices, Vector3D[][][] mapNormals, SubTextureCoordinate textureCoordinate, Orientation orientation) {
+	public static Vertex3D[] generateRotatedTileCoordinates(int x, int y, Vector3D[][] mapVertices, SubTextureCoordinate textureCoordinate, Orientation orientation) {
 		Vector3D[] cornerVertices = generateCornerVertices(x, y, mapVertices);
-		Vector3D[] normals = calculateNormals(x, y, mapVertices, mapNormals);
 		rotateCornerVertices(cornerVertices, orientation);
-		//rotateCornerVertices(normals, orientation);
+		Vector3D[] normals = calculateNormals(cornerVertices);
 		createVertices(cornerVertices, textureCoordinate, normals);
 		return vertices;
 	}
@@ -32,11 +31,11 @@ public class MapCoordinateRotator {
 		return new Vertex3D(coordinate.x, coordinate.y, coordinate.z, textureU, textureV, normal.x, normal.y, normal.z);
 	}
 
-	private static Vector3D[] calculateNormals(int x, int y, Vector3D[][] mapVertices, Vector3D[][][] mapNormals) {
-		Vector3D bottomLeft = mapVertices[x][y];
-		Vector3D bottomRight = mapVertices[x+1][y];
-		Vector3D topLeft = mapVertices[x][y+1];
-		Vector3D topRight = mapVertices[x+1][y+1];
+	private static Vector3D[] calculateNormals(Vector3D[] vertices) {
+		Vector3D bottomLeft = vertices[0];
+		Vector3D bottomRight = vertices[1];
+		Vector3D topLeft = vertices[3];
+		Vector3D topRight = vertices[2];
 		
 		Vector3D normal1Edge1 = topLeft.minus(bottomLeft);
 		Vector3D normal1Edge2 = bottomRight.minus(bottomLeft);
@@ -49,36 +48,6 @@ public class MapCoordinateRotator {
 		normals[1] = normal2Edge1.vectorProduct(normal2Edge2).normalize();
 		
 		return normals;
-	}
-
-	private static Vector3D calculateNormal(int x, int y, Vector3D[][] mapVertices, Vector3D[][][] mapNormals) {
-		Vector3D addedNormal = new Vector3D(0, 0, 0);
-		for(int angle = 0; angle <= 360; angle += 90) {
-			int offsetX1 = (int) Math.cos(Math.toRadians(angle));
-			int offsetX2 = (int) Math.cos(Math.toRadians(angle - 90));
-			
-			int offsetY1 = (int) Math.sin(Math.toRadians(angle));
-			int offsetY2 = (int) Math.sin(Math.toRadians(angle - 90));
-			
-			Vector3D vertex = getVertexAt(x, y, mapVertices);
-			Vector3D vertex1 = getVertexAt(x + offsetX1, y + offsetY1, mapVertices);
-			Vector3D vertex2 = getVertexAt(x + offsetX2, y + offsetY2, mapVertices);
-			
-			Vector3D edge1 = vertex.minus(vertex1);
-			Vector3D edge2 = vertex.minus(vertex2);
-			
-			addedNormal = addedNormal.plus(edge2.vectorProduct(edge1));
-		}
-		
-		return addedNormal.normalize();
-	}
-
-	private static Vector3D getVertexAt(int x, int y, Vector3D[][] mapVertices) {
-		if(x < 0) x = 0;
-		if(y < 0) y = 0;
-		if(x >= mapVertices.length) x -= 1;
-		if(y >= mapVertices[0].length) y -= 1;
-		return mapVertices[x][y];
 	}
 
 	private static Vector3D[] generateCornerVertices(int x, int y, Vector3D[][] mapVertices) {
