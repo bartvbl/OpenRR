@@ -17,14 +17,16 @@ public class MapCoordinateRotator {
 	}
 
 	private static void createVertices(Vector3D[] cornerVertices, SubTextureCoordinate rotatedTextureCoordinates, Vector3D[] normals) {
+		// Smooth out the common edges
+		Vector3D smoothed = normals[0].plus(normals[1]).normalize();
 		
 		vertices[0] = createVertex(cornerVertices[0], rotatedTextureCoordinates.u1, rotatedTextureCoordinates.v1, normals[0]);
-		vertices[1] = createVertex(cornerVertices[1], rotatedTextureCoordinates.u2, rotatedTextureCoordinates.v1, normals[0]);
-		vertices[2] = createVertex(cornerVertices[3], rotatedTextureCoordinates.u1, rotatedTextureCoordinates.v2, normals[0]);
+		vertices[1] = createVertex(cornerVertices[1], rotatedTextureCoordinates.u2, rotatedTextureCoordinates.v1, smoothed);
+		vertices[2] = createVertex(cornerVertices[3], rotatedTextureCoordinates.u1, rotatedTextureCoordinates.v2, smoothed);
 		
-		vertices[3] = createVertex(cornerVertices[1], rotatedTextureCoordinates.u2, rotatedTextureCoordinates.v1, normals[1]);
+		vertices[3] = createVertex(cornerVertices[1], rotatedTextureCoordinates.u2, rotatedTextureCoordinates.v1, smoothed);
 		vertices[4] = createVertex(cornerVertices[2], rotatedTextureCoordinates.u2, rotatedTextureCoordinates.v2, normals[1]);
-		vertices[5] = createVertex(cornerVertices[3], rotatedTextureCoordinates.u1, rotatedTextureCoordinates.v2, normals[1]);
+		vertices[5] = createVertex(cornerVertices[3], rotatedTextureCoordinates.u1, rotatedTextureCoordinates.v2, smoothed);
 	}
 
 	private static Vertex3D createVertex(Vector3D coordinate, float textureU, float textureV, Vector3D normal) {
