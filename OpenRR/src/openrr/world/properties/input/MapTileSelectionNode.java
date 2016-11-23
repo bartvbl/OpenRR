@@ -1,6 +1,6 @@
 package openrr.world.properties.input;
 
-import orre.rendering.RenderState;
+import orre.gl.renderer.RenderState;
 import orre.sceneGraph.ContainerNode;
 
 public class MapTileSelectionNode extends ContainerNode {

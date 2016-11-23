@@ -1,9 +1,9 @@
 package openrr.map.soil;
 
 import orre.gl.materials.Material;
+import orre.gl.renderer.RenderState;
+import orre.gl.renderer.ShaderProperty;
 import orre.gl.texture.Texture;
-import orre.rendering.RenderState;
-import orre.rendering.ShaderProperty;
 import orre.resources.partiallyLoadables.PartiallyLoadableTexture;
 
 public class MapTexture {

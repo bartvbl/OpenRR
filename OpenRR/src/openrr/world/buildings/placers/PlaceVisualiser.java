@@ -7,10 +7,10 @@ import org.lwjgl.BufferUtils;
 import openrr.map.MapTile;
 import openrr.map.Orientation;
 import openrr.map.world.MapTileReader;
+import orre.gl.renderer.RenderState;
+import orre.gl.renderer.ShaderProperty;
 import orre.gl.util.OneShotDrawer;
 import orre.gl.vao.VBOFormat;
-import orre.rendering.RenderState;
-import orre.rendering.ShaderProperty;
 import orre.sceneGraph.LeafNode;
 import static org.lwjgl.opengl.GL11.*;
 

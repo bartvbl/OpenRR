@@ -65,7 +65,7 @@ public class KeyboardMapController extends Property {
 			camera.translate(Math.sin(moveDirection) * mapMoveSpeed, Math.cos(moveDirection) * mapMoveSpeed,  0);
 		}
 		
-		camera.translate(0, 0, zoomDelta / 35d);
+		camera.translate(0, 0, zoomDelta / 55d);
 		
 		double mapX = camera.getX();
 		double mapY = camera.getY();

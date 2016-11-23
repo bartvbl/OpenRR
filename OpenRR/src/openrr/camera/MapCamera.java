@@ -5,7 +5,7 @@ import org.lwjgl.util.vector.Vector3f;
 
 import orre.gl.RenderUtils;
 import orre.gl.camera.Camera;
-import orre.rendering.RenderState;
+import orre.gl.renderer.RenderState;
 
 public class MapCamera extends Camera {
 	private static final Vector3f xAxis = new Vector3f(1, 0, 0);

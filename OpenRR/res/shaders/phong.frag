@@ -40,13 +40,18 @@ void main()
 	vec3 viewDir = normalize(light_position.xyz - fragment_position.xyz);
 	vec3 reflectDir = reflect(-light_direction, normalized);  
 	float spec = pow(max(dot(viewDir, reflectDir), 0.0), material_shininess);
-	vec3 specular = specularStrength * spec * light_specular.xyz;  
+	vec3 specular = clamp(specularStrength * spec * light_specular.xyz, 0.0, 1.0);  
 
 	vec3 emission = material_emission.xyz;
 
 	vec4 textureColour = texture2D(diffuseTexture, texCoord) * vec4(ambient + diffuse + specular, 1.0);
-	vec4 materialColour = vec4(ambient, 1.0) * material_ambient + vec4(diffuse, 1.0) * material_diffuse + vec4(specular, 1.0) * material_specular + material_emission;
-	materialColour.a = material_diffuse.a;
+
+	vec4 colour_amb = (vec4(ambient, 1.0) * material_ambient);
+	vec4 colour_dif = (vec4(diffuse, 1.0) * material_diffuse);
+	vec4 colour_spe = (vec4(specular, 1.0) * material_specular);
+	vec4 colour_emi = material_emission;
+
+	vec4 materialColour = vec4(colour_amb.tgb + colour_dif.rgb + colour_spe.rgb + colour_emi.rgb, min(colour_dif.a, colour_emi.a));
 
 	colour = (textureColour * texturesEnabled) + (materialColour * (1.0 - texturesEnabled));
 }
