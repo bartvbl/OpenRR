@@ -9,6 +9,8 @@ out vec4 colour;
 layout(location = 3) uniform sampler2D diffuseTexture;
 layout(location = 5) uniform float texturesEnabled;
 
+layout(location = 12) uniform vec4 camera_position;
+
 layout(location = 15) uniform vec4 light_ambient;
 layout(location = 16) uniform vec4 light_diffuse;
 layout(location = 17) uniform vec4 light_specular;
@@ -37,10 +39,10 @@ void main()
 
 	// Specular
 	float specularStrength = 0.5f;
-	vec3 viewDir = normalize(light_position.xyz - fragment_position.xyz);
+	vec3 viewDir = normalize(camera_position.xyz - fragment_position.xyz);
 	vec3 reflectDir = reflect(-light_direction, normalized);  
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0), material_shininess);
-	vec3 specular = clamp(specularStrength * spec * light_specular.xyz, 0.0, 1.0);  
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32.0);
+	vec3 specular = spec * light_specular.xyz;  
 
 	vec3 emission = material_emission.xyz;
 
@@ -53,5 +55,5 @@ void main()
 
 	vec4 materialColour = vec4(colour_amb.tgb + colour_dif.rgb + colour_spe.rgb + colour_emi.rgb, min(colour_dif.a, colour_emi.a));
 
-	colour = (textureColour * texturesEnabled) + (materialColour * (1.0 - texturesEnabled));
+	colour = colour_dif; //(textureColour * texturesEnabled) + (materialColour * (1.0 - texturesEnabled));
 }

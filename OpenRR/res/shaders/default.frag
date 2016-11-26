@@ -8,6 +8,8 @@ out vec4 colour;
 layout(location = 3) uniform sampler2D diffuseTexture;
 layout(location = 5) uniform float texturesEnabled;
 
+layout(location = 12) uniform vec4 camera_position;
+
 layout(location = 14) uniform vec4 light_position;
 layout(location = 15) uniform vec4 light_ambient;
 layout(location = 16) uniform vec4 light_diffuse;
