@@ -15,6 +15,7 @@ import orre.gameWorld.core.Message;
 import orre.gameWorld.core.Property;
 import orre.gameWorld.core.PropertyDataType;
 import orre.geom.mesh.Mesh3D;
+import orre.gl.shadows.ShadowMappedNode;
 import orre.resources.Resource;
 import orre.resources.ResourceType;
 import orre.resources.partiallyLoadables.Shader;
@@ -27,6 +28,7 @@ public class MapAppearance extends Property {
 	private Map map;
 	private ContainerNode mapGeometryNode;
 	private MapCamera camera;
+	private ShadowMappedNode shadowNode;
 
 	public MapAppearance(GameObject gameObject) {
 		super(ORRPropertyType.MAP_APPEARANCE, gameObject);
@@ -68,15 +70,14 @@ public class MapAppearance extends Property {
 		ContainerNode mapRootNode = new ContainerNode("Map Root");
 		
 		this.camera = new MapCamera();
-		mapRootNode.addChild(camera);
-		this.gameObject.setPropertyData(ORRPropertyDataType.MAP_CAMERA, camera);
-		
-		ContainerNode shader = ((Shader) this.gameObject.world.resourceCache.getResource(ResourceType.shader, "phong").content).createSceneNode();
-		camera.addChild(shader);
-		
-		shader.addChild(mapNode);
-		
+		this.shadowNode = new ShadowMappedNode(this.gameObject.world.resourceCache);
+
 		this.gameObject.world.sceneRoot.addChild(mapRootNode);
+		mapRootNode.addChild(camera);
+		camera.addChild(shadowNode);
+		shadowNode.addChild(mapNode);
+		
+		this.gameObject.setPropertyData(ORRPropertyDataType.MAP_CAMERA, camera);		
 	}
 	
 	private void rebuildMap() {

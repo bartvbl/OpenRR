@@ -3,10 +3,13 @@
 layout(location = 0) in vec4 fragment_position;
 layout(location = 1) in vec2 texCoord;
 layout(location = 2) in vec4 normal;
+layout(location = 3) in vec4 light_frag_position;
 
 out vec4 colour;
 
 layout(location = 3) uniform sampler2D diffuseTexture;
+layout(location = 40) uniform sampler2D depthTexture;
+
 layout(location = 5) uniform float texturesEnabled;
 
 layout(location = 12) uniform vec4 camera_position;
@@ -27,6 +30,17 @@ layout(location = 20) uniform vec4 material_diffuse;
 layout(location = 21) uniform vec4 material_specular;
 layout(location = 22) uniform vec4 material_emission;
 layout(location = 23) uniform float material_shininess;
+
+float shadowTest() {
+	vec3 coordinate = light_frag_position.xyz / light_frag_position.w;
+	coordinate = coordinate * 0.5 + 0.5;
+	float depth = texture(depthTexture, coordinate.xy).r;
+	float currentDepth = coordinate.z;
+	float shadow = currentDepth - 0.0001 > depth  ? 0.0 : 1.0;
+	bool outOfBounds = coordinate.x < 0 || coordinate.x > 1 || coordinate.y < 0 || coordinate.y > 1;
+	shadow = outOfBounds ? 0 : shadow;
+	return shadow;
+}
 
 // This was regrettably lifted from the internet.
 void main()
@@ -57,6 +71,10 @@ void main()
 	diffuse *= attenuation;
 	specular *= attenuation;
 
+	float shadow = shadowTest();
+	diffuse *= shadow;
+	specular *= shadow;
+
 	vec4 textureColour = texture2D(diffuseTexture, texCoord) * vec4(ambient + diffuse + specular, 1.0);
 
 	vec4 colour_amb = (vec4(ambient, 1.0) * material_ambient);
@@ -65,6 +83,9 @@ void main()
 	vec4 colour_emi = material_emission;
 
 	vec4 materialColour = vec4(colour_amb.rgb + colour_dif.rgb + colour_spe.rgb + colour_emi.rgb, min(colour_dif.a, colour_emi.a));
+
+	vec4 white = vec4(1, 1, 1, 1);
+	white.rgb *= texture(depthTexture, gl_FragCoord.xy / 1000.0f).rgb * 100.0; 
 
 	colour = (textureColour * texturesEnabled) + (materialColour * (1.0 - texturesEnabled));
 }

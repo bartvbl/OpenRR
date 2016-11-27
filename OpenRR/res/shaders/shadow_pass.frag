@@ -1,9 +1,8 @@
 #version 450
 
-layout(location = 0) in vec4 position;
-layout(location = 1) in vec2 texCoord;
+in layout(location = 0) vec4 location;
 
-out vec4 colour;
+out layout(location = 0) float depth;
 
 layout(location = 3) uniform sampler2D diffuseTexture;
 layout(location = 40) uniform sampler2D depthTexture;
@@ -28,9 +27,8 @@ layout(location = 21) uniform vec4 material_specular;
 layout(location = 22) uniform vec4 material_emission;
 layout(location = 23) uniform float material_shininess;
 
-uniform layout(location = 35) mat4 lightMVP;
-
 void main()
 {
-	colour = texture2D(diffuseTexture, texCoord);
+	// Shadow pass does not require colour
+	depth = location.z;
 }

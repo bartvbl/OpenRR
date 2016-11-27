@@ -26,7 +26,7 @@ public class MapTexture {
 	}
 	
 	public void bind(RenderState state) {
-		state.shaders.setPropertyi(ShaderProperty.TEXTURE, texture.id);
+		state.shaders.setPropertyi(ShaderProperty.TEXTURE0, texture.id);
 	}
 
 	public Material generateTextureMaterial() {

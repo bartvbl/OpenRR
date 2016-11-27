@@ -19,6 +19,7 @@ public class Flashlight extends Property {
 	private Light light;
 	private int mouseProbeID;
 	private MapTileReader reader;
+	private static final float lightHeight = 3f;
 
 	public Flashlight(GameObject gameObject) {
 		super(ORRPropertyType.LIGHT, gameObject, true);
@@ -33,7 +34,7 @@ public class Flashlight extends Property {
 	public void tick() {
 		Vector3f mouseLocation = (Vector3f) gameObject.world.requestPropertyData(mouseProbeID, ORRPropertyDataType.MOUSE_LOCATION, null, Vector3f.class);
 		double height = reader.getTileHeightAt(mouseLocation.x, mouseLocation.y);
-		this.light.setPosition(mouseLocation.x, mouseLocation.y, height);
+		this.light.setPosition(mouseLocation.x, mouseLocation.y, lightHeight + height);
 	}
 
 	@Override
