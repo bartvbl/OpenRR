@@ -2,8 +2,8 @@ package openrr.world.properties.input;
 
 import java.util.Arrays;
 
+import orre.gl.renderer.RenderState;
 import orre.gl.util.CoordConverter;
-import orre.rendering.RenderState;
 import orre.sceneGraph.LeafNode;
 import orre.sceneGraph.SceneNode;
 

@@ -54,17 +54,6 @@ public class MapBuilder {
 		
 		Vector3D[][] mapVertices = calculateMapVertices(wallMap, tileMap, mapSize);
 		//0 index is for the triangle that intersects with 0, 0.5. 1 for the other.
-		Vector3D[][][] mapNormals = new Vector3D[mapSize.width][mapSize.height][2];
-		
-		for(int x = 0; x < mapSize.width; x++) {
-			for(int y = 0; y < mapSize.height; y++) {
-				WallType tileWallType = wallTypeMap[x][y];
-				Orientation orientation = orientationMap[x][y];
-				boolean rotated = isRotated(orientation);
-				
-				calculateTileNormals(x, y, mapVertices, mapNormals[x][y], rotated);
-			}
-		}
 
 		//getNormalAtVertex(x, y, mapNormals, orientation);
 		
@@ -83,7 +72,7 @@ public class MapBuilder {
 				texturePack.bindTexture(tileSoilType, tileWallType);
 				
 				SubTextureCoordinate textureCoordinate = texturePack.getTextureCoordinates();
-				Vertex3D[] vertices = MapCoordinateRotator.generateRotatedTileCoordinates(x, y, mapVertices, mapNormals, textureCoordinate, orientation);
+				Vertex3D[] vertices = MapCoordinateRotator.generateRotatedTileCoordinates(x, y, mapVertices, textureCoordinate, orientation);
 				
 				putVertices(vertices, geometryDataBuffer);
 			}
@@ -91,41 +80,6 @@ public class MapBuilder {
 		
 		compileGeometryBuffer(texturePack, rootNode, geometryDataBuffer);
 		return rootNode;
-	}
-
-	private static void calculateTileNormals(int x, int y, Vector3D[][] mapVertices, Vector3D[] normals, boolean rotated) {
-		Vector3D bottomLeft = mapVertices[x][y];
-		Vector3D bottomRight = mapVertices[x + 1][y];
-		Vector3D topLeft = mapVertices[x][y + 1];
-		Vector3D topRight = mapVertices[x + 1][y + 1];
-		
-		if(!rotated) {
-			//tile origin is at bottom left corner, hypothenuse is antidiagonal
-			Vector3D triangle1edge1 = topRight.minus(bottomLeft);
-			Vector3D triangle1edge2 = topLeft.minus(bottomLeft);
-			normals[0] = triangle1edge1.vectorProduct(triangle1edge2);
-			
-			Vector3D triangle2edge1 = topRight.minus(bottomLeft);
-			Vector3D triangle2edge2 = bottomRight.minus(bottomLeft);
-			normals[1] = triangle2edge2.vectorProduct(triangle2edge1);
-		} else {
-			//tile origin is bottom right corner, hyopthenuse is leading diagonal
-			Vector3D triangle1edge1 = topRight.minus(bottomLeft);
-			Vector3D triangle1edge2 = topLeft.minus(bottomLeft);
-			normals[0] = triangle1edge1.vectorProduct(triangle1edge2);
-			
-			Vector3D triangle2edge1 = topLeft.minus(bottomLeft);
-			Vector3D triangle2edge2 = bottomRight.minus(bottomLeft);
-			normals[1] = triangle2edge2.vectorProduct(triangle2edge1);
-		}
-	}
-
-	private static boolean isRotated(Orientation orientation) {
-		if(orientation == Orientation.east || orientation == Orientation.west) {
-			return true;
-		} else {
-			return false;
-		}
 	}
 
 	private static Vector3D[][] calculateMapVertices(boolean[][] wallMap, MapTile[][] tileMap, Dimension2D mapSize) {
@@ -167,9 +121,9 @@ public class MapBuilder {
 		int vertexCount = geometryDataBuffer.position() / 8;
 		IntBuffer indices = generateIndexBuffer(vertexCount);
 		GeometryNode buffer = GeometryBufferGenerator.generateGeometryBuffer(VBOFormat.VERTICES_TEXTURES_NORMALS, geometryDataBuffer, indices, vertexCount, vertexCount);
-		GeometryNode normals = GeometryBufferGenerator.generateNormalsGeometryBuffer(VBOFormat.VERTICES_TEXTURES_NORMALS, geometryDataBuffer, indices);
+//		GeometryNode normals = GeometryBufferGenerator.generateNormalsGeometryBuffer(VBOFormat.VERTICES_TEXTURES_NORMALS, geometryDataBuffer, indices);
 		currentMaterial.addChild(buffer);
-		currentMaterial.addChild(normals);
+//		currentMaterial.addChild(normals);
 		rootNode.addChild(currentMaterial);
 	}
 
