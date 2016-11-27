@@ -22,33 +22,30 @@ layout(location = 22) uniform vec4 material_emission;
 layout(location = 23) uniform float material_shininess;
 
 // This was regrettably lifted from the internet.
-vec4 lighting()
-{
-    vec3 normalized = normalize(normal.xyz);
-
-    // Ambient
-    float ambient_strength = 0.1;
-    vec3 ambient = ambient_strength * light_ambient.xyz;
-  	
-    // Diffuse 
-    vec3 light_direction = normalize(light_position.xyz - fragment_position.xyz);
-    float diffuse_factor = max(dot(normalized, light_direction), 0.0);
-    vec3 diffuse = diffuse_factor * light_diffuse.xyz;
-    
-    // Specular
-    float specularStrength = 0.5f;
-    vec3 viewDir = normalize(light_position.xyz - fragment_position.xyz);
-    vec3 reflectDir = reflect(-light_direction, normalized);  
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), material_shininess);
-    vec3 specular = specularStrength * spec * light_specular.xyz;  
-
-    vec3 emission = material_emission.xyz;
-
-	return clamp(vec4(diffuse, 1.0), 0.0, 1.0);
-}
-
 void main()
 {
-	vec4 lightValue = lighting();
-	colour = texture2D(diffuseTexture, texCoord) * lightValue;
+	vec3 normalized = normalize(normal.xyz);
+
+	// Ambient
+	float ambient_strength = 0.1;
+	vec3 ambient = ambient_strength * light_ambient.xyz;
+
+	// Diffuse 
+	vec3 light_direction = normalize(light_position.xyz - fragment_position.xyz);
+	float diffuse_factor = max(dot(normalized, light_direction), 0.0);
+	vec3 diffuse = diffuse_factor * light_diffuse.xyz;
+
+	// Specular
+	float specularStrength = 0.5f;
+	vec3 viewDir = normalize(light_position.xyz - fragment_position.xyz);
+	vec3 reflectDir = reflect(-light_direction, normalized);  
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0), material_shininess);
+	vec3 specular = specularStrength * spec * light_specular.xyz;  
+
+	vec3 emission = material_emission.xyz;
+
+	vec4 texturedColour = texture2D(diffuseTexture, texCoord) * vec4(ambient + diffuse + specular + emission, 1.0);
+	vec4 materialColour = material_ambient * vec4(ambient, 1.0) + material_diffuse * vec4(diffuse, 1.0) + material_specular * vec4(specular, 1.0) + material_emission;
+
+	colour = (texturesEnabled * texturedColour) + ((1.0 - texturesEnabled) * materialColour);
 }
