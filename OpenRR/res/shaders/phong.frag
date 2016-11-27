@@ -14,6 +14,7 @@ layout(location = 12) uniform vec4 camera_position;
 layout(location = 15) uniform vec4 light_ambient;
 layout(location = 16) uniform vec4 light_diffuse;
 layout(location = 17) uniform vec4 light_specular;
+layout(location = 18) uniform float light_specular_strength;
 
 layout(location = 14) uniform vec4 light_position;
 
@@ -38,10 +39,9 @@ void main()
 	vec3 diffuse = diffuse_factor * light_diffuse.xyz;
 
 	// Specular
-	float specularStrength = 0.5f;
 	vec3 viewDir = normalize(camera_position.xyz - fragment_position.xyz);
 	vec3 reflectDir = reflect(-light_direction, normalized);  
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32.0);
+	float spec = pow(max(dot(viewDir, reflectDir), 0.0), material_shininess) * light_specular_strength;
 	vec3 specular = spec * light_specular.xyz;  
 
 	vec3 emission = material_emission.xyz;
@@ -55,5 +55,5 @@ void main()
 
 	vec4 materialColour = vec4(colour_amb.rgb + colour_dif.rgb + colour_spe.rgb + colour_emi.rgb, min(colour_dif.a, colour_emi.a));
 
-	colour = colour_dif; //(textureColour * texturesEnabled) + (materialColour * (1.0 - texturesEnabled));
+	colour = (textureColour * texturesEnabled) + (materialColour * (1.0 - texturesEnabled));
 }

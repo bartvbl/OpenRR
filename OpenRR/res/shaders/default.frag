@@ -14,6 +14,7 @@ layout(location = 14) uniform vec4 light_position;
 layout(location = 15) uniform vec4 light_ambient;
 layout(location = 16) uniform vec4 light_diffuse;
 layout(location = 17) uniform vec4 light_specular;
+layout(location = 18) uniform float light_specular_strength;
 
 layout(location = 19) uniform vec4 material_ambient;
 layout(location = 20) uniform vec4 material_diffuse;
