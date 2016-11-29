@@ -1,8 +1,8 @@
 package openrr.ai.actions;
 
+import openrr.animation.AnimationType;
 import orre.ai.tasks.Action;
 import orre.animation.Animation;
-import orre.animation.AnimationType;
 import orre.gameWorld.core.GameWorld;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.core.MessageHandler;
@@ -81,7 +81,7 @@ public class AnimationAction extends Action implements MessageHandler {
 	@Override
 	public void start() {
 		if(animation == null) {
-			this.animationID = world.services.animationService.applyAnimation(animationType, rootNode);
+			this.animationID = world.services.animationService.applyAnimation(animationType.toString(), rootNode);
 		} else {
 			this.animationID = world.services.animationService.applyAnimation(animation, rootNode);
 		}

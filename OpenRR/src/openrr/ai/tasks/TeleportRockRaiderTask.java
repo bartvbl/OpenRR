@@ -10,7 +10,6 @@ import orre.ai.tasks.Plan;
 import orre.ai.tasks.Task;
 import orre.ai.tasks.TaskMaster;
 import orre.ai.tasks.TaskRequest;
-import orre.animation.AnimationType;
 import orre.gameWorld.core.GameWorld;
 import orre.sceneGraph.CoordinateNode;
 

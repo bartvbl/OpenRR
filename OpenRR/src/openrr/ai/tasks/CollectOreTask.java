@@ -4,6 +4,7 @@ import openrr.ai.TaskType;
 import openrr.ai.actions.PickupAction;
 import openrr.ai.actions.movement.MoveAction;
 import openrr.ai.taskRequests.MapTaskRequest;
+import openrr.animation.AnimationType;
 import orre.ai.tasks.Action;
 import orre.ai.tasks.Assignment;
 import orre.ai.tasks.Plan;
@@ -26,7 +27,7 @@ public class CollectOreTask extends ORRTask {
 	public Assignment plan(TaskRequest request, TaskMaster taskMaster, GameWorld world) {
 		//step 1: move to ore, and pick it up.
 		MapTaskRequest mapRequest = getMapTaskRequest(request);
-		MoveAction moveToOreAction = MoveAction.plan(request.targetID, mapRequest.locationOnMap, location, world);
+		MoveAction moveToOreAction = MoveAction.plan(request.targetID, mapRequest.locationOnMap, location, world, AnimationType.raiderWalking);
 		PickupAction pickupAction = PickupAction.plan(request, gameObjectID, world);
 		Action[] plannedActions = {moveToOreAction, pickupAction};
 		Task[] completedTasks = {this};

@@ -1,13 +1,13 @@
 package openrr.ai.actions.movement;
 
 import openrr.ai.MapTileNode;
+import openrr.animation.AnimationType;
 import openrr.map.world.MapTileReader;
 import openrr.world.core.ORRGameObjectType;
 import openrr.world.core.ORRPropertyDataType;
 import orre.ai.pathFinding.AStar;
 import orre.ai.pathFinding.Path;
 import orre.ai.tasks.Action;
-import orre.animation.AnimationType;
 import orre.gameWorld.core.GameWorld;
 import orre.gameWorld.core.PropertyDataType;
 import orre.geom.Point2D;
@@ -24,9 +24,11 @@ public class MoveAction extends Action {
 	private final Model target;
 	private final GameWorld world;
 	private final double movementSpeed;
+
+	private AnimationType moveAnimation;
  
 	
-	public static MoveAction plan(int targetID, Point2D start, Point2D destination, GameWorld world) {
+	public static MoveAction plan(int targetID, Point2D start, Point2D destination, GameWorld world, AnimationType moveAnimationType) {
 		int mapID = world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];
 		
 		MapTileReader reader = (MapTileReader) world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
@@ -36,15 +38,16 @@ public class MoveAction extends Action {
 		
 		Model rootNode = (Model) world.requestPropertyData(targetID, PropertyDataType.APPEARANCE, null, Model.class);
 		
-		return new MoveAction(pathToTask, targetID, rootNode, world);
+		return new MoveAction(pathToTask, targetID, rootNode, world, moveAnimationType);
 	}
 	
-	private MoveAction(Path pathToTask, int targetID, Model target, GameWorld world) {
+	private MoveAction(Path pathToTask, int targetID, Model target, GameWorld world, AnimationType animation) {
 		this.path = pathToTask;
 		this.target = target;
 		this.world = world;
 		this.movementSpeed = (double)world.requestPropertyData(targetID, ORRPropertyDataType.MOVEMENT_SPEED_SOIL, (Double)1d, Double.class);
 		this.nextNode = (MapTileNode) path.getStartingState();
+		this.moveAnimation = animation;
 	}
 	
 	private final Path path;
@@ -91,7 +94,7 @@ public class MoveAction extends Action {
 
 	@Override
 	public void start() {
-		this.walkingAnimationID = this.world.services.animationService.applyAnimation(AnimationType.raiderWalking, target);
+		this.walkingAnimationID = this.world.services.animationService.applyAnimation(moveAnimation.toString(), target);
 	}
 
 	@Override

@@ -1,8 +1,8 @@
 package openrr.world.buildings.animations;
 
+import openrr.animation.AnimationType;
 import orre.animation.Animation;
 import orre.animation.AnimationAction;
-import orre.animation.AnimationType;
 import orre.animation.Ease;
 import orre.animation.KeyFrame;
 import orre.animation.actions.MoveAction;

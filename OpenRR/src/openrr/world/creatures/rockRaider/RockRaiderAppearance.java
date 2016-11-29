@@ -3,7 +3,6 @@ package openrr.world.creatures.rockRaider;
 import openrr.map.world.MapWorldUtils;
 import openrr.world.core.ORRPropertyType;
 import orre.animation.Animatable;
-import orre.animation.AnimationType;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.core.PropertyType;

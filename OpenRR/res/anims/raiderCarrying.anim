@@ -1,0 +1,17 @@
+animation raiderCarrying
+keyframe frame1 of duration 0.15 s
+rotate leg_r -75 degrees around x-axis
+rotate leg_l 75 degrees around x-axis 
+
+keyframe frame2 of duration 0.3 s
+rotate leg_r 150 degrees around x-axis
+rotate leg_l -150 degrees around x-axis 
+
+keyframe frame3 of duration 0.3 s
+rotate leg_r -150 degrees around x-axis
+rotate leg_l 150 degrees around x-axis
+
+repeat from frame2
+
+keyframe final of duration 0.5 s
+end animation

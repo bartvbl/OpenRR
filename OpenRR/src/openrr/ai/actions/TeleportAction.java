@@ -8,7 +8,6 @@ import openrr.world.util.WorldUtil;
 import orre.ai.tasks.Action;
 import orre.ai.tasks.TaskRequest;
 import orre.animation.Animation;
-import orre.animation.AnimationType;
 import orre.gameWorld.chaining.ChainUtil;
 import orre.gameWorld.core.GameWorld;
 import orre.gameWorld.core.Message;

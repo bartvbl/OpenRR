@@ -1,0 +1,19 @@
+animation raiderPutdown
+
+keyframe frame0 of duration instant
+set leg_l x-axis rotation to 0
+set leg_r x-axis rotation to 0
+set arm_l x-axis rotation to -90
+set arm_r x-axis rotation to -90
+
+keyframe frame1 of duration 0.6 s
+rotate belt 120 degrees around x-axis
+rotate arm_r 15 degrees around x-axis
+rotate arm_l 15 degrees around x-axis
+
+keyframe frame3 of duration 0.9 s
+rotate belt -90 degrees around x-axis
+rotate arm_r 75 degrees around x-axis
+rotate arm_l 75 degrees around x-axis 
+
+end animation

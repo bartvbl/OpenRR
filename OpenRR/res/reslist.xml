@@ -21,12 +21,6 @@
 		<sound name="teleport" src="teleport.wav"/>
 	</sounds>
 	
-	<animations pathPrefix="res/anims/">
-		<animation name="raiderWalking" src="raiderWalking.anim" />
-		<animation name="raiderPickup" src="raiderPickup.anim" />
-		<animation name="raiderApplause" src="raiderApplause.anim" />
-	</animations>
-	
 	<models pathPrefix="res/mesh/">
 		<!--<model name="lmsExplorer" src="lmsExplorer.mdl"/>-->
 		<model name="ore" src="ore.mdl"/>
@@ -305,6 +299,10 @@
 	
 	<animations pathPrefix="res/anims/">
 		<animation name="raiderWalking" src="raiderWalking.anim"/>
+		<animation name="raiderCarrying" src="raiderCarrying.anim"/>
+		<animation name="raiderPickup" src="raiderPickup.anim"/>
+		<animation name="raiderPutdown" src="raiderPutdown.anim"/>
+
 		<animation name="teleportRockRaider" src="teleportRaider.anim" />
 		
 		<animation name="hideSidebar" src="guiTransitions/hideSidebar.anim" />

@@ -1,17 +1,30 @@
 package openrr.ai.actions;
 
+import openrr.animation.AnimationType;
 import orre.ai.tasks.Action;
 import orre.ai.tasks.TaskRequest;
 import orre.gameWorld.core.GameWorld;
+import orre.gameWorld.core.Message;
+import orre.gameWorld.core.MessageHandler;
+import orre.gameWorld.core.MessageType;
+import orre.gameWorld.core.PropertyDataType;
+import orre.geom.mesh.Model;
 
-public class DropoffAction  extends Action {
+public class DropoffAction extends Action implements MessageHandler {
+	
+private boolean isFinished = false;
+	
+	private final Model rootNode;
+	private final GameWorld world;
 	
 	public static DropoffAction plan(TaskRequest request, GameWorld world) {
-		return new DropoffAction();
+		Model rootNode = (Model) world.requestPropertyData(request.targetID, PropertyDataType.APPEARANCE, null, Model.class);
+		return new DropoffAction(rootNode, world);
 	}
 	
-	private DropoffAction() {
-		
+	private DropoffAction(Model rootNode, GameWorld world) {
+		this.rootNode = rootNode;
+		this.world = world;
 	}
 
 	@Override
@@ -26,7 +39,7 @@ public class DropoffAction  extends Action {
 
 	@Override
 	public boolean isFinished() {
-		return true;
+		return isFinished;
 	}
 
 	@Override
@@ -35,8 +48,16 @@ public class DropoffAction  extends Action {
 	}
 
 	@Override
+	public void handleMessage(Message<?> message) {
+		if(message.type == MessageType.ANIMATION_ENDED) {
+			this.isFinished = true;
+		}
+	}
+
+	@Override
 	public void start() {
-		
+		world.services.animationService.applyAnimation(AnimationType.raiderPutdown.toString(), rootNode);
+		world.addMessageListener(MessageType.ANIMATION_ENDED, this);
 	}
 
 	@Override

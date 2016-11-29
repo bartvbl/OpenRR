@@ -38,7 +38,7 @@ public class AnimationGenerator {
 			currentNode = nextNode;
 			nextNode = (MapTileNode) path.getNextState();
 		}
-		return new Animation(null, keyFrames.toArray(new KeyFrame[keyFrames.size()]));
+		return new Animation((String)null, keyFrames.toArray(new KeyFrame[keyFrames.size()]));
 	}
 
 }

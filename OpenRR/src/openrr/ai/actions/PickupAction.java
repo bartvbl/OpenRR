@@ -1,8 +1,8 @@
 package openrr.ai.actions;
 
+import openrr.animation.AnimationType;
 import orre.ai.tasks.Action;
 import orre.ai.tasks.TaskRequest;
-import orre.animation.AnimationType;
 import orre.gameWorld.core.GameWorld;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.core.MessageHandler;
@@ -58,7 +58,7 @@ public class PickupAction extends Action implements MessageHandler {
 
 	@Override
 	public void start() {
-		world.services.animationService.applyAnimation(AnimationType.raiderPickup, rootNode);
+		world.services.animationService.applyAnimation(AnimationType.raiderPickup.toString(), rootNode);
 		world.addMessageListener(MessageType.ANIMATION_ENDED, this);
 		world.despawnObject(pickupObjectID);
 	}
