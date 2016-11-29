@@ -60,6 +60,9 @@ public class PickupAction extends Action implements MessageHandler {
 	public void start() {
 		world.services.animationService.applyAnimation(AnimationType.raiderPickup.toString(), rootNode);
 		world.addMessageListener(MessageType.ANIMATION_ENDED, this);
+		Model object = (Model) world.requestPropertyData(pickupObjectID, PropertyDataType.APPEARANCE, null, Model.class);
+		rootNode.getModelPartByName("torso").addChild(object.getRootNode());
+		object.getRootNode().setLocation(0, -0.15, 0.3);
 		world.despawnObject(pickupObjectID);
 	}
 
