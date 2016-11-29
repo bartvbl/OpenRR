@@ -26,6 +26,7 @@ public class KeyboardMapController extends Property {
 	private MapTileReader map;
 	
 	private static final double mapMoveSpeed = 0.3d;
+	private static final double zoomSlowdownFactor = 75;
 
 	public KeyboardMapController(GameObject gameObject) {
 		super(ORRPropertyType.KEYBOARD_MAP_CONTROLLER, gameObject, true);
@@ -65,7 +66,7 @@ public class KeyboardMapController extends Property {
 			camera.translate(Math.sin(moveDirection) * mapMoveSpeed, Math.cos(moveDirection) * mapMoveSpeed,  0);
 		}
 		
-		camera.translate(0, 0, zoomDelta / 55d);
+		camera.translate(0, 0, zoomDelta / zoomSlowdownFactor);
 		
 		double mapX = camera.getX();
 		double mapY = camera.getY();

@@ -11,6 +11,7 @@ import orre.gameWorld.core.PropertyDataType;
 import orre.geom.mesh.Mesh3D;
 
 public class AnimationAction extends Action implements MessageHandler {
+	private boolean hasStarted = false;
 	private boolean isFinished = false;
 	
 	private final Mesh3D rootNode;
@@ -84,12 +85,19 @@ public class AnimationAction extends Action implements MessageHandler {
 		} else {
 			this.animationID = world.services.animationService.applyAnimation(animation, rootNode);
 		}
-		world.addMessageListener(MessageType.ANIMATION_ENDED, this);
+		this.hasStarted = true;
+	}
+	
+	public int getAnimationPlayheadID() {
+		if(!hasStarted) {
+			throw new RuntimeException("Animation action has not started yet.");
+		}
+		return animationID;
 	}
 
 	@Override
 	public void end() {
-		
+		world.removeMessageListener(MessageType.ANIMATION_ENDED, this);
 	}
 
 }

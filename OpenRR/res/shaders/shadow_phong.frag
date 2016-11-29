@@ -34,11 +34,20 @@ layout(location = 23) uniform float material_shininess;
 float shadowTest() {
 	vec3 coordinate = light_frag_position.xyz / light_frag_position.w;
 	coordinate = coordinate * 0.5 + 0.5;
-	float depth = texture(depthTexture, coordinate.xy).r;
 	float currentDepth = coordinate.z;
-	float shadow = currentDepth - 0.0001 > depth  ? 0.0 : 1.0;
+	float shadow = 0.0;
+	vec2 texelSize = 1.0 / textureSize(depthTexture, 0);
+	for(int x = -1; x <= 1; ++x)
+	{
+		for(int y = -1; y <= 1; ++y)
+		{
+			float depth = texture(depthTexture, coordinate.xy + vec2(x, y) * texelSize).r;
+			shadow += currentDepth - 0.001 > depth ? 0.0 : 1.0; 
+		}
+	}
+	shadow /= 9.0;
 	bool outOfBounds = coordinate.x < 0 || coordinate.x > 1 || coordinate.y < 0 || coordinate.y > 1;
-	shadow = outOfBounds ? 0 : shadow;
+	shadow = outOfBounds ? 1 : shadow;
 	return shadow;
 }
 
@@ -71,7 +80,7 @@ void main()
 	diffuse *= attenuation;
 	specular *= attenuation;
 
-	float shadow = shadowTest();
+	float shadow = shadowTest() * 0.75;
 	diffuse *= shadow;
 	specular *= shadow;
 

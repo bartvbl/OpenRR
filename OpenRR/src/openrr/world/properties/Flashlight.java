@@ -19,7 +19,7 @@ public class Flashlight extends Property {
 	private Light light;
 	private int mouseProbeID;
 	private MapTileReader reader;
-	private static final float lightHeight = 3f;
+	private static final float lightHeight = 2f;
 
 	public Flashlight(GameObject gameObject) {
 		super(ORRPropertyType.LIGHT, gameObject, true);

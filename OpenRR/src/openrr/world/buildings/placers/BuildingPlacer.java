@@ -14,8 +14,10 @@ import openrr.world.core.ORRGameObjectType;
 import openrr.world.core.ORRMessageType;
 import openrr.world.core.ORRPropertyDataType;
 import orre.animation.Animation;
+import orre.gameWorld.chaining.ChainUtil;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
+import orre.gameWorld.core.MessageType;
 import orre.gameWorld.core.Property;
 import orre.gameWorld.core.PropertyDataType;
 import orre.geom.Point2D;
@@ -71,14 +73,18 @@ public abstract class BuildingPlacer extends Property {
 				}
 			}
 		}
-		int buildingID = gameObject.world.spawnGameObject(buildingType);
+		final int buildingID = gameObject.world.spawnGameObject(buildingType);
 		Model model = (Model) gameObject.world.requestPropertyData(buildingID, PropertyDataType.APPEARANCE, null, Model.class);
 		model.getRootNode().setLocation(buildingX, buildingY, 0);
 		model.getRootNode().setRotation(0, 0, getRotationAngle());
 		Animation teleportAnimation = BuildingAnimationGenerator.generateAnimationFor(model);
-		this.gameObject.world.services.animationService.applyAnimation(teleportAnimation, model);
-		
-		
+		int playheadID = this.gameObject.world.services.animationService.applyAnimation(teleportAnimation, model);
+		ChainUtil.onAnimationComplete(playheadID, new Runnable() {
+			@Override
+			public void run() {				
+				gameObject.world.dispatchMessage(new Message<Object>(MessageType.START_EXECUTING_TASKS), buildingID);
+			}
+		});
 	}
 
 	@Override
