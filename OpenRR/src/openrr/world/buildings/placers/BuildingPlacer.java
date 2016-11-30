@@ -62,6 +62,9 @@ public abstract class BuildingPlacer extends Property {
 	}
 
 	private void placeBuilding() {
+		if(buildingX < 0 || buildingY < 0) {
+			return; //TODO: requires outside width and height bounds checks
+		}
 		//int gameObjectID = gameObject.world.spawnGameObject(buildingType);
 		//start teleport animation
 		//update map

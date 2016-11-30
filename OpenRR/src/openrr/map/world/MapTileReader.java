@@ -17,17 +17,21 @@ public class MapTileReader {
 	}
 	
 	public double getTileHeightAt(double x, double y) {
+		x += 0.5;
+		y += 0.5;
+		
 		MapTile tile = getTileAt((int)x, (int)y);
-		double xOnTile = x - Math.floor(x);
-		double yOnTile = y - Math.floor(y);
-		if(x > y) {
+		double xOnTile = (x) - Math.floor(x);
+		double yOnTile = (y) - Math.floor(y);
+		
+		if(xOnTile < (1.0 - yOnTile)) {
 			double dx = tile.tileHeight[1][0] - tile.tileHeight[0][0];
-			double dy = tile.tileHeight[1][1] - tile.tileHeight[1][0];
-			return tile.tileHeight[0][0] + xOnTile*dx + yOnTile*dy;
-		} else {
-			double dx = tile.tileHeight[1][1] - tile.tileHeight[0][1];
 			double dy = tile.tileHeight[0][1] - tile.tileHeight[0][0];
-			return tile.tileHeight[0][0] + xOnTile*dx + yOnTile*dy;
+			return tile.tileHeight[0][0] + xOnTile * dx + yOnTile * dy;
+		} else {
+			double dx = tile.tileHeight[0][1] - tile.tileHeight[1][1];
+			double dy = tile.tileHeight[1][0] - tile.tileHeight[1][1];
+			return tile.tileHeight[1][1] + (1.0 - xOnTile) * dx + (1.0 - yOnTile) * dy;
 		}
 	}
 }

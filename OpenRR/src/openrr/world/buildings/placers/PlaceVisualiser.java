@@ -75,6 +75,7 @@ public class PlaceVisualiser extends LeafNode {
 		state.shaders.setProperty4f(ShaderProperty.MATERIAL_SPECULAR, tileColour);
 		state.shaders.setProperty4f(ShaderProperty.MATERIAL_EMISSION, black);
 		
+		
 		int arrayPointer = 0;
 		arrayPointer = storeVertices(x-1, y-1, tile, arrayPointer, cubeHeight);
 		storeVertices(x-1, y-1, tile, arrayPointer, 0);
