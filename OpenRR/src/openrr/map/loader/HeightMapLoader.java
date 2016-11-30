@@ -48,7 +48,7 @@ public class HeightMapLoader {
 				int g = rgb & 0x0000FF00;
 				g = g >> 8;
 				int b = rgb & 0x000000FF;
-				heightMap[x][y] = ((double)r + (double)g + (double)b) / 3d;
+				heightMap[x][mapSize.height - 1 - y] = ((double)r + (double)g + (double)b) / 3d;
 			}
 		}
 		
