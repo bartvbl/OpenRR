@@ -2,6 +2,7 @@ package openrr.world.properties.input;
 
 import org.lwjgl.util.vector.Vector3f;
 
+import openrr.input.InputPriority;
 import openrr.map.world.MapWorldUtils;
 import openrr.world.core.ORRPropertyDataType;
 import openrr.world.core.ORRPropertyType;
@@ -46,8 +47,8 @@ public class MouseProbeTracker extends Property {
 	public void init() {
 		this.mouseProbe = new MouseProbeNode();
 		MapWorldUtils.getMapRoot(gameObject.world).addChild(mouseProbe);
-		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "mouseMovedX");
-		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "mouseMovedY");
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "mouseMovedX", InputPriority.MOUSE_MOVE_X.priority);
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "mouseMovedY", InputPriority.MOUSE_MOVE_Y.priority);
 	}
 
 }

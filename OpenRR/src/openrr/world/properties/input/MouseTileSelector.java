@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import org.lwjgl.util.vector.Vector3f;
 
+import openrr.input.InputPriority;
 import openrr.map.MapTile;
 import openrr.map.world.MapTileReader;
 import openrr.map.world.MapWorldUtils;
@@ -37,7 +38,7 @@ public class MouseTileSelector extends Property {
 			InputEvent event = (InputEvent) message.getPayload();
 			if(event.command.equals("select")) {
 				mouseState = event.value == 1.0;
-				if((mouseState == false) && (wasMouseDown == true)) {
+				if((mouseState == true) && (wasMouseDown == false)) {
 					Vector3f mouseLocation = InputUtil.getMouseLocation(gameObject.world);
 					
 					selectionX = (int) Math.floor(mouseLocation.x + 0.5);
@@ -65,7 +66,7 @@ public class MouseTileSelector extends Property {
 
 	@Override
 	public void init() {
-		gameObject.world.services.inputService.addCommandListener(gameObject.id, "select");
+		gameObject.world.services.inputService.addCommandListener(gameObject.id, "select", InputPriority.MOUSE_SELECT_TILE.priority);
 		SceneNode mapRootNode = MapWorldUtils.getMapRoot(gameObject.world);
 		int mapID = gameObject.world.getOnlyGameObject(ORRGameObjectType.MAP);
 		this.reader = (MapTileReader) gameObject.world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);

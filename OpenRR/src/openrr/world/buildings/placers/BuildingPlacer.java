@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import org.lwjgl.util.vector.Vector3f;
 
+import openrr.input.InputPriority;
 import openrr.map.Orientation;
 import openrr.map.soil.SoilType;
 import openrr.map.world.MapTileReader;
@@ -50,9 +51,9 @@ public abstract class BuildingPlacer extends Property {
 		InputEvent event = (InputEvent) message.getPayload();
 		if(event.command.equals("select")) {
 			this.placeBuilding();
+			event.consume();
 		}// else: command = "back" -> despawn placer
 		
-		event.consume();
 		
 		//already de-register here.
 		gameObject.world.services.inputService.removeCommandListener(this.gameObject.id, "select");
@@ -162,8 +163,8 @@ public abstract class BuildingPlacer extends Property {
 		this.reader = (MapTileReader) gameObject.world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
 		this.placerAppearance = new PlaceVisualiser(buildingMap, reader);
 		mapNode.addChild(placerAppearance);
-		gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "select");
-		gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "back");
+		gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "select", InputPriority.PLACE_BUILDING_CONFIRM.priority);
+		gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "back", InputPriority.PLACE_BUILDING_ABORT.priority);
 	}
 
 }

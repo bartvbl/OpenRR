@@ -1,6 +1,7 @@
 package openrr.world.properties.input;
 
 import openrr.camera.MapCamera;
+import openrr.input.InputPriority;
 import openrr.map.world.MapTileReader;
 import openrr.world.core.ORRGameObjectType;
 import openrr.world.core.ORRPropertyDataType;
@@ -90,14 +91,14 @@ public class KeyboardMapController extends Property {
 	public void init() {
 		int mapID = this.gameObject.world.getOnlyGameObject(ORRGameObjectType.MAP);
 		this.map = (MapTileReader)this.gameObject.world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
-		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "moveMapLeft");
-		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "moveMapRight");
-		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "moveMapUp");
-		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "moveMapDown");
-		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "zoomMap");
-		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "enableMapRotation");
-		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "rotateMap");
-		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "tiltMap");
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "moveMapLeft", InputPriority.CAMERA_MOVE_LEFT.priority);
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "moveMapRight", InputPriority.CAMERA_MOVE_RIGHT.priority);
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "moveMapUp", InputPriority.CAMERA_MOVE_UP.priority);
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "moveMapDown", InputPriority.CAMERA_MOVE_DOWN.priority);
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "zoomMap", InputPriority.CAMERA_ZOOM.priority);
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "enableMapRotation", InputPriority.CAMERA_ENABLE_ROTATION.priority);
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "rotateMap", InputPriority.CAMERA_ROTATE_VERTICAL.priority);
+		this.gameObject.world.services.inputService.addCommandListener(this.gameObject.id, "tiltMap", InputPriority.CAMERA_ROTATE_HORIZONTAL.priority);
 		camera = (MapCamera) this.gameObject.world.requestPropertyData(mapID, ORRPropertyDataType.MAP_CAMERA, null, MapCamera.class);
 		camera.translate(0, 0, 30);
 	}
