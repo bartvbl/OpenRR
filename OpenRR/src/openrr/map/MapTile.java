@@ -3,6 +3,7 @@ package openrr.map;
 import openrr.map.soil.Soil;
 import openrr.map.soil.SoilType;
 import orre.entity.Entity;
+import orre.geom.Vertex3D;
 import orre.resources.ResourceCache;
 
 public class MapTile {
@@ -14,6 +15,10 @@ public class MapTile {
 	private boolean isWall;
 	private SoilType soilType;
 	private boolean hasChanged = true;
+	
+	private Vertex3D[] vertices = null;
+	private Orientation orientation = null;
+	private WallType wallType = null;
 	
 	public MapTile(boolean isWall, SoilType soil, double[][] tileHeight) {
 		this.isWall = isWall;
@@ -37,11 +42,21 @@ public class MapTile {
 		return this.isWall;
 	}
 	
+	public Vertex3D[] getVertices(){
+		return vertices;
+	}
+	
 	public void handleEntityTouch(Entity entity) {
 		
 	}
 	
 	public SoilType getSoilType() {
 		return this.soilType;
+	}
+
+	public void updateMetaData(Vertex3D[] vertices, Orientation orientation, WallType tileWallType) {
+		this.vertices = vertices.clone();
+		this.orientation = orientation;
+		this.wallType = tileWallType;
 	}
 }

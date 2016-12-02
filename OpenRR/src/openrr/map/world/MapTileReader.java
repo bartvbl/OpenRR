@@ -34,4 +34,5 @@ public class MapTileReader {
 			return tile.tileHeight[1][1] + (1.0 - xOnTile) * dx + (1.0 - yOnTile) * dy;
 		}
 	}
+
 }

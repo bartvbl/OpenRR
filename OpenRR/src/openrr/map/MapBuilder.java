@@ -23,8 +23,6 @@ import orre.sceneGraph.SceneNode;
 public class MapBuilder {
 	private static final int verticesPerTile = 6;
 	private static final int doublesPerVertex = 3 + 2 + 3; //xyz coordinate + uv texture coordinate + xyz normal coordinate
-	private static final float wallHeight = 1.1f;
-	private static final float tileSide = 1;
 
 	public static SceneNode buildMapGeometry(MapTile[][] tileMap, MapTexturePack texturePack) {
 		int mapWidth = tileMap.length;
@@ -64,6 +62,7 @@ public class MapBuilder {
 				WallType tileWallType = wallTypeMap[x][y];
 				Orientation orientation = orientationMap[x][y];
 				
+				
 				if(!texturePack.isBound(tileSoilType, tileWallType)) {
 					if(!(geometryDataBuffer.position() == 0)) {
 						compileGeometryBuffer(texturePack, rootNode, geometryDataBuffer);
@@ -73,6 +72,7 @@ public class MapBuilder {
 				
 				SubTextureCoordinate textureCoordinate = texturePack.getTextureCoordinates();
 				Vertex3D[] vertices = MapCoordinateRotator.generateRotatedTileCoordinates(x, y, mapVertices, textureCoordinate, orientation);
+				mapTile.updateMetaData(vertices, orientation, tileWallType);
 				
 				putVertices(vertices, geometryDataBuffer);
 			}
@@ -86,23 +86,14 @@ public class MapBuilder {
 		Vector3D[][] mapVertices = new Vector3D[mapSize.width + 1][mapSize.height + 1];
 		for(int x = 0; x < mapSize.width + 1; x++) {
 			for(int y = 0; y < mapSize.height + 1; y++) {
-				int xCoord = x;
-				int yCoord = y;
-				
-				if(xCoord == mapSize.width)  xCoord -= 1;
-				if(yCoord == mapSize.height) yCoord -= 1;
-				
-				MapTile mapTile = tileMap[xCoord][yCoord];
-				double tileHeight = calculateTileEdgeHeight(wallMap, xCoord, yCoord, mapTile);
-				mapVertices[x][y] = new Vector3D(
-						(float) (((float)x * tileSide) - (tileSide / 2d)), 
-						(float) (((float)y * tileSide) - (tileSide / 2d)), 
-						(float) tileHeight
-					);
+				Vector3D coordinate = MapCoordinateUtils.calculateTileCoordinate(wallMap, tileMap, mapSize, x, y);
+				mapVertices[x][y] = coordinate;
 			}
 		}
 		return mapVertices;
 	}
+
+
 	
 	private static void putVertices(Vertex3D[] vertices, FloatBuffer geometryDataBuffer) {
 		for(Vertex3D vertex : vertices) {
@@ -111,10 +102,7 @@ public class MapBuilder {
 		}
 	}
 
-	private static double calculateTileEdgeHeight(boolean[][] wallMap, int x, int y, MapTile mapTile) {
-		double vertexWallHeight = wallMap[x][y] ? wallHeight : 0;
-		return mapTile.tileHeight[0][0] + vertexWallHeight;
-	}
+
 
 	private static void compileGeometryBuffer(MapTexturePack texturePack, SceneNode rootNode, FloatBuffer geometryDataBuffer) {
 		Material currentMaterial = texturePack.generateBoundTextureMaterial();

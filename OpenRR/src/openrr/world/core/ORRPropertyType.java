@@ -86,7 +86,7 @@ public enum ORRPropertyType {
 // Task Executors
 	ROCK_RAIDER_TASK_EXECUTOR(RockRaiderTaskExecutor.class),
 	TOOL_STORE_TASK_EXECUTOR(ToolStoreTaskExecutor.class),
-	MONSTER_TASK_EXECUTOR(MonsterTaskExecutor.class),
+	MONSTER_TASK_EXECUTOR(MonsterTaskExecutor.class), 
 	;
 	
 	public final Class<? extends Property> propertyClass;

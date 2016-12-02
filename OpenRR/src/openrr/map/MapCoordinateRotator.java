@@ -9,8 +9,8 @@ public class MapCoordinateRotator {
 	private static Vertex3D[] vertices = new Vertex3D[6];
 	
 	public static Vertex3D[] generateRotatedTileCoordinates(int x, int y, Vector3D[][] mapVertices, SubTextureCoordinate textureCoordinate, Orientation orientation) {
-		Vector3D[] cornerVertices = generateCornerVertices(x, y, mapVertices);
-		rotateCornerVertices(cornerVertices, orientation);
+		Vector3D[] cornerVertices = MapCoordinateUtils.generateCornerVertices(x, y, mapVertices);
+		MapCoordinateUtils.rotateCornerVertices(cornerVertices, orientation);
 		Vector3D[] normals = calculateNormals(cornerVertices);
 		createVertices(cornerVertices, textureCoordinate, normals);
 		return vertices;
@@ -52,29 +52,5 @@ public class MapCoordinateRotator {
 		return normals;
 	}
 
-	private static Vector3D[] generateCornerVertices(int x, int y, Vector3D[][] mapVertices) {
-		Vector3D[] cornerVertices = new Vector3D[4];
-		cornerVertices[0] = mapVertices[x][y];
-		cornerVertices[1] = mapVertices[x+1][y];
-		cornerVertices[2] = mapVertices[x+1][y+1];
-		cornerVertices[3] = mapVertices[x][y+1];
-		return cornerVertices;
-	}
-
-	private static void rotateCornerVertices(Vector3D[] cornerVertices, Orientation orientation) {
-		switch(orientation) {
-			default:
-			case north: 
-				return; //leave vertex order intact
-			case west:
-				ArrayUtils.shiftLeft(cornerVertices, 1);
-				return;
-			case south:
-				ArrayUtils.shiftLeft(cornerVertices, 2);
-				return;
-			case east: 
-				ArrayUtils.shiftLeft(cornerVertices, 3);
-				return;
-		}
-	}
+	
 }

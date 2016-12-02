@@ -1,8 +1,14 @@
 package openrr.world.properties.input;
 
+import java.util.Arrays;
+
 import org.lwjgl.util.vector.Vector3f;
 
+import openrr.map.MapTile;
+import openrr.map.world.MapTileReader;
 import openrr.map.world.MapWorldUtils;
+import openrr.world.core.ORRGameObjectType;
+import openrr.world.core.ORRPropertyDataType;
 import openrr.world.core.ORRPropertyType;
 import openrr.world.util.InputUtil;
 import orre.gameWorld.core.GameObject;
@@ -16,10 +22,10 @@ public class MouseTileSelector extends Property {
 	
 	private boolean wasMouseDown;
 	private boolean mouseState;
-	private boolean isSelectionActive;
 	private int selectionX;
 	private int selectionY;
 	private MapTileSelectionNode selectionNode;
+	private MapTileReader reader;
 
 	public MouseTileSelector(GameObject gameObject) {
 		super(ORRPropertyType.MOUSE_TILE_SELECTOR, gameObject);
@@ -36,9 +42,10 @@ public class MouseTileSelector extends Property {
 					
 					selectionX = (int) Math.floor(mouseLocation.x + 0.5);
 					selectionY = (int) Math.floor(mouseLocation.y + 0.5);
-					isSelectionActive = true;
 					
-					selectionNode.update(selectionX, selectionY);
+					MapTile tile = reader.getTileAt(selectionX, selectionY);
+
+					selectionNode.update(selectionX, selectionY, tile);
 				}
 				wasMouseDown = mouseState;
 			}
@@ -60,7 +67,9 @@ public class MouseTileSelector extends Property {
 	public void init() {
 		gameObject.world.services.inputService.addCommandListener(gameObject.id, "select");
 		SceneNode mapRootNode = MapWorldUtils.getMapRoot(gameObject.world);
-		this.selectionNode = new MapTileSelectionNode();
+		int mapID = gameObject.world.getOnlyGameObject(ORRGameObjectType.MAP);
+		this.reader = (MapTileReader) gameObject.world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
+		this.selectionNode = new MapTileSelectionNode(reader);
 		mapRootNode.addChild(selectionNode);
 	}
 
