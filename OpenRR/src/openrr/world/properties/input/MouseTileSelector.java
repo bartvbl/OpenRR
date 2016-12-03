@@ -37,8 +37,7 @@ public class MouseTileSelector extends Property {
 		if(message.type == MessageType.INPUT_EVENT) {
 			InputEvent event = (InputEvent) message.getPayload();
 			if(event.command.equals("select")) {
-				mouseState = event.value == 1.0;
-				if((mouseState == true) && (wasMouseDown == false)) {
+				if(event.delta == 1.0) {
 					Vector3f mouseLocation = InputUtil.getMouseLocation(gameObject.world);
 					
 					selectionX = (int) Math.floor(mouseLocation.x + 0.5);
@@ -48,7 +47,6 @@ public class MouseTileSelector extends Property {
 
 					selectionNode.update(selectionX, selectionY, tile);
 				}
-				wasMouseDown = mouseState;
 			}
 		}
 	}

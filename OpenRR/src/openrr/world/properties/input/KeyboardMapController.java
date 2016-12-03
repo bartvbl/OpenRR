@@ -47,7 +47,7 @@ public class KeyboardMapController extends Property {
 		} else if(event.command.equals("zoomMap")) {
 			zoomDelta += event.delta;
 		} else if(event.command.equals("enableMapRotation")) {
-			enableMapRotation = true;
+			enableMapRotation = event.delta == 1;
 		} else if(event.command.equals("rotateMap")) {
 			mouseDX += event.delta;
 		} else if(event.command.equals("tiltMap")) {
@@ -79,7 +79,6 @@ public class KeyboardMapController extends Property {
 		mouseDX = 0;
 		mouseDY = 0;
 		zoomDelta = 0;
-		enableMapRotation = false;
 	}
 
 	@Override
