@@ -3,58 +3,77 @@ from orr import registerTask
 
 orr_sideMenuState = 0
 orr_activeSideMenu = 'sideMainMenu'
+orr_currentHideAnimation = 'hideSidebar'
+orr_currentSwitchAction = ''
+orr_currentActionName = ''
 
-def registerSideMenuSwitch(actionName, menuName, switchAction, showAnimation, hideAnimation, returnAction):
+
+def registerTransition(actionName, menuName, switchAction, showAnimation, hideAnimation):
+	global orr_activeSideMenu
+
 	#Hide sidebar
 	@on(switchAction, action=actionName)
 	def switchToBuildingMenu(eventParam):
 		global orr_sideMenuState
 		global orr_activeSideMenu
+		global orr_currentHideAnimation
+		global orr_currentSwitchAction
+		global orr_currentActionName
+
 		if orr_sideMenuState == 0:
-			orr_activeSideMenu = menuName
-			gui.animateMenu('sideMainMenu', 'hideSidebar')
+			gui.animateMenu(orr_activeSideMenu, orr_currentHideAnimation)
 			orr_sideMenuState = 1
+			orr_currentSwitchAction = switchAction
+			orr_currentActionName = actionName
 	
 	#When sidebar hidden, show new menu
-	@on('GUI_AnimationComplete', menuName='sideMainMenu')
+	@on('GUI_AnimationComplete')
 	def swapMenus(eventParams):
 		global orr_sideMenuState
 		global orr_activeSideMenu
-		if orr_sideMenuState == 1 and orr_activeSideMenu == menuName:
-			gui.hide('sideMainMenu')
+		global orr_currentHideAnimation
+		global orr_currentSwitchAction
+		global orr_currentActionName
+
+		if orr_sideMenuState == 1 and orr_currentSwitchAction == switchAction and orr_currentActionName == actionName:
+			gui.hide(orr_activeSideMenu)
 			gui.show(menuName)
+			orr_activeSideMenu = menuName
 			gui.animateMenu(menuName, showAnimation)
-			orr_sideMenuState = 2
+			orr_sideMenuState = 0
+			orr_currentHideAnimation = hideAnimation
 	
 	#The menu is now active.
 	
 	#When a return button is clicked, hide menu
-	@on('GUI_Click', action=returnAction)
-	def returnFromRegularSidebar(eventParams):
-		global orr_sideMenuState
-		global orr_activeSideMenu
-		if orr_sideMenuState == 2 and orr_activeSideMenu == menuName:
-			gui.animateMenu(menuName, hideAnimation)
-			orr_sideMenuState = 3
-	
-	#When menu is hidden, show the sidebar
-	@on('GUI_AnimationComplete', menuName=menuName)
-	def swapMenus(eventParams):
-		global orr_sideMenuState
-		global orr_activeSideMenu
-		if orr_sideMenuState == 3 and orr_activeSideMenu == menuName:
-			orr_activeSideMenu = 'sideMainMenu'
-			gui.show('sideMainMenu')
-			gui.hide(menuName)
-			gui.animateMenu('sideMainMenu', 'showSidebar')
-			orr_sideMenuState = 0
-		
-registerSideMenuSwitch('switchToBuildingMenu', 'buildMenu', 'GUI_Click', 'showSidebar', 'hideSidebar', 'switchToMain')
-registerSideMenuSwitch('switchToSmallVehiclesMenu', 'buildSmallVehicles', 'GUI_Click', 'showSidebar', 'hideSidebar', 'switchToMain')
-registerSideMenuSwitch('switchToLargeVehiclesMenu', 'buildLargeVehicles', 'GUI_Click', 'showSidebar', 'hideSidebar', 'switchToMain')
-registerSideMenuSwitch('togglePrioritiesPanel', 'prioritiesPanel', 'GUI_Click', 'showPrioritiesPanel', 'hidePrioritiesPanel', 'togglePrioritiesPanel')
-registerSideMenuSwitch('wall', 'wallDrillMenu', 'showTileSelectionMenu', 'showSidebar', 'hideSidebar', 'switchToMain')
-registerSideMenuSwitch('floor', 'groundSelectionMenu', 'showTileSelectionMenu', 'showSidebar', 'hideSidebar', 'switchToMain')
+	'''@on('GUI_Click', action=returnAction)
+				def returnFromRegularSidebar(eventParams):
+					global orr_sideMenuState
+					global orr_activeSideMenu
+					if orr_sideMenuState == 2 and orr_activeSideMenu == menuName:
+						gui.animateMenu(menuName, hideAnimation)
+						orr_sideMenuState = 3
+				
+				#When menu is hidden, show the sidebar
+				@on('GUI_AnimationComplete', menuName=menuName)
+				def swapMenus(eventParams):
+					global orr_sideMenuState
+					global orr_activeSideMenu
+					if orr_sideMenuState == 3 and orr_activeSideMenu == menuName:
+						orr_activeSideMenu = 'sideMainMenu'
+						gui.show('sideMainMenu')
+						gui.hide(menuName)
+						gui.animateMenu('sideMainMenu', 'showSidebar')
+						orr_sideMenuState = 0'''
+
+registerTransition('switchToMain', 'sideMainMenu', 'GUI_Click', 'showSidebar', 'hideSidebar')
+
+registerTransition('switchToBuildingMenu', 'buildMenu', 'GUI_Click', 'showSidebar', 'hideSidebar')
+registerTransition('switchToSmallVehiclesMenu', 'buildSmallVehicles', 'GUI_Click', 'showSidebar', 'hideSidebar')
+registerTransition('switchToLargeVehiclesMenu', 'buildLargeVehicles', 'GUI_Click', 'showSidebar', 'hideSidebar')
+registerTransition('togglePrioritiesPanel', 'prioritiesPanel', 'GUI_Click', 'showPrioritiesPanel', 'hidePrioritiesPanel') #, 'togglePrioritiesPanel'
+registerTransition('wall', 'wallDrillMenu', 'showTileSelectionMenu', 'showSidebar', 'hideSidebar')
+registerTransition('floor', 'groundSelectionMenu', 'showTileSelectionMenu', 'showSidebar', 'hideSidebar')
 	
 @on('GUI_Click', action='buildToolStore')
 def buildToolStore(eventParams):
