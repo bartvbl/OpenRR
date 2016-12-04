@@ -1,6 +1,7 @@
 package openrr.world.properties.input;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 import org.lwjgl.util.vector.Vector3f;
 
@@ -46,6 +47,16 @@ public class MouseTileSelector extends Property {
 					MapTile tile = reader.getTileAt(selectionX, selectionY);
 
 					selectionNode.update(selectionX, selectionY, tile);
+					
+					HashMap<String, String> parameters = new HashMap<String, String>();
+					
+					if(tile.isWall()) {
+						parameters.put("action", "wall");						
+					} else {
+						parameters.put("action", "floor");
+					}
+					
+					gameObject.world.services.scriptingService.dispatchScriptEvent("showTileSelectionMenu", parameters);
 				}
 			}
 		}

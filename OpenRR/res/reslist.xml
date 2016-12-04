@@ -46,6 +46,7 @@
 		<texture name="mainMenu_skybox" src="mainMenu/skybox.jpg" />
 	
 		<!-- Sidebar textures -->
+
 		<texture name="ingameMenu_General_MenuBackground_4" src="menus/slot4wo.png"/>
 		
 		<texture name="teleportNewRockRaiderButton_Up" src="menus/sidePanel/raider.bmp" />
@@ -69,6 +70,7 @@
 		<texture name="largeVehicleMenu_Disabled" src="menus/sidePanel/nlvehicle.bmp"/>
 		
 		<!-- Top bar textures -->
+
 		<texture name="topPanelBase" src="menus/topPanel/topPanel.png"/>
 		
 		<texture name="alert_Over" src="menus/topPanel/alert_over.bmp"/>
@@ -81,6 +83,7 @@
 		<texture name="priorities_Down" src="menus/topPanel/priorities_down.bmp"/>
 		
 		<!-- Radar panel textures -->
+
 		<texture name="radarPanelBase" src="menus/radarPanel/radar.png"/>
 		<texture name="radarPanelFill" src="menus/radarPanel/radarFill.png"/>
 		
@@ -102,9 +105,11 @@
 		<texture name="radarZoomOut_Down" src="menus/radarPanel/zoom_out_down.png"/>
 		
 		<!-- Resource sidebar -->
+
 		<texture name="resourceSidebarBackground" src="menus/resourcePanel/resourceSidebar.png"/>
 		
 		<!-- Notification panel -->
+
 		<texture name="notificationMessagePanel" src="menus/messagePanel/messagePanel.png"/>
 		<texture name="notificationBackground" src="menus/messagePanel/notificationBackground.png"/>
 		<texture name="notificationPanelSide" src="menus/messagePanel/notificationPanelSide.png"/>
@@ -116,6 +121,7 @@
 		<texture name="notificationGoto_Down" src="menus/messagePanel/notificationGoto_down.bmp"/>
 		
 		<!-- building menu textures -->
+
 		<texture name="BuildMenu_Background" src="menus/building/panelBackground.png"/>
 		
 		<texture name="BuildMenu_Back_Down" src="menus/building/back_down.bmp"/>
@@ -166,6 +172,7 @@
 		<texture name="buildingMenu_Snackbar_Disabled" src="menus/building/snackbar_disabled.bmp"/>
 		
 		<!-- Small vehicle menu -->
+
 		<texture name="smallVehicles_Background" src="menus/smallVehicles/menuBackground.png"/>
 		
 		<texture name="smallVehicles_HoverScout_Up" src="menus/smallVehicles/hoverboard.bmp"/>
@@ -193,6 +200,7 @@
 		<texture name="smallVehicles_TunnelScout_Disabled" src="menus/smallVehicles/smallHeli_disabled.bmp"/>
 		
 		<!-- Large vehicles menu -->
+
 		<texture name="largeVehicles_Background" src="menus/largeVehicles/menuBackground.png"/>
 		
 		<texture name="largeVehicles_LoaderDozer_Up" src="menus/largeVehicles/bulldozer.bmp"/>
@@ -218,8 +226,45 @@
 		<texture name="largeVehicles_TunnelTransport_Up" src="menus/largeVehicles/largeHeli.bmp"/>
 		<texture name="largeVehicles_TunnelTransport_Down" src="menus/largeVehicles/largeHeli_down.bmp"/>
 		<texture name="largeVehicles_TunnelTransport_Disabled" src="menus/largeVehicles/largeHeli_disabled.bmp"/>
-		
+
+		<!-- Wall Drill Panel -->
+
+		<texture name="wallDrill_Background" src="menus/wallDrillMenu/menu_background.png"/>
+
+		<texture name="wallDrill_Drill_Up" src="menus/wallDrillMenu/drill.bmp"/>
+		<texture name="wallDrill_Drill_Down" src="menus/wallDrillMenu/Pdrill.bmp"/>
+		<texture name="wallDrill_Drill_Disabled" src="menus/wallDrillMenu/Ndrill.bmp"/>
+
+		<texture name="wallDrill_Use_Dynamite_Up" src="menus/wallDrillMenu/dynamite.bmp"/>
+		<texture name="wallDrill_Use_Dynamite_Down" src="menus/wallDrillMenu/Pdynamite.bmp"/>
+		<texture name="wallDrill_Use_Dynamite_Disabled" src="menus/wallDrillMenu/Ndynamite.bmp"/>
+
+		<texture name="wallDrill_Reinforce_Up" src="menus/wallDrillMenu/Reinforce.bmp"/>
+		<texture name="wallDrill_Reinforce_Down" src="menus/wallDrillMenu/PReinforce.bmp"/>
+		<texture name="wallDrill_Reinforce_Disabled" src="menus/wallDrillMenu/NReinforce.bmp"/>
+
+		<texture name="wallDrill_Stop_Drill_Up" src="menus/wallDrillMenu/stopdrill.bmp"/>
+		<texture name="wallDrill_Stop_Drill_Down" src="menus/wallDrillMenu/Pstopdrill.bmp"/>
+		<texture name="wallDrill_Stop_Drill_Disabled" src="menus/wallDrillMenu/Nstopdrill.bmp"/>
+
+		<!-- Ground Selection Panel -->
+
+		<texture name="groundSelection_Background" src="menus/groundSelectionMenu/menu_background.png"/>
+
+		<texture name="groundSelection_BuildPowerPath_Up" src="menus/groundSelectionMenu/buildpath.bmp"/>
+		<texture name="groundSelection_BuildPowerPath_Down" src="menus/groundSelectionMenu/Pbuildpath.bmp"/>
+		<texture name="groundSelection_BuildPowerPath_Disabled" src="menus/groundSelectionMenu/Nbuildpath.bmp"/>
+
+		<texture name="groundSelection_DestroyPowerPath_Up" src="menus/groundSelectionMenu/diguppath.bmp"/>
+		<texture name="groundSelection_DestroyPowerPath_Down" src="menus/groundSelectionMenu/Pdiguppath.bmp"/>
+		<texture name="groundSelection_DestroyPowerPath_Disabled" src="menus/groundSelectionMenu/Ndiguppath.bmp"/>
+
+		<texture name="groundSelection_PlaceElectricFence_Up" src="menus/groundSelectionMenu/efence.bmp"/>
+		<texture name="groundSelection_PlaceElectricFence_Down" src="menus/groundSelectionMenu/Pefence.bmp"/>
+		<texture name="groundSelection_PlaceElectricFence_Disabled" src="menus/groundSelectionMenu/Nefence.bmp"/>
+
 		<!-- Priorities panel -->
+
 		<texture name="priorities_Background" src="menus/prioritiesPanel/prioritiesBase.png"/>
 		
 		<texture name="priorities_arrowLeft_Over" src="menus/prioritiesPanel/arrowLeft_over.bmp"/>
@@ -295,6 +340,8 @@
 		<menu name="buildSmallVehicles" src="smallVehicles.xml" />
 		<menu name="buildLargeVehicles" src="largeVehicles.xml" />
 		<menu name="prioritiesPanel" src="prioritiesPanel.xml" />
+		<menu name="wallDrillMenu" src="wallDrillMenu.xml" />
+		<menu name="groundSelectionMenu" src="groundSelectionMenu.xml" />
 	</menus>
 	
 	<animations pathPrefix="res/anims/">

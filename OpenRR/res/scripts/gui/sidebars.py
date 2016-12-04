@@ -4,9 +4,9 @@ from orr import registerTask
 orr_sideMenuState = 0
 orr_activeSideMenu = 'sideMainMenu'
 
-def registerSideMenuSwitch(actionName, menuName, showAnimation, hideAnimation, returnAction):
+def registerSideMenuSwitch(actionName, menuName, switchAction, showAnimation, hideAnimation, returnAction):
 	#Hide sidebar
-	@on('GUI_Click', action=actionName)
+	@on(switchAction, action=actionName)
 	def switchToBuildingMenu(eventParam):
 		global orr_sideMenuState
 		global orr_activeSideMenu
@@ -49,10 +49,12 @@ def registerSideMenuSwitch(actionName, menuName, showAnimation, hideAnimation, r
 			gui.animateMenu('sideMainMenu', 'showSidebar')
 			orr_sideMenuState = 0
 		
-registerSideMenuSwitch('switchToBuildingMenu', 'buildMenu', 'showSidebar', 'hideSidebar', 'switchToMain')
-registerSideMenuSwitch('switchToSmallVehiclesMenu', 'buildSmallVehicles', 'showSidebar', 'hideSidebar', 'switchToMain')
-registerSideMenuSwitch('switchToLargeVehiclesMenu', 'buildLargeVehicles', 'showSidebar', 'hideSidebar', 'switchToMain')
-registerSideMenuSwitch('togglePrioritiesPanel', 'prioritiesPanel', 'showPrioritiesPanel', 'hidePrioritiesPanel', 'togglePrioritiesPanel')
+registerSideMenuSwitch('switchToBuildingMenu', 'buildMenu', 'GUI_Click', 'showSidebar', 'hideSidebar', 'switchToMain')
+registerSideMenuSwitch('switchToSmallVehiclesMenu', 'buildSmallVehicles', 'GUI_Click', 'showSidebar', 'hideSidebar', 'switchToMain')
+registerSideMenuSwitch('switchToLargeVehiclesMenu', 'buildLargeVehicles', 'GUI_Click', 'showSidebar', 'hideSidebar', 'switchToMain')
+registerSideMenuSwitch('togglePrioritiesPanel', 'prioritiesPanel', 'GUI_Click', 'showPrioritiesPanel', 'hidePrioritiesPanel', 'togglePrioritiesPanel')
+registerSideMenuSwitch('wall', 'wallDrillMenu', 'showTileSelectionMenu', 'showSidebar', 'hideSidebar', 'switchToMain')
+registerSideMenuSwitch('floor', 'groundSelectionMenu', 'showTileSelectionMenu', 'showSidebar', 'hideSidebar', 'switchToMain')
 	
 @on('GUI_Click', action='buildToolStore')
 def buildToolStore(eventParams):
