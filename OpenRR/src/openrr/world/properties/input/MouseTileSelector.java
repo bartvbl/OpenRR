@@ -15,12 +15,14 @@ import openrr.world.core.ORRPropertyType;
 import openrr.world.util.InputUtil;
 import orre.gameWorld.core.GameObject;
 import orre.gameWorld.core.Message;
+import orre.gameWorld.core.MessageHandler;
 import orre.gameWorld.core.MessageType;
 import orre.gameWorld.core.Property;
 import orre.input.InputEvent;
 import orre.sceneGraph.SceneNode;
+import orre.scripting.ScriptEvent;
 
-public class MouseTileSelector extends Property {
+public class MouseTileSelector extends Property implements MessageHandler {
 	
 	private boolean wasMouseDown;
 	private boolean mouseState;
@@ -31,8 +33,11 @@ public class MouseTileSelector extends Property {
 
 	public MouseTileSelector(GameObject gameObject) {
 		super(ORRPropertyType.MOUSE_TILE_SELECTOR, gameObject);
+		gameObject.world.services.scriptingService.getClass();
 	}
 
+	// TODO: Handle menu switch and enable/disable specific buttons
+	
 	@Override
 	public void handleMessage(Message<?> message) {
 		if(message.type == MessageType.INPUT_EVENT) {
@@ -60,6 +65,19 @@ public class MouseTileSelector extends Property {
 				}
 			}
 		}
+		if(message.type == MessageType.SCRIPT_EVENT) {
+			ScriptEvent event = (ScriptEvent) message.getPayload();
+			if(event.type.equals("drillSelectedWall")) {
+				selectionX = -1;
+				selectionY = -1;
+				selectionNode.hide();
+			}
+			if(event.type.equals("blastSelectedWall")) {
+				selectionX = -1;
+				selectionY = -1;
+				selectionNode.hide();
+			}
+		}
 	}
 
 	@Override
@@ -76,6 +94,7 @@ public class MouseTileSelector extends Property {
 	@Override
 	public void init() {
 		gameObject.world.services.inputService.addCommandListener(gameObject.id, "select", InputPriority.MOUSE_SELECT_TILE.priority);
+		gameObject.world.addMessageListener(MessageType.SCRIPT_EVENT, this);
 		SceneNode mapRootNode = MapWorldUtils.getMapRoot(gameObject.world);
 		int mapID = gameObject.world.getOnlyGameObject(ORRGameObjectType.MAP);
 		this.reader = (MapTileReader) gameObject.world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);

@@ -1,8 +1,10 @@
-from ore import on, spawn, gui, ai
+from ore import on, spawn, gui, ai, dispatchScriptEvent, dispatchEvent
 from orr import registerTask
 
+orr_mainMenuName = 'sideMainMenu'
+
 orr_sideMenuState = 0
-orr_activeSideMenu = 'sideMainMenu'
+orr_activeSideMenu = orr_mainMenuName
 orr_currentHideAnimation = 'hideSidebar'
 orr_currentSwitchAction = ''
 orr_currentActionName = ''
@@ -21,6 +23,8 @@ def registerTransition(actionName, menuName, switchAction, showAnimation, hideAn
 		global orr_currentActionName
 
 		if orr_sideMenuState == 0:
+			if orr_activeSideMenu == menuName:
+				return
 			gui.animateMenu(orr_activeSideMenu, orr_currentHideAnimation)
 			orr_sideMenuState = 1
 			orr_currentSwitchAction = switchAction
@@ -44,27 +48,6 @@ def registerTransition(actionName, menuName, switchAction, showAnimation, hideAn
 			orr_currentHideAnimation = hideAnimation
 	
 	#The menu is now active.
-	
-	#When a return button is clicked, hide menu
-	'''@on('GUI_Click', action=returnAction)
-				def returnFromRegularSidebar(eventParams):
-					global orr_sideMenuState
-					global orr_activeSideMenu
-					if orr_sideMenuState == 2 and orr_activeSideMenu == menuName:
-						gui.animateMenu(menuName, hideAnimation)
-						orr_sideMenuState = 3
-				
-				#When menu is hidden, show the sidebar
-				@on('GUI_AnimationComplete', menuName=menuName)
-				def swapMenus(eventParams):
-					global orr_sideMenuState
-					global orr_activeSideMenu
-					if orr_sideMenuState == 3 and orr_activeSideMenu == menuName:
-						orr_activeSideMenu = 'sideMainMenu'
-						gui.show('sideMainMenu')
-						gui.hide(menuName)
-						gui.animateMenu('sideMainMenu', 'showSidebar')
-						orr_sideMenuState = 0'''
 
 registerTransition('switchToMain', 'sideMainMenu', 'GUI_Click', 'showSidebar', 'hideSidebar')
 
@@ -74,7 +57,9 @@ registerTransition('switchToLargeVehiclesMenu', 'buildLargeVehicles', 'GUI_Click
 registerTransition('togglePrioritiesPanel', 'prioritiesPanel', 'GUI_Click', 'showPrioritiesPanel', 'hidePrioritiesPanel') #, 'togglePrioritiesPanel'
 registerTransition('wall', 'wallDrillMenu', 'showTileSelectionMenu', 'showSidebar', 'hideSidebar')
 registerTransition('floor', 'groundSelectionMenu', 'showTileSelectionMenu', 'showSidebar', 'hideSidebar')
-	
+
+# Building menu: building placers
+
 @on('GUI_Click', action='buildToolStore')
 def buildToolStore(eventParams):
 	spawn('TOOL_STORE_PLACER')
@@ -115,7 +100,20 @@ def buildUpgradeStation(eventParams):
 def buildUpgradeStation(eventParams):
 	spawn('MINING_LASER_PLACER')
 
+# Main menu
 
 @on('GUI_Click', action='teleportRockRaider')
 def teleportRockRaider(eventParams):
 	registerTask('TELEPORT_ROCK_RAIDER')
+
+# Wall drill menu
+
+@on('GUI_Click', action='requestDrillWall')
+def requestDrillWall(eventParams):
+	dispatchScriptEvent('GUI_Click', {'action':'switchToMain'})
+	dispatchEvent('drillSelectedWall')
+
+@on('GUI_Click', action='requestBlastWall')
+def requestBlastWall(eventParams):
+	dispatchScriptEvent('GUI_Click', {'action':'switchToMain'})
+	dispatchEvent('blastSelectedWall')
