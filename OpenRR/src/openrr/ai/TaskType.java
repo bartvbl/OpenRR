@@ -3,6 +3,7 @@ package openrr.ai;
 public enum TaskType {
 	//rock raider tasks
 	BUILD, 
+	BLAST_WALL,
 	CLEAR_RUBBLE, 
 	PLACE_BARRIER, 
 	PLACE_ELECTRIC_FENCE, 
@@ -36,5 +37,5 @@ public enum TaskType {
 	RUN_AWAY, 
 	
 	//building tasks
-	TELEPORT_ROCK_RAIDER,
+	TELEPORT_ROCK_RAIDER, 
 }

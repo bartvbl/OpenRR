@@ -1,10 +1,13 @@
 package openrr.world.properties.input;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
 import org.lwjgl.util.vector.Vector3f;
 
+import openrr.ai.tasks.BlastTask;
+import openrr.ai.tasks.DrillTask;
 import openrr.input.InputPriority;
 import openrr.map.MapTile;
 import openrr.map.world.MapTileReader;
@@ -18,18 +21,19 @@ import orre.gameWorld.core.Message;
 import orre.gameWorld.core.MessageHandler;
 import orre.gameWorld.core.MessageType;
 import orre.gameWorld.core.Property;
+import orre.geom.MutableIndex2D;
 import orre.input.InputEvent;
 import orre.sceneGraph.SceneNode;
 import orre.scripting.ScriptEvent;
 
 public class MouseTileSelector extends Property implements MessageHandler {
 	
-	private boolean wasMouseDown;
-	private boolean mouseState;
-	private int selectionX;
-	private int selectionY;
+	private MutableIndex2D selectionLocation;
 	private MapTileSelectionNode selectionNode;
 	private MapTileReader reader;
+	
+	private ArrayList<DrillTask> drillTasks = new ArrayList<DrillTask>(); 
+	private ArrayList<BlastTask> blastTasks = new ArrayList<BlastTask>(); 
 
 	public MouseTileSelector(GameObject gameObject) {
 		super(ORRPropertyType.MOUSE_TILE_SELECTOR, gameObject);
@@ -46,12 +50,12 @@ public class MouseTileSelector extends Property implements MessageHandler {
 				if(event.delta == 1.0) {
 					Vector3f mouseLocation = InputUtil.getMouseLocation(gameObject.world);
 					
-					selectionX = (int) Math.floor(mouseLocation.x + 0.5);
-					selectionY = (int) Math.floor(mouseLocation.y + 0.5);
+					selectionLocation.x = (int) Math.floor(mouseLocation.x + 0.5);
+					selectionLocation.y = (int) Math.floor(mouseLocation.y + 0.5);
 					
-					MapTile tile = reader.getTileAt(selectionX, selectionY);
+					MapTile tile = reader.getTileAt(selectionLocation.x, selectionLocation.y);
 
-					selectionNode.update(selectionX, selectionY, tile);
+					selectionNode.update(selectionLocation.x, selectionLocation.y, tile);
 					
 					HashMap<String, String> parameters = new HashMap<String, String>();
 					
@@ -68,14 +72,22 @@ public class MouseTileSelector extends Property implements MessageHandler {
 		if(message.type == MessageType.SCRIPT_EVENT) {
 			ScriptEvent event = (ScriptEvent) message.getPayload();
 			if(event.type.equals("drillSelectedWall")) {
-				selectionX = -1;
-				selectionY = -1;
+				selectionLocation.x = -1;
+				selectionLocation.y = -1;
 				selectionNode.hide();
+				
+				DrillTask drillTask = new DrillTask(gameObject.id, selectionLocation.asImmutable());
+				drillTasks.add(drillTask);
+				gameObject.world.services.aiService.registerTask(drillTask);
 			}
 			if(event.type.equals("blastSelectedWall")) {
-				selectionX = -1;
-				selectionY = -1;
+				selectionLocation.x = -1;
+				selectionLocation.y = -1;
 				selectionNode.hide();
+				
+				BlastTask blastTask = new BlastTask(gameObject.id, selectionLocation.asImmutable());
+				blastTasks.add(blastTask);
+				gameObject.world.services.aiService.registerTask(blastTask);
 			}
 		}
 	}
