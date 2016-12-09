@@ -1,6 +1,7 @@
 package openrr.ai.tasks;
 
 import openrr.ai.TaskType;
+import openrr.ai.actions.DrillAction;
 import openrr.ai.actions.movement.MoveAction;
 import openrr.ai.taskRequests.MapTaskRequest;
 import openrr.animation.AnimationType;
@@ -26,10 +27,11 @@ public class DrillTask extends ORRTask {
 	public Assignment plan(TaskRequest request, TaskMaster taskMaster, GameWorld world) {
 		MapTaskRequest mapRequest = getMapTaskRequest(request);
 		MoveAction moveToWallAction = MoveAction.plan(request.targetID, mapRequest.locationOnMap, location.toPoint2D(), world, AnimationType.raiderWalking, 1);
-
+		DrillAction drillAction = DrillAction.plan(mapRequest.locationOnMap, mapRequest, world);
+		
 		Task[] completedTasks = new Task[]{this};
 		
-		Action[] actions = new Action[]{moveToWallAction};
+		Action[] actions = new Action[]{moveToWallAction, drillAction};
 		Plan plan = new Plan(actions);
 		
 		return new Assignment(completedTasks, plan);

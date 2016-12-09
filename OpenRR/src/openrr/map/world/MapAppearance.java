@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import openrr.camera.MapCamera;
 import openrr.map.Map;
+import openrr.map.MapTile;
+import openrr.map.world.events.BatchTileUpdate;
 import openrr.map.world.events.MapSoilUpdate;
 import openrr.world.core.ORRMessageType;
 import openrr.world.core.ORRPropertyDataType;
@@ -14,6 +16,7 @@ import orre.gameWorld.core.GraphicsObject;
 import orre.gameWorld.core.Message;
 import orre.gameWorld.core.Property;
 import orre.gameWorld.core.PropertyDataType;
+import orre.geom.Point2D;
 import orre.geom.mesh.Mesh3D;
 import orre.gl.shadows.ShadowMappedNode;
 import orre.resources.Resource;
@@ -39,6 +42,15 @@ public class MapAppearance extends Property {
 		if(message.type == ORRMessageType.TILE_UPDATE) {
 			MapSoilUpdate update = (MapSoilUpdate) message.getPayload();
 			map.setSoil(update);
+			rebuildMap();
+		} else if(message.type == ORRMessageType.BATCH_TILE_UPDATE) {
+			BatchTileUpdate updates = (BatchTileUpdate) message.getPayload();
+			while(updates.hasRemaining()) {
+				updates.next();
+				MapTile newTile = updates.getUpdateTile();
+				Point2D location = updates.getUpdateLocation();
+				map.setTileAt(newTile, location);
+			}
 			rebuildMap();
 		}
 	}
