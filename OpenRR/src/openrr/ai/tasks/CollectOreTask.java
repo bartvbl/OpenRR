@@ -27,7 +27,7 @@ public class CollectOreTask extends ORRTask {
 	public Assignment plan(TaskRequest request, TaskMaster taskMaster, GameWorld world) {
 		//step 1: move to ore, and pick it up.
 		MapTaskRequest mapRequest = getMapTaskRequest(request);
-		MoveAction moveToOreAction = MoveAction.plan(request.targetID, mapRequest.locationOnMap, location, world, AnimationType.raiderWalking);
+		MoveAction moveToOreAction = MoveAction.plan(request.targetID, mapRequest.locationOnMap, location, world, AnimationType.raiderWalking, 0);
 		PickupAction pickupAction = PickupAction.plan(request, gameObjectID, world);
 		Action[] plannedActions = {moveToOreAction, pickupAction};
 		Task[] completedTasks = {this};

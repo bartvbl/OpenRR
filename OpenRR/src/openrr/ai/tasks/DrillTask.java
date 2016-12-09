@@ -4,7 +4,10 @@ import openrr.ai.TaskType;
 import openrr.ai.actions.movement.MoveAction;
 import openrr.ai.taskRequests.MapTaskRequest;
 import openrr.animation.AnimationType;
+import orre.ai.tasks.Action;
 import orre.ai.tasks.Assignment;
+import orre.ai.tasks.Plan;
+import orre.ai.tasks.Task;
 import orre.ai.tasks.TaskMaster;
 import orre.ai.tasks.TaskRequest;
 import orre.gameWorld.core.GameWorld;
@@ -22,9 +25,14 @@ public class DrillTask extends ORRTask {
 	@Override
 	public Assignment plan(TaskRequest request, TaskMaster taskMaster, GameWorld world) {
 		MapTaskRequest mapRequest = getMapTaskRequest(request);
-		MoveAction moveToWallAction = MoveAction.plan(request.targetID, mapRequest.locationOnMap, location.toPoint2D(), world, AnimationType.raiderWalking);
+		MoveAction moveToWallAction = MoveAction.plan(request.targetID, mapRequest.locationOnMap, location.toPoint2D(), world, AnimationType.raiderWalking, 1);
+
+		Task[] completedTasks = new Task[]{this};
 		
-		return null;
+		Action[] actions = new Action[]{moveToWallAction};
+		Plan plan = new Plan(actions);
+		
+		return new Assignment(completedTasks, plan);
 	}
 
 }
