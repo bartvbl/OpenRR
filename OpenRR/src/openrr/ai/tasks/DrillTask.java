@@ -27,7 +27,7 @@ public class DrillTask extends ORRTask {
 	public Assignment plan(TaskRequest request, TaskMaster taskMaster, GameWorld world) {
 		MapTaskRequest mapRequest = getMapTaskRequest(request);
 		MoveAction moveToWallAction = MoveAction.plan(request.targetID, mapRequest.locationOnMap, location.toPoint2D(), world, AnimationType.raiderWalking, 1);
-		DrillAction drillAction = DrillAction.plan(mapRequest.locationOnMap, mapRequest, world);
+		DrillAction drillAction = DrillAction.plan(location.toPoint2D(), mapRequest, world);
 		
 		Task[] completedTasks = new Task[]{this};
 		
