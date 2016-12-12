@@ -78,7 +78,7 @@ public class MapTileSelectionNode extends ContainerNode {
 		}
 	}
 
-	public void hide() {
+	public void hideSelector() {
 		this.isEnabled = false;
 	}
 

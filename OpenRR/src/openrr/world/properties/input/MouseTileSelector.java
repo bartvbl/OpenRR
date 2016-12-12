@@ -74,7 +74,7 @@ public class MouseTileSelector extends Property implements MessageHandler {
 			if(event.type.equals("drillSelectedWall")) {
 				selectionLocation.x = -1;
 				selectionLocation.y = -1;
-				selectionNode.hide();
+				selectionNode.hideSelector();
 				
 				DrillTask drillTask = new DrillTask(gameObject.id, selectionLocation.asImmutable());
 				drillTasks.add(drillTask);
@@ -83,7 +83,7 @@ public class MouseTileSelector extends Property implements MessageHandler {
 			if(event.type.equals("blastSelectedWall")) {
 				selectionLocation.x = -1;
 				selectionLocation.y = -1;
-				selectionNode.hide();
+				selectionNode.hideSelector();
 				
 				BlastTask blastTask = new BlastTask(gameObject.id, selectionLocation.asImmutable());
 				blastTasks.add(blastTask);
