@@ -28,12 +28,12 @@ public class MoveAction extends Action {
 	private AnimationType moveAnimation;
  
 	
-	public static MoveAction plan(int targetID, Point2D start, Point2D destination, GameWorld world, AnimationType moveAnimationType) {
+	public static MoveAction plan(int targetID, Point2D start, Point2D destination, GameWorld world, AnimationType moveAnimationType, int goalRangeTiles) {
 		int mapID = world.getAllGameObjectsByType(ORRGameObjectType.MAP)[0];
 		
 		MapTileReader reader = (MapTileReader) world.requestPropertyData(mapID, ORRPropertyDataType.MAP_TILES, null, MapTileReader.class);
-		MapTileNode unitLocation = new MapTileNode(reader, start.x, start.y);
-		MapTileNode taskLocation = new MapTileNode(reader, destination.x, destination.y);
+		MapTileNode unitLocation = new MapTileNode(reader, start.x, start.y, goalRangeTiles);
+		MapTileNode taskLocation = new MapTileNode(reader, destination.x, destination.y, goalRangeTiles);
 		Path pathToTask = astar.findPath(unitLocation, taskLocation);
 		
 		Model rootNode = (Model) world.requestPropertyData(targetID, PropertyDataType.APPEARANCE, null, Model.class);

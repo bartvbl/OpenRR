@@ -29,7 +29,7 @@ public class DeliverOreTask extends Task {
 			throw new RuntimeException("ORR tasks need to have MapTaskRequests!");
 		}
 		MapTaskRequest mapRequest = (MapTaskRequest) request;
-		MoveAction moveToBuildingAction = MoveAction.plan(request.targetID, mapRequest.locationOnMap, buildingLocation, world, AnimationType.raiderCarrying);
+		MoveAction moveToBuildingAction = MoveAction.plan(request.targetID, mapRequest.locationOnMap, buildingLocation, world, AnimationType.raiderCarrying, 0);
 		DropoffAction pickupAction = DropoffAction.plan(request, world);
 		Action[] plannedActions = {moveToBuildingAction, pickupAction};
 		Task[] completedTasks = {}; //doesn't include deliver ore task, as it can be completed multiple times

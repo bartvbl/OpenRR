@@ -28,7 +28,7 @@ import orre.scripting.ScriptEvent;
 
 public class MouseTileSelector extends Property implements MessageHandler {
 	
-	private MutableIndex2D selectionLocation;
+	private MutableIndex2D selectionLocation = new MutableIndex2D();
 	private MapTileSelectionNode selectionNode;
 	private MapTileReader reader;
 	
@@ -72,22 +72,22 @@ public class MouseTileSelector extends Property implements MessageHandler {
 		if(message.type == MessageType.SCRIPT_EVENT) {
 			ScriptEvent event = (ScriptEvent) message.getPayload();
 			if(event.type.equals("drillSelectedWall")) {
-				selectionLocation.x = -1;
-				selectionLocation.y = -1;
-				selectionNode.hideSelector();
-				
 				DrillTask drillTask = new DrillTask(gameObject.id, selectionLocation.asImmutable());
 				drillTasks.add(drillTask);
 				gameObject.world.services.aiService.registerTask(drillTask);
-			}
-			if(event.type.equals("blastSelectedWall")) {
+
 				selectionLocation.x = -1;
 				selectionLocation.y = -1;
 				selectionNode.hideSelector();
-				
+			}
+			if(event.type.equals("blastSelectedWall")) {
 				BlastTask blastTask = new BlastTask(gameObject.id, selectionLocation.asImmutable());
 				blastTasks.add(blastTask);
 				gameObject.world.services.aiService.registerTask(blastTask);
+				
+				selectionLocation.x = -1;
+				selectionLocation.y = -1;
+				selectionNode.hideSelector();				
 			}
 		}
 	}
