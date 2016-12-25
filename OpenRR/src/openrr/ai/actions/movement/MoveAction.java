@@ -8,6 +8,7 @@ import openrr.world.core.ORRPropertyDataType;
 import orre.ai.pathFinding.AStar;
 import orre.ai.pathFinding.Path;
 import orre.ai.tasks.Action;
+import orre.animation.AnimationBehaviour;
 import orre.gameWorld.core.GameWorld;
 import orre.gameWorld.core.PropertyDataType;
 import orre.geom.Point2D;
@@ -94,7 +95,7 @@ public class MoveAction extends Action {
 
 	@Override
 	public void start() {
-		this.walkingAnimationID = this.world.services.animationService.applyAnimation(moveAnimation.toString(), target);
+		this.walkingAnimationID = this.world.services.animationService.applyAnimation(moveAnimation.toString(), target, AnimationBehaviour.REPEAT_ON_COMPLETE);
 	}
 
 	@Override

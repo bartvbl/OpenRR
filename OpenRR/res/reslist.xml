@@ -345,7 +345,7 @@
 	</menus>
 	
 	<animations pathPrefix="res/anims/">
-		<animation name="raiderWalking" src="raiderWalking.anim"/>
+		<!-- <animation name="raiderWalking" src="raiderWalking.anim"/> -->
 		<animation name="raiderCarrying" src="raiderCarrying.anim"/>
 		<animation name="raiderPickup" src="raiderPickup.anim"/>
 		<animation name="raiderPutdown" src="raiderPutdown.anim"/>
@@ -360,6 +360,10 @@
 		
 		<animation name="showPrioritiesPanel" src="guiTransitions/showPrioritiesPanel.anim" />
 		<animation name="hidePrioritiesPanel" src="guiTransitions/hidePrioritiesPanel.anim" />
+
+		<!-- <lwsAnimation name="raiderPickup" src="original/pickup.lws" /> -->
+		<lwsAnimation name="raiderWalking" src="original/walk_wobble.lws" />
+		<!-- <animation name="raiderWalking" src="test.anim" /> -->
 	</animations>
 	
 	<scripts pathPrefix="res/scripts/">

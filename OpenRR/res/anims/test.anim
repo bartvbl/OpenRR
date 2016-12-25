@@ -1,0 +1,8 @@
+animation raiderWalking
+keyframe frame1 of duration infinity
+spin leg_l around x-axis at 40 degrees per s
+spin leg_r around x-axis at 40 degrees per s
+spin arm_l around x-axis at 40 degrees per s
+spin arm_r around x-axis at 40 degrees per s
+spin head around x-axis at 40 degrees per s
+end animation
