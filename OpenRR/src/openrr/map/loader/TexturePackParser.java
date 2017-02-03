@@ -7,8 +7,8 @@ import java.util.HashMap;
 
 import orre.resources.ResourceType;
 import orre.resources.UnloadedResource;
+import orre.resources.incompleteResources.IncompleteTexture;
 import orre.resources.loaders.TextureLoader;
-import orre.resources.partiallyLoadables.PartiallyLoadableTexture;
 import nu.xom.Element;
 import nu.xom.Elements;
 import openrr.map.soil.MapTexture;
@@ -50,7 +50,7 @@ public class TexturePackParser {
 	private static MapTexture parseMapTextureFromXML(Element textureElement, String pathPrefix) throws FileNotFoundException, IOException, Exception {
 		String name = textureElement.getAttributeValue("name");
 		String textureSrc = textureElement.getAttributeValue("src");
-		PartiallyLoadableTexture texture = TextureLoader.partiallyLoadTextureFromFile(new UnloadedResource(ResourceType.texture, new File(pathPrefix + "/" + textureSrc), "Texture pack texture"));
+		IncompleteTexture texture = TextureLoader.partiallyLoadTextureFromFile(new UnloadedResource(ResourceType.texture, new File(pathPrefix + "/" + textureSrc), "Texture pack texture"));
 		String widthInTexturesString = textureElement.getAttributeValue("widthInTextures");
 		String heightInTexturesString = textureElement.getAttributeValue("heightInTextures");
 		int widthInTextures = Integer.parseInt(widthInTexturesString);

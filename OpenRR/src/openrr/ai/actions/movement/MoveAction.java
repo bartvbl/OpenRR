@@ -12,7 +12,6 @@ import orre.animation.AnimationBehaviour;
 import orre.gameWorld.core.GameWorld;
 import orre.gameWorld.core.PropertyDataType;
 import orre.geom.Point2D;
-import orre.geom.mesh.Mesh3D;
 import orre.geom.mesh.Model;
 
 public class MoveAction extends Action {

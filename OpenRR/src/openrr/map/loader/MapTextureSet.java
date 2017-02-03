@@ -6,7 +6,7 @@ import java.util.Set;
 import openrr.map.soil.MapTexture;
 
 import orre.gl.texture.Texture;
-import orre.resources.partiallyLoadables.PartiallyLoadableTexture;
+import orre.resources.incompleteResources.IncompleteTexture;
 
 public class MapTextureSet {
 	private final HashMap<String, MapTexture> uncompiledTextureSet;

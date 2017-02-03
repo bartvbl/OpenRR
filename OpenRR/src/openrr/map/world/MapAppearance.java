@@ -21,7 +21,7 @@ import orre.geom.mesh.Mesh3D;
 import orre.gl.shadows.ShadowMappedNode;
 import orre.resources.Resource;
 import orre.resources.ResourceType;
-import orre.resources.partiallyLoadables.Shader;
+import orre.resources.incompleteResources.Shader;
 import orre.sceneGraph.ContainerNode;
 import orre.sceneGraph.CoordinateNode;
 import orre.sceneGraph.SceneNode;

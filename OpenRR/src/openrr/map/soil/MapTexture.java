@@ -4,16 +4,16 @@ import orre.gl.materials.Material;
 import orre.gl.renderer.RenderState;
 import orre.gl.renderer.ShaderProperty;
 import orre.gl.texture.Texture;
-import orre.resources.partiallyLoadables.PartiallyLoadableTexture;
+import orre.resources.incompleteResources.IncompleteTexture;
 
 public class MapTexture {
 	public final String name;
 	public final int widthInTextures;
 	public final int heightInTextures;
-	private PartiallyLoadableTexture partiallyLoadedTexture;
+	private IncompleteTexture partiallyLoadedTexture;
 	private Texture texture;
 
-	public MapTexture(String name, PartiallyLoadableTexture texture, int widthInTextures, int heightInTextures) {
+	public MapTexture(String name, IncompleteTexture texture, int widthInTextures, int heightInTextures) {
 		this.name = name;
 		this.partiallyLoadedTexture = texture;
 		this.widthInTextures = widthInTextures;

@@ -56,6 +56,7 @@
 {% endif %}
 
 		outPosition = pieceMMatrix * position;
+		gl_Position = outPosition;
 		
 {% if lighting %}
 		outLightPosition = lightMVP * position;

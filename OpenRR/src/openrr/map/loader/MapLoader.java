@@ -6,25 +6,18 @@ import java.io.InputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import openrr.map.Map;
 import openrr.map.MapTile;
 import openrr.world.core.ORRResourceType;
-import nu.xom.Builder;
 import nu.xom.Document;
-import nu.xom.Element;
-import nu.xom.ParsingException;
-import nu.xom.ValidityException;
-import orre.resources.Finalizable;
+import orre.resources.Resource;
 import orre.resources.ResourceQueue;
-import orre.resources.ResourceType;
 import orre.resources.ResourceTypeLoader;
-import orre.resources.UnloadedResource;
 import orre.util.XMLLoader;
 
 public class MapLoader implements ResourceTypeLoader {
 	
 	@Override
-	public Finalizable loadResource(UnloadedResource source, ResourceQueue queue) throws Exception {
+	public Map readResource(Resource source) throws Exception {
 		return loadMap(source);
 	}
 	
@@ -33,11 +26,11 @@ public class MapLoader implements ResourceTypeLoader {
 		return ORRResourceType.map;
 	}
 
-	public static PartiallyLoadableMap loadMap(UnloadedResource resource) throws Exception {
-		ZipFile mapFile = openMap(resource.location);
+	public static IncompleteMap loadMap(Resource resource) throws Exception {
+		ZipFile mapFile = openMap(resource.fileLocation);
 		Document mapXML = readMapXML(mapFile);
 		MapLoadingContext context = new MapLoadingContext(mapXML, mapFile);
-		PartiallyLoadableMap map = parseMapXML(context);
+		IncompleteMap map = parseMapXML(context);
 		return map;
 	}
 	
@@ -52,11 +45,11 @@ public class MapLoader implements ResourceTypeLoader {
 		return XMLLoader.readXML(inputStream);
 	}
 
-	private static PartiallyLoadableMap parseMapXML(MapLoadingContext context) throws Exception {
+	private static IncompleteMap parseMapXML(MapLoadingContext context) throws Exception {
 		MapTexturePack texturePack = MapTexturePackLoader.buildTexturePack(context);
 		context.texturePack = texturePack;
 		MapTile[][] tileMap = TileMapLoader.loadTileMap(context);
-		return new PartiallyLoadableMap(tileMap, texturePack);
+		return new IncompleteMap(tileMap, texturePack);
 	}
 
 }

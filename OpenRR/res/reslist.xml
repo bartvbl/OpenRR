@@ -345,7 +345,7 @@
 	</menus>
 	
 	<animations pathPrefix="res/anims/">
-		<!-- <animation name="raiderWalking" src="raiderWalking.anim"/> -->
+		<animation name="raiderWalking" src="raiderWalking.anim"/>
 		<animation name="raiderCarrying" src="raiderCarrying.anim"/>
 		<animation name="raiderPickup" src="raiderPickup.anim"/>
 		<animation name="raiderPutdown" src="raiderPutdown.anim"/>
@@ -362,7 +362,7 @@
 		<animation name="hidePrioritiesPanel" src="guiTransitions/hidePrioritiesPanel.anim" />
 
 		<!-- <lwsAnimation name="raiderPickup" src="original/pickup.lws" /> -->
-		<lwsAnimation name="raiderWalking" src="original/walk_wobble.lws" />
+		<!-- <lwsAnimation name="raiderWalking" src="original/walk_wobble.lws" /> -->
 		<!-- <animation name="raiderWalking" src="test.anim" /> -->
 	</animations>
 	
@@ -376,9 +376,6 @@
 	
 	<!-- The shader loader adds .vert and .frag extensions to the source path -->
 	<shaders pathPrefix="res/shaders/">
-		<shader name="phong" src="phong"/>
-		<shader name="shadow_phong" src="shadow_phong"/>
-		<shader name="shadow_pass" src="shadow_pass"/>
-		<shader name="default" src="default"/>
+		<shader name="shader_main" src="shader_main"/>
 	</shaders>
 </resList>
