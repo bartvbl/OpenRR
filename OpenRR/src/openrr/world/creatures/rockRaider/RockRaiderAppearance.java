@@ -8,7 +8,7 @@ import orre.gameWorld.core.Message;
 import orre.gameWorld.core.PropertyType;
 import orre.gameWorld.properties.Appearance;
 import orre.resources.ResourceType;
-import orre.resources.data.OBJBlueprintModel;
+import orre.resources.incompleteResources.OBJBlueprintModel;
 import orre.sceneGraph.SceneNode;
 
 public class RockRaiderAppearance extends Appearance {
